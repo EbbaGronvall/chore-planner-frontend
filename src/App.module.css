@@ -6,6 +6,9 @@
 	background-color: rgb(228, 218, 226);
 	min-height: 100vh;
 }
+.Main {
+	padding-top: 110px;
+}
 * {
 	box-sizing: border-box;
 }
@@ -16,6 +19,7 @@ a {
 
 a:hover {
 	text-decoration: none;
+	color: rgb(31, 31, 31);
 }
 
 a:hover i {
