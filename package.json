@@ -1,5 +1,5 @@
 {
-  "name": "chore-planner-api",
+  "name": "chore-planner-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
