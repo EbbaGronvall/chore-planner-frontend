@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Container } from "react-bootstrap";
 
-import styles from "../../styles/TaskCreateEditForm.module.css";
+import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
@@ -64,10 +64,11 @@ function TaskCreateForm() {
 	};
 
 	return (
-		
-			<Form onSubmit={handleSubmit} className={appStyles.Content}>
+		<Container className={appStyles.Content}>
+			<h1>Let's Plan Some Chores</h1>
+			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="title">
-					<Form.Label className={styles.Label}>Task Title</Form.Label>
+					<Form.Label className={styles.Label}>Chore Title</Form.Label>
 					<Form.Control
 						type="text"
 						placeholder="What needs to be done?"
@@ -83,7 +84,7 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 				<Form.Group controlId="description">
-					<Form.Label className={styles.Label}>Task Description</Form.Label>
+					<Form.Label className={styles.Label}>Chore Description</Form.Label>
 					<Form.Control
 						as="textarea"
 						rows={3}
@@ -146,7 +147,7 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 			</Form>
-		
+			</Container>
 	);
 }
 

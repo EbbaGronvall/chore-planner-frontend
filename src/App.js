@@ -6,6 +6,7 @@ import "./api/axiosDefault";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
+import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
 						path="/noticeboard"
 						render={() => <h1>Noticeboard</h1>}
 					/>
-					<Route exact path="/households" render={() => <h1>Your Home</h1>} />
+					<Route exact path="/households/create" render={() => <HouseholdCreateForm />} />
+
 					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
 					<Route exact path="/signin" render={() => <SignInForm />} />
 					<Route exact path="/signup" render={() => <SignUpForm />} />
