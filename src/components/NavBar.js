@@ -2,10 +2,25 @@ import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import {
+	useCurrentUser,
+	useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
 	const currentUser = useCurrentUser();
+	const setCurrentUser = useSetCurrentUser();
+
+	const handleSignOut = async () => {
+		try {
+			await axios.post("dj-rest-auth/logout/");
+			setCurrentUser(null);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 	const loggedInIcons = (
 		<>
 			<NavLink
@@ -21,6 +36,16 @@ const NavBar = () => {
 				to="/households"
 			>
 				Your Home <i class="fa-solid fa-house"></i>
+			</NavLink>
+
+			<NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+				Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
+			</NavLink>
+			<NavLink
+				className={styles.NavLink}
+				to={`/profiles/${currentUser?.profile_id}`}
+			>
+				<Avatar src={currentUser?.profile_image} text="Your Page" height={40} />
 			</NavLink>
 		</>
 	);
