@@ -1,0 +1,19 @@
+.Text {
+    background: #ffffff;
+    border: 1px solid #f0f1f9;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #7177a1;
+    padding: 10px;
+}
+.Input {
+    background: #ffffff;
+    border: 1px solid #f0f1f9;
+    box-sizing: border-box;
+    border-radius: 20px;
+    color: #7177a1;
+    padding: 10px;
+}
+.Label {
+    margin-left: 10px;
+}

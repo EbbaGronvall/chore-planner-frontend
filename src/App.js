@@ -5,6 +5,8 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefault";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import TaskCreateForm from "./pages/tasks/TaskCreateForm";
+
 
 function App() {
 	return (
@@ -19,6 +21,7 @@ function App() {
 						render={() => <h1>Noticeboard</h1>}
 					/>
 					<Route exact path="/households" render={() => <h1>Your Home</h1>} />
+					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
 					<Route exact path="/signin" render={() => <SignInForm />} />
 					<Route exact path="/signup" render={() => <SignUpForm />} />
 					<Route render={() => <h1>Page not found!</h1>} />
