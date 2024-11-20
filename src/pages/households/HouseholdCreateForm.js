@@ -56,7 +56,7 @@ function HouseholdCreateForm() {
 					<Form.Label className={styles.Label}>Household Name</Form.Label>
 					<Form.Control
 						type="text"
-						placeholder="Home Sweet Home"
+						placeholder="ex. Home Sweet Home"
 						className={styles.Input}
 						name="name"
 						value={name}

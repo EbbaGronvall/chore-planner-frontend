@@ -12,7 +12,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 
 function TaskCreateForm() {
-
 	const [errors, setErrors] = useState({});
 
 	const [taskData, setTaskData] = useState({
@@ -31,15 +30,13 @@ function TaskCreateForm() {
 			[event.target.name]: event.target.value,
 		});
 	};
-	
+
 	const handleDateChange = (selectedDate) => {
-		
-        setTaskData((prevState) => ({
-            ...prevState,
-            due_date: selectedDate,
-        }));
-    };
-	
+		setTaskData((prevState) => ({
+			...prevState,
+			due_date: selectedDate,
+		}));
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -49,7 +46,7 @@ function TaskCreateForm() {
 
 		formData.append("title", title);
 		formData.append("description", description);
-		formData.append("due_date", formattedDate)
+		formData.append("due_date", formattedDate);
 		formData.append("assigned_to", assigned_to);
 
 		try {
@@ -105,15 +102,22 @@ function TaskCreateForm() {
 						When do you need it done?
 					</Form.Label>
 					<div>
-					<DatePicker dateFormat="dd/MM/yyyy" selected={due_date} onChange={handleDateChange} className={styles.Input} />
+						<DatePicker
+							showIcon
+							icon="fa fa-calendar"
+							dateFormat="dd/MM/yyyy"
+							selected={due_date}
+							onChange={handleDateChange}
+							className={styles.Input}
+						/>
 					</div>
-					</Form.Group>
+				</Form.Group>
 				{errors?.due_date?.map((message, idx) => (
 					<Alert variant="warning" key={idx}>
 						{message}
 					</Alert>
 				))}
-{/* These options are going to be household members */}
+				{/* These options are going to be household members */}
 				<Form.Group controlId="assigned_to">
 					<Form.Label className={styles.Label}>Who is gonna do it?</Form.Label>
 					<Form.Control
@@ -147,7 +151,7 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 			</Form>
-			</Container>
+		</Container>
 	);
 }
 
