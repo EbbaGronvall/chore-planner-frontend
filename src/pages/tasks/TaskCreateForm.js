@@ -86,7 +86,7 @@ function TaskCreateForm() {
 						as="textarea"
 						rows={3}
 						placeholder="Explain what needs to be done"
-						className={styles.Text}
+						className={styles.Input}
 						name="description"
 						value={description}
 						onChange={handleChange}
