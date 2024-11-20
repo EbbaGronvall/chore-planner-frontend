@@ -29,7 +29,7 @@ const NavBar = () => {
 			<NavLink
 				className={styles.NavLink}
 				activeClassName={styles.Active}
-				to="/noticeboard"
+				to="/tasks"
 			>
 				Noticeboard <i class="fa-solid fa-check"></i>
 			</NavLink>

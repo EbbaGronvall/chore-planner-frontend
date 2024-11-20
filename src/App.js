@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefault";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import TasksPage from "./pages/tasks/TasksPage";
 import TaskPage from "./pages/tasks/TaskPage";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
@@ -20,8 +21,8 @@ function App() {
 					{/* Routes to the Noticeboard and tasks */}
 					<Route
 						exact
-						path="/"
-						render={() => <Noticeboard />}
+						path="/tasks"
+						render={() => <TasksPage message='No results found. Adjust your search' />}
 					/>
 					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
 					<Route exact path="/tasks/:id" render={() => <TaskPage />} />
