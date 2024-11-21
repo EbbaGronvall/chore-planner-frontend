@@ -10,28 +10,34 @@ import TaskPage from "./pages/tasks/TaskPage";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
 
-
 function App() {
 	return (
 		<div className={styles.App}>
 			<NavBar />
-			<Container className={styles.Main}>
+			<Container fluid className={styles.Main}>
 				<Switch>
 					<Route exact path="/" render={() => <h1>Home Page</h1>} />
 					{/* Routes to the Noticeboard and tasks */}
 					<Route
 						exact
 						path="/tasks"
-						render={() => <TasksPage message='No results found. Adjust your search' />}
+						render={() => (
+							<TasksPage message="No results found. Adjust your search" />
+						)}
 					/>
 					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
 					<Route exact path="/tasks/:id" render={() => <TaskPage />} />
 					{/* Routes to the household */}
-					<Route exact path="/households/create" render={() => <HouseholdCreateForm />} />
+					<Route
+						exact
+						path="/households/create"
+						render={() => <HouseholdCreateForm />}
+					/>
 
 					{/* Routes to signin and signup*/}
 					<Route exact path="/signin" render={() => <SignInForm />} />
 					<Route exact path="/signup" render={() => <SignUpForm />} />
+					{/* Error pages */}
 					<Route render={() => <h1>Page not found!</h1>} />
 				</Switch>
 			</Container>

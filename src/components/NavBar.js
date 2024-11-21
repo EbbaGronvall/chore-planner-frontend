@@ -14,7 +14,7 @@ const NavBar = () => {
 	const currentUser = useCurrentUser();
 	const setCurrentUser = useSetCurrentUser();
 
-	const {expanded, setExpanded, ref } = UseClickOutsideToggle()
+	const { expanded, setExpanded, ref } = UseClickOutsideToggle();
 
 	const handleSignOut = async () => {
 		try {
@@ -78,7 +78,7 @@ const NavBar = () => {
 			expand="md"
 			fixed="top"
 		>
-			<Container>
+			<Container fluid>
 				<NavLink exact to="/">
 					<Navbar.Brand className={styles.Brand}>ChorePlanner</Navbar.Brand>
 				</NavLink>

@@ -8,6 +8,8 @@ import styles from "../../styles/TasksPage.module.css";
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import Task from "./Task";
+import InfiniteScroll from "react-infinite-scroll-component";
+import fetchMoreData from "../../utils/utils";
 
 function TasksPage({ filter = "" }) {
 	const [tasks, setTasks] = useState({ results: [] });
@@ -45,7 +47,7 @@ function TasksPage({ filter = "" }) {
 	}, [filter, query, selectedFilter, selectedOrder, pathname]);
 
 	return (
-		<Container fluid className="mb-4">
+		<Container fluid className={taskStyles.Task}>
 			<Row className="mb-3">
 				<Form
 					className={`w-100 ${styles.SearchBar}`}
@@ -92,32 +94,45 @@ function TasksPage({ filter = "" }) {
 					</Form.Row>
 				</Form>
 				{hasLoaded ? (
-					<>
+					<Row>
 						{tasks.results.length ? (
-							<Container fluid className={taskStyles.Task}>
-								<Row>
-									{tasks.results.map((task) => (
-										<Col
-											key={task.id}
-											xs={12}
-											sm={12}
-											md={6}
-											lg={4}
-											className="mb-4"
-										>
-											<Task {...task} setTasks={setTasks} />
-										</Col>
-									))}
-								</Row>
-							</Container>
+							<InfiniteScroll
+								className="d-flex flex-wrap"
+								children={tasks.results.map((task) => (
+									<Col
+										key={task.id}
+										xs={12}
+										sm={6}
+										md={4}
+										lg={3}
+										className="mb-4"
+									>
+										<Task {...task} setTasks={setTasks} />
+									</Col>
+								))}
+								dataLength={tasks.results.length}
+								loader={
+									<Container
+										fluid
+										className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+									>
+										<Spinner animation="border" role="status">
+											<span className="sr-only">Loading...</span>
+										</Spinner>
+									</Container>
+								}
+								hasMore={!!tasks.next}
+								next={() => fetchMoreData(tasks, setTasks)}
+							/>
 						) : (
 							<Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
 								<h1>Looks like there is nothing to do!</h1>
 							</Container>
 						)}
-					</>
+					</Row>
 				) : (
 					<Container
+						fluid
 						className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
 					>
 						<Spinner animation="border" role="status">
