@@ -10,13 +10,12 @@ import { axiosReq } from "../../api/axiosDefault";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import taskStyles from '../../styles/Task.module.css'
+import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
-	const currentUser = useCurrentUser()
-	const [currentUserProfile, setCurrentUserProfile] = useState(null)
+	const currentUserProfile = useCurrentUserProfile()
 
 	const [taskData, setTaskData] = useState({
 		title: "",
@@ -31,21 +30,7 @@ function TaskCreateForm() {
 	const [profiles, setProfiles] = useState([])
 
 
-	useEffect(() => {
-		const fetchCurrentUserProfile = async () => {
-		  try {
-			const { data } = await axiosReq.get(`/profiles/${currentUser?.profile_id}/`);
-			console.log(data)
-			setCurrentUserProfile(data); 
-		  } catch (err) {
-			console.error("Error fetching user profile:", err);
-		  }
-		};
 	
-		if (currentUser?.profile_id) {
-		  fetchCurrentUserProfile();
-		}
-	  }, [currentUser]);
 
 
 	useEffect(() => {

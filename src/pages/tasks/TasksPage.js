@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Form, Col, Row, Container, Spinner } from "react-bootstrap";
+import { Form, Col, Row, Container, Spinner, Button } from "react-bootstrap";
 import formStyles from "../../styles/Forms.module.css";
 import taskStyles from "../../styles/Task.module.css";
 import appStyles from "../../App.module.css";
@@ -10,6 +10,8 @@ import { axiosReq } from "../../api/axiosDefault";
 import Task from "./Task";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import btnStyles from '../../styles/Button.module.css'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function TasksPage({ filter = "" }) {
 	const [tasks, setTasks] = useState({ results: [] });
@@ -91,8 +93,19 @@ function TasksPage({ filter = "" }) {
 								<option value="assigned_to__member__username">Assignee</option>
 							</Form.Control>
 						</Form.Group>
+						<Form.Group  as={Col} xs={12} sm={12} md={12} className="mb-3">
+						<Link to={`/tasks/create`}>
+				<Button
+
+					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+				>
+					Add a new Chore
+				</Button>
+				</Link>
+				</Form.Group>
 					</Form.Row>
 				</Form>
+				
 				{hasLoaded ? (
 					<Row>
 						{tasks.results.length ? (

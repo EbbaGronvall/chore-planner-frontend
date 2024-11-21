@@ -140,7 +140,7 @@ function TaskEditForm() {
 	</Container>;
 	  }
 	 if (currentUserProfile?.role !== "Parent") {
-		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can edit a task!</h1></Container>;
+		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can edit a chore!</h1></Container>;
 	   }
 
 	return (
@@ -202,7 +202,7 @@ function TaskEditForm() {
 				))}
 				<Form.Group>
 				<Form.Label className={styles.Label}>
-						How is the task progressing?
+						How is the chore going?
 					</Form.Label>
 				<Form.Control
 						as="select"
@@ -253,7 +253,7 @@ function TaskEditForm() {
 					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
 					type="submit"
 				>
-					Update Task
+					Update Chore
 				</Button>
 				<Button
 					onClick={handleDelete}
