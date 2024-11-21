@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Form, Button, Alert, Container, Spinner } from "react-bootstrap";
@@ -6,14 +6,15 @@ import { Form, Button, Alert, Container, Spinner } from "react-bootstrap";
 import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { axiosReq } from "../../api/axiosDefault";
+import { axiosReq, axiosRes } from "../../api/axiosDefault";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import taskStyles from '../../styles/Task.module.css'
 
-function TaskCreateForm() {
+function TaskEditForm() {
 	const [errors, setErrors] = useState({});
 	const currentUser = useCurrentUser()
 	const [currentUserProfile, setCurrentUserProfile] = useState(null)
@@ -23,13 +24,12 @@ function TaskCreateForm() {
 		description: "",
 		due_date: null,
 		assigned_to: "",
+		status:''
 	});
-
-	const { title, description, due_date, assigned_to } = taskData;
-
-	const history = useHistory();
+	const { title, description, due_date, assigned_to, status } = taskData;
 	const [profiles, setProfiles] = useState([])
-
+	const history = useHistory();
+    const { id } = useParams()
 
 	useEffect(() => {
 		const fetchCurrentUserProfile = async () => {
@@ -66,7 +66,19 @@ function TaskCreateForm() {
 		fetchProfiles();
 	  }, []);
 
-	
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const {data} = await axiosReq.get(`/tasks/${id}/`)
+                const {title, description, due_date, status, assigned_to, is_task_giver} = data
+
+                is_task_giver ? setTaskData({title, description, due_date, status, assigned_to}) : history.push('/')
+            } catch (err) {
+                console.log(err)
+            }            
+        }
+        handleMount()
+    }, [history, id])
 
 	const handleChange = (event) => {
 		setTaskData({
@@ -82,6 +94,15 @@ function TaskCreateForm() {
 		}));
 	};
 
+	const handleDelete = async () => {
+		try {
+		  await axiosRes.delete(`/tasks/${id}/`);
+		  history.push('/tasks/');
+		} catch (err) {
+		  	console.log(err);
+		}
+	  };
+
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const formData = new FormData();
@@ -91,11 +112,12 @@ function TaskCreateForm() {
 		formData.append("title", title);
 		formData.append("description", description);
 		formData.append("due_date", formattedDate);
+		formData.append('status', status)
 		formData.append("assigned_to", assigned_to);
 
 		try {
-			const { data } = await axiosReq.post("/tasks/", formData);
-			history.push(`/tasks/${data.id}`);
+            await axiosReq.put(`/tasks/${id}/`, formData);
+			history.push(`/tasks/${id}`);
 		} catch (err) {
 			console.log(err);
 			if (err.response?.status !== 401) {
@@ -118,11 +140,12 @@ function TaskCreateForm() {
 	</Container>;
 	  }
 	 if (currentUserProfile?.role !== "Parent") {
-		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can create a task!</h1></Container>;
+		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can edit a task!</h1></Container>;
 	   }
+
 	return (
 		<Container className={appStyles.Content}>
-			<h1>Let's Plan Some Chores</h1>
+			<h1>You're now editing a chore</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="title">
 					<Form.Label className={styles.Label}>Chore Title</Form.Label>
@@ -177,9 +200,31 @@ function TaskCreateForm() {
 						{message}
 					</Alert>
 				))}
+				<Form.Group>
+				<Form.Label className={styles.Label}>
+						How is the task progressing?
+					</Form.Label>
+				<Form.Control
+						as="select"
+						className={styles.Input}
+						name="status"
+						value={status}
+						onChange={handleChange}
+					>
+						<option value="">Update status</option>
+						<option value="pending">Pending</option>
+						<option value="in_progress">In Progress</option>
+						<option value="completed">Completed</option>
+
+						</Form.Control>
+				</Form.Group>
+				{errors?.status?.map((message, idx) => (
+					<Alert variant="warning" key={idx}>
+						{message}
+					</Alert>
+				))}
 				<Form.Group controlId="assigned_to">
 					<Form.Label className={styles.Label}>Who is gonna do it?</Form.Label>
-					
 					<Form.Control
 						as="select"
 						className={styles.Input}
@@ -205,10 +250,18 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 				<Button
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
 					type="submit"
 				>
-					Set Task
+					Update Task
+				</Button>
+				<Button
+					onClick={handleDelete}
+					aria-label="delete"
+					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
+					
+				>
+					Delete Chore
 				</Button>
 				{errors.non_field_errors?.map((message, idx) => (
 					<Alert variant="warning" key={idx} className="mt-3">
@@ -220,4 +273,4 @@ function TaskCreateForm() {
 	);
 }
 
-export default TaskCreateForm;
+export default TaskEditForm;

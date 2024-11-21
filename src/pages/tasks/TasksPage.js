@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import Task from "./Task";
 import InfiniteScroll from "react-infinite-scroll-component";
-import fetchMoreData from "../../utils/utils";
+import { fetchMoreData } from "../../utils/utils";
 
 function TasksPage({ filter = "" }) {
 	const [tasks, setTasks] = useState({ results: [] });

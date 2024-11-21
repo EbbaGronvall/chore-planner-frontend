@@ -8,7 +8,9 @@ import SignInForm from "./pages/auth/SignInForm";
 import TasksPage from "./pages/tasks/TasksPage";
 import TaskPage from "./pages/tasks/TaskPage";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
+import TaskEditForm from "./pages/tasks/TaskEditForm";
 import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
+
 
 function App() {
 	return (
@@ -26,6 +28,7 @@ function App() {
 						)}
 					/>
 					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
+					<Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
 					<Route exact path="/tasks/:id" render={() => <TaskPage />} />
 					{/* Routes to the household */}
 					<Route
