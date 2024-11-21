@@ -6,6 +6,7 @@ import {
 	useCurrentUser,
 	useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
+import { useCurrentUserProfile } from "../contexts/CurrentUserProfileContext";
 import Avatar from "./Avatar";
 import axios from "axios";
 import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
@@ -13,6 +14,7 @@ import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
 const NavBar = () => {
 	const currentUser = useCurrentUser();
 	const setCurrentUser = useSetCurrentUser();
+	const currentUserProfile = useCurrentUserProfile()
 
 	const { expanded, setExpanded, ref } = UseClickOutsideToggle();
 
@@ -36,7 +38,7 @@ const NavBar = () => {
 			<NavLink
 				className={styles.NavLink}
 				activeClassName={styles.Active}
-				to="/households"
+				to={`/households/${currentUserProfile?.household_slug}`}
 			>
 				Your Home <i class="fa-solid fa-house"></i>
 			</NavLink>

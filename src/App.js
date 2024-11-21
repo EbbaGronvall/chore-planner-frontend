@@ -10,7 +10,6 @@ import TaskPage from "./pages/tasks/TaskPage";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import TaskEditForm from "./pages/tasks/TaskEditForm";
 import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
-import Household from "./pages/households/Household";
 import HouseholdPage from "./pages/households/HouseholdPage";
 
 
@@ -37,8 +36,8 @@ function App() {
 						exact
 						path="/households/create"
 						render={() => <HouseholdCreateForm />}
-					/>
-			<Route exact path="/households/" render={() => <Household />} />
+			 		/>
+			 {/* <Route exact path="/households/" render={() => <Household />} /> */}
 			<Route exact path="/households/:slug" render={() => <HouseholdPage />} />
 					{/* Routes to signin and signup*/}
 					<Route exact path="/signin" render={() => <SignInForm />} />
