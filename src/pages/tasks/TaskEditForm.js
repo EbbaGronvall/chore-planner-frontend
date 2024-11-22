@@ -11,13 +11,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import taskStyles from '../../styles/Task.module.css'
+import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
-	const currentUser = useCurrentUser()
-	const [currentUserProfile, setCurrentUserProfile] = useState(null)
+	const currentUserProfile = useCurrentUserProfile()
 
 	const [taskData, setTaskData] = useState({
 		title: "",
@@ -30,22 +29,6 @@ function TaskEditForm() {
 	const [profiles, setProfiles] = useState([])
 	const history = useHistory();
     const { id } = useParams()
-
-	useEffect(() => {
-		const fetchCurrentUserProfile = async () => {
-		  try {
-			const { data } = await axiosReq.get(`/profiles/${currentUser?.profile_id}/`);
-			console.log(data)
-			setCurrentUserProfile(data); 
-		  } catch (err) {
-			console.error("Error fetching user profile:", err);
-		  }
-		};
-	
-		if (currentUser?.profile_id) {
-		  fetchCurrentUserProfile();
-		}
-	  }, [currentUser]);
 
 
 	useEffect(() => {
