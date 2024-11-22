@@ -14,6 +14,7 @@ import HouseholdPage from "./pages/households/HouseholdPage";
 import HouseholdEditForm from "./pages/households/HouseholdEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import HomePage from "./pages/homepage/HomePage";
 
 function App() {
 	return (
@@ -21,7 +22,7 @@ function App() {
 			<NavBar />
 			<Container fluid className={styles.Main}>
 				<Switch>
-					<Route exact path="/" render={() => <h1>Home Page</h1>} />
+					<Route exact path="/" render={() => <HomePage />} />
 					{/* Routes to the Noticeboard and taskpages */}
 					<Route
 						exact
