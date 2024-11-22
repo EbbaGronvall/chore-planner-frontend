@@ -14,7 +14,7 @@ import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
 const NavBar = () => {
 	const currentUser = useCurrentUser();
 	const setCurrentUser = useSetCurrentUser();
-	const currentUserProfile = useCurrentUserProfile()
+	const currentUserProfile = useCurrentUserProfile();
 
 	const { expanded, setExpanded, ref } = UseClickOutsideToggle();
 

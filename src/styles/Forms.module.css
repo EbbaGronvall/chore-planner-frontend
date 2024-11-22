@@ -1,11 +1,11 @@
 .Input {
-    background: #ffffff;
-    border: 1px solid #f0f1f9;
-    box-sizing: border-box;
-    border-radius: 20px;
-    color: #7177a1;
-    padding-left: 10px;
+	background: #ffffff;
+	border: 1px solid #f0f1f9;
+	box-sizing: border-box;
+	border-radius: 20px;
+	color: #7177a1;
+	padding-left: 10px;
 }
 .Label {
-    margin-left: 10px;
+	margin-left: 10px;
 }

@@ -9,7 +9,6 @@ import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 
 function HouseholdCreateForm() {
-
 	const [errors, setErrors] = useState({});
 
 	const [householdData, setHouseholdData] = useState({
@@ -26,13 +25,10 @@ function HouseholdCreateForm() {
 			[event.target.name]: event.target.value,
 		});
 	};
-	
-	
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const formData = new FormData();
-
 
 		formData.append("name", name);
 		formData.append("slug", slug);
@@ -50,7 +46,7 @@ function HouseholdCreateForm() {
 
 	return (
 		<Container className={appStyles.Content}>
-            <h1>Add a Household</h1>
+			<h1>Add a Household</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="name">
 					<Form.Label className={styles.Label}>Household Name</Form.Label>
@@ -84,7 +80,9 @@ function HouseholdCreateForm() {
 						{message}
 					</Alert>
 				))}
-				<p className={styles.Label}>A slug is what shows at the end of the websites url.</p>
+				<p className={styles.Label}>
+					A slug is what shows at the end of the websites url.
+				</p>
 
 				<Button
 					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
@@ -98,7 +96,7 @@ function HouseholdCreateForm() {
 					</Alert>
 				))}
 			</Form>
-            </Container>
+		</Container>
 	);
 }
 

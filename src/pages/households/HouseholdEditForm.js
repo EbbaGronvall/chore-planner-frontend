@@ -9,39 +9,36 @@ import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import taskStyles from '../../styles/Task.module.css'
+import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
-	const currentUserProfile = useCurrentUserProfile()
+	const currentUserProfile = useCurrentUserProfile();
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
 		slug: "",
-		
 	});
 	const { name, slug } = householdData;
 	const history = useHistory();
-    const { slug: urlSlug } = useParams()
+	const { slug: urlSlug } = useParams();
 
+	useEffect(() => {
+		const handleMount = async () => {
+			try {
+				const { data } = await axiosReq.get(`/households/${urlSlug}/`);
+				const { name, slug } = data;
 
-	
-
-    useEffect(() => {
-        const handleMount = async () => {
-            
-            try {
-                const {data} = await axiosReq.get(`/households/${urlSlug}/`)
-                const { name, slug } = data
-
-                currentUserProfile ? setHouseholdData({ name, slug }) : history.push('/')
-            } catch (err) {
-                console.log(err)
-            }            
-        }
-        handleMount()
-    }, [history, urlSlug, currentUserProfile])
+				currentUserProfile
+					? setHouseholdData({ name, slug })
+					: history.push("/");
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		handleMount();
+	}, [history, urlSlug, currentUserProfile]);
 
 	const handleChange = (event) => {
 		setHouseholdData({
@@ -50,17 +47,15 @@ function HouseholdEditForm() {
 		});
 	};
 
-	
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		const formData = new FormData();
-
 
 		formData.append("name", name);
 		formData.append("slug", slug);
 
 		try {
-            await axiosReq.put(`/households/${urlSlug}/`, formData);
+			await axiosReq.put(`/households/${urlSlug}/`, formData);
 			history.push(`/households/${urlSlug}`);
 		} catch (err) {
 			console.log(err);
@@ -69,19 +64,19 @@ function HouseholdEditForm() {
 			}
 		}
 	};
-	
 
 	if (!currentUserProfile) {
-		return <Container
-		fluid
-		className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
-	>
-		<Spinner animation="border" role="status">
-			<span className="sr-only">Loading...</span>
-		</Spinner>
-	</Container>;
-	  }
-	 
+		return (
+			<Container
+				fluid
+				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+			>
+				<Spinner animation="border" role="status">
+					<span className="sr-only">Loading...</span>
+				</Spinner>
+			</Container>
+		);
+	}
 
 	return (
 		<Container className={appStyles.Content}>
@@ -119,14 +114,14 @@ function HouseholdEditForm() {
 						{message}
 					</Alert>
 				))}
-				
+
 				<Button
 					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
 					type="submit"
 				>
 					Update Household
 				</Button>
-				
+
 				{errors.non_field_errors?.map((message, idx) => (
 					<Alert variant="warning" key={idx} className="mt-3">
 						{message}

@@ -11,57 +11,62 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import taskStyles from '../../styles/Task.module.css'
+import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
-	const currentUserProfile = useCurrentUserProfile()
+	const currentUserProfile = useCurrentUserProfile();
 
 	const [taskData, setTaskData] = useState({
 		title: "",
 		description: "",
 		due_date: null,
 		assigned_to: "",
-		status:''
+		status: "",
 	});
 	const { title, description, due_date, assigned_to, status } = taskData;
-	const [profiles, setProfiles] = useState([])
+	const [profiles, setProfiles] = useState([]);
 	const history = useHistory();
-    const { id } = useParams()
-
+	const { id } = useParams();
 
 	useEffect(() => {
 		const fetchProfiles = async () => {
-		  try {
-			const { data } = await axiosReq.get("/profiles/");
-			console.log("Fetched profiles data:", data); 
-	  
-			
-			
-			  setProfiles(data.results); 
-			
-		  } catch (err) {
-			console.error("Error fetching profiles:", err);
-		  }
+			try {
+				const { data } = await axiosReq.get("/profiles/");
+				console.log("Fetched profiles data:", data);
+
+				setProfiles(data.results);
+			} catch (err) {
+				console.error("Error fetching profiles:", err);
+			}
 		};
-	  
+
 		fetchProfiles();
-	  }, []);
+	}, []);
 
-    useEffect(() => {
-        const handleMount = async () => {
-            try {
-                const {data} = await axiosReq.get(`/tasks/${id}/`)
-                const {title, description, due_date, status, assigned_to, is_task_giver} = data
+	useEffect(() => {
+		const handleMount = async () => {
+			try {
+				const { data } = await axiosReq.get(`/tasks/${id}/`);
+				const {
+					title,
+					description,
+					due_date,
+					status,
+					assigned_to,
+					is_task_giver,
+				} = data;
 
-                is_task_giver ? setTaskData({title, description, due_date, status, assigned_to}) : history.push('/')
-            } catch (err) {
-                console.log(err)
-            }            
-        }
-        handleMount()
-    }, [history, id])
+				is_task_giver
+					? setTaskData({ title, description, due_date, status, assigned_to })
+					: history.push("/");
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		handleMount();
+	}, [history, id]);
 
 	const handleChange = (event) => {
 		setTaskData({
@@ -79,12 +84,12 @@ function TaskEditForm() {
 
 	const handleDelete = async () => {
 		try {
-		  await axiosRes.delete(`/tasks/${id}/`);
-		  history.push('/tasks/');
+			await axiosRes.delete(`/tasks/${id}/`);
+			history.push("/tasks/");
 		} catch (err) {
-		  	console.log(err);
+			console.log(err);
 		}
-	  };
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -95,11 +100,11 @@ function TaskEditForm() {
 		formData.append("title", title);
 		formData.append("description", description);
 		formData.append("due_date", formattedDate);
-		formData.append('status', status)
+		formData.append("status", status);
 		formData.append("assigned_to", assigned_to);
 
 		try {
-            await axiosReq.put(`/tasks/${id}/`, formData);
+			await axiosReq.put(`/tasks/${id}/`, formData);
 			history.push(`/tasks/${id}`);
 		} catch (err) {
 			console.log(err);
@@ -109,22 +114,30 @@ function TaskEditForm() {
 		}
 	};
 	const filteredProfiles = currentUserProfile
-		? profiles.filter((profile) => profile.household === currentUserProfile.household)
-		: []; 
+		? profiles.filter(
+				(profile) => profile.household === currentUserProfile.household
+		  )
+		: [];
 
 	if (!currentUserProfile) {
-		return <Container
-		fluid
-		className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
-	>
-		<Spinner animation="border" role="status">
-			<span className="sr-only">Loading...</span>
-		</Spinner>
-	</Container>;
-	  }
-	 if (currentUserProfile?.role !== "Parent") {
-		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can edit a chore!</h1></Container>;
-	   }
+		return (
+			<Container
+				fluid
+				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+			>
+				<Spinner animation="border" role="status">
+					<span className="sr-only">Loading...</span>
+				</Spinner>
+			</Container>
+		);
+	}
+	if (currentUserProfile?.role !== "Parent") {
+		return (
+			<Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}>
+				<h1>Sorry! Only a parent can edit a chore!</h1>
+			</Container>
+		);
+	}
 
 	return (
 		<Container className={appStyles.Content}>
@@ -184,10 +197,10 @@ function TaskEditForm() {
 					</Alert>
 				))}
 				<Form.Group>
-				<Form.Label className={styles.Label}>
+					<Form.Label className={styles.Label}>
 						How is the chore going?
 					</Form.Label>
-				<Form.Control
+					<Form.Control
 						as="select"
 						className={styles.Input}
 						name="status"
@@ -198,8 +211,7 @@ function TaskEditForm() {
 						<option value="pending">Pending</option>
 						<option value="in_progress">In Progress</option>
 						<option value="completed">Completed</option>
-
-						</Form.Control>
+					</Form.Control>
 				</Form.Group>
 				{errors?.status?.map((message, idx) => (
 					<Alert variant="warning" key={idx}>
@@ -217,14 +229,14 @@ function TaskEditForm() {
 					>
 						<option value="">Select a household member</option>
 						{filteredProfiles.length > 0 ? (
-              filteredProfiles.map((profile) => (
-                <option key={profile.id} value={profile.id}>
-                  {profile.member}
-                </option>
-              ))
-            ) : (
-              <option disabled>No members in your household</option>
-            )}
+							filteredProfiles.map((profile) => (
+								<option key={profile.id} value={profile.id}>
+									{profile.member}
+								</option>
+							))
+						) : (
+							<option disabled>No members in your household</option>
+						)}
 					</Form.Control>
 				</Form.Group>
 				{errors?.assigned_to?.map((message, idx) => (
@@ -242,7 +254,6 @@ function TaskEditForm() {
 					onClick={handleDelete}
 					aria-label="delete"
 					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
-					
 				>
 					Delete Chore
 				</Button>

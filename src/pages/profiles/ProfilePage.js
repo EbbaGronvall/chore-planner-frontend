@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import appStyles from '../../App.module.css'
+import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import ProfileDetail from "./ProfileDetail";
@@ -24,13 +24,13 @@ function ProfilePage() {
 		handleMount();
 	}, [id]);
 
-	
-
 	return (
 		<Container fluid className={appStyles.Content}>
-			
-			<ProfileDetail {...profile.results[0]} setProfile={setProfile} profilePage />
-			
+			<ProfileDetail
+				{...profile.results[0]}
+				setProfile={setProfile}
+				profilePage
+			/>
 		</Container>
 	);
 }

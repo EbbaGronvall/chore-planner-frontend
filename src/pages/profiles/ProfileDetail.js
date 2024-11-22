@@ -10,52 +10,50 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const ProfileDetail = (props) => {
 	const { id, member, household_name, role, image } = props;
-	const currentUserProfile = useCurrentUserProfile()
-    const currentUser = useCurrentUser()
-    
+	const currentUserProfile = useCurrentUserProfile();
+	const currentUser = useCurrentUser();
+
 	const [hasLoaded, setHasLoaded] = useState(false);
-    
+
 	useEffect(() => {
 		if (currentUserProfile) {
 			setHasLoaded(true);
 		}
 	}, [currentUserProfile]);
-    const is_member = currentUser?.username === member
-	
+	const is_member = currentUser?.username === member;
 
 	return (
 		<Container>
 			{hasLoaded ? (
 				<>
 					{is_member ? (
-					<Card className={taskStyles.Card}>
-						<Card.Body>
-                            <div><Avatar src={currentUserProfile?.image} text="Your Page" height={40} /></div>
-							<Card.Title className="mb-4">{member}</Card.Title>
+						<Card className={taskStyles.Card}>
+							<Card.Body>
+								<div>
+									<Avatar
+										src={currentUserProfile?.image}
+										text="Your Page"
+										height={40}
+									/>
+								</div>
+								<Card.Title className="mb-4">{member}</Card.Title>
 
-							<Card.Subtitle className="mb-4">{household_name}</Card.Subtitle>
-                            <Card.Text>
-                                {role}
-									</Card.Text>
-                                    <Card.Text>{}</Card.Text>
-							
-							
+								<Card.Subtitle className="mb-4">{household_name}</Card.Subtitle>
+								<Card.Text>{role}</Card.Text>
+								<Card.Text>{}</Card.Text>
+
 								<Link to={`/profiles/${id}/edit`}>
 									<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
 										Edit your profile
 									</Button>
 								</Link>
-							
-						</Card.Body>
-					</Card>
-                    
+							</Card.Body>
+						</Card>
 					) : (
-					
-							<h1 className={taskStyles.Text}>
-								Sorry, you can only see your own profile!
-							</h1>
-						
-				)}
+						<h1 className={taskStyles.Text}>
+							Sorry, you can only see your own profile!
+						</h1>
+					)}
 				</>
 			) : (
 				<Container

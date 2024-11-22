@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Form, Button, Alert, Container, Spinner } from "react-bootstrap";
@@ -10,12 +10,12 @@ import { axiosReq } from "../../api/axiosDefault";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-import taskStyles from '../../styles/Task.module.css'
+import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
-	const currentUserProfile = useCurrentUserProfile()
+	const currentUserProfile = useCurrentUserProfile();
 
 	const [taskData, setTaskData] = useState({
 		title: "",
@@ -27,31 +27,22 @@ function TaskCreateForm() {
 	const { title, description, due_date, assigned_to } = taskData;
 
 	const history = useHistory();
-	const [profiles, setProfiles] = useState([])
-
-
-	
-
+	const [profiles, setProfiles] = useState([]);
 
 	useEffect(() => {
 		const fetchProfiles = async () => {
-		  try {
-			const { data } = await axiosReq.get("/profiles/");
-			console.log("Fetched profiles data:", data); 
-	  
-			
-			
-			  setProfiles(data.results); 
-			
-		  } catch (err) {
-			console.error("Error fetching profiles:", err);
-		  }
-		};
-	  
-		fetchProfiles();
-	  }, []);
+			try {
+				const { data } = await axiosReq.get("/profiles/");
+				console.log("Fetched profiles data:", data);
 
-	
+				setProfiles(data.results);
+			} catch (err) {
+				console.error("Error fetching profiles:", err);
+			}
+		};
+
+		fetchProfiles();
+	}, []);
 
 	const handleChange = (event) => {
 		setTaskData({
@@ -89,22 +80,30 @@ function TaskCreateForm() {
 		}
 	};
 	const filteredProfiles = currentUserProfile
-		? profiles.filter((profile) => profile.household === currentUserProfile.household)
-		: []; 
+		? profiles.filter(
+				(profile) => profile.household === currentUserProfile.household
+		  )
+		: [];
 
 	if (!currentUserProfile) {
-		return <Container
-		fluid
-		className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
-	>
-		<Spinner animation="border" role="status">
-			<span className="sr-only">Loading...</span>
-		</Spinner>
-	</Container>;
-	  }
-	 if (currentUserProfile?.role !== "Parent") {
-		return <Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}><h1>Sorry! Only a parent can create a task!</h1></Container>;
-	   }
+		return (
+			<Container
+				fluid
+				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+			>
+				<Spinner animation="border" role="status">
+					<span className="sr-only">Loading...</span>
+				</Spinner>
+			</Container>
+		);
+	}
+	if (currentUserProfile?.role !== "Parent") {
+		return (
+			<Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}>
+				<h1>Sorry! Only a parent can create a task!</h1>
+			</Container>
+		);
+	}
 	return (
 		<Container className={appStyles.Content}>
 			<h1>Let's Plan Some Chores</h1>
@@ -164,7 +163,7 @@ function TaskCreateForm() {
 				))}
 				<Form.Group controlId="assigned_to">
 					<Form.Label className={styles.Label}>Who is gonna do it?</Form.Label>
-					
+
 					<Form.Control
 						as="select"
 						className={styles.Input}
@@ -174,14 +173,14 @@ function TaskCreateForm() {
 					>
 						<option value="">Select a household member</option>
 						{filteredProfiles.length > 0 ? (
-              filteredProfiles.map((profile) => (
-                <option key={profile.id} value={profile.id}>
-                  {profile.member}
-                </option>
-              ))
-            ) : (
-              <option disabled>No members in your household</option>
-            )}
+							filteredProfiles.map((profile) => (
+								<option key={profile.id} value={profile.id}>
+									{profile.member}
+								</option>
+							))
+						) : (
+							<option disabled>No members in your household</option>
+						)}
 					</Form.Control>
 				</Form.Group>
 				{errors?.assigned_to?.map((message, idx) => (

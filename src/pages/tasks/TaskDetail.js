@@ -5,7 +5,7 @@ import { Card, Button, Container, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import tasksPageStyles from '../../styles/TasksPage.module.css'
+import tasksPageStyles from "../../styles/TasksPage.module.css";
 
 const TaskDetail = (props) => {
 	const {
@@ -21,7 +21,8 @@ const TaskDetail = (props) => {
 	} = props;
 	const currentUser = useCurrentUser();
 	const is_assigned_to = currentUser?.username === assigned_to_username;
-	const isUserAuthorized = is_assigned_to || task_giver_username ===  currentUser?.username;
+	const isUserAuthorized =
+		is_assigned_to || task_giver_username === currentUser?.username;
 
 	const [hasLoaded, setHasLoaded] = useState(false);
 

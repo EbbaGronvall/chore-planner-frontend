@@ -1,14 +1,15 @@
 .Task {
-    background: rgb(187, 145, 102) url('/src/assets/noticeboard.jpg') no-repeat fixed center;
-    min-height:85vh ;
-    padding: 20px;
+	background: rgb(187, 145, 102) url("/src/assets/noticeboard.jpg") no-repeat
+		fixed center;
+	min-height: 85vh;
+	padding: 20px;
 }
 .Card {
-    background-color: rgb(255, 246, 155);
-    box-shadow: 0px 8px 10px 0px rgba(31, 31, 31, 0.75);
-    border-radius: 0;
-    padding: 20px;
+	background-color: rgb(255, 246, 155);
+	box-shadow: 0px 8px 10px 0px rgba(31, 31, 31, 0.75);
+	border-radius: 0;
+	padding: 20px;
 }
 .Text {
-    text-align: center;
+	text-align: center;
 }

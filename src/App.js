@@ -15,6 +15,7 @@ import HouseholdEditForm from "./pages/households/HouseholdEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import HomePage from "./pages/homepage/HomePage";
+import NotFound from "./components/NotFound";
 
 function App() {
 	return (
@@ -52,12 +53,16 @@ function App() {
 					/>
 					{/* Routes to the profilepages */}
 					<Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-					<Route exact path="/profiles/:id/edit" render={() => <ProfileEditForm />} />
+					<Route
+						exact
+						path="/profiles/:id/edit"
+						render={() => <ProfileEditForm />}
+					/>
 					{/* Routes to signin and signup*/}
 					<Route exact path="/signin" render={() => <SignInForm />} />
 					<Route exact path="/signup" render={() => <SignUpForm />} />
 					{/* Error pages */}
-					<Route render={() => <h1>Page not found!</h1>} />
+					<Route render={() => <NotFound />} />
 				</Switch>
 			</Container>
 		</div>

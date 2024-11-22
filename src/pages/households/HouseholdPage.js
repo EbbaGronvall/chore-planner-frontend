@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import appStyles from '../../App.module.css'
+import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import HouseholdDetail from "./HouseholdDetail";
@@ -24,13 +24,13 @@ function HouseholdPage() {
 		handleMount();
 	}, [slug]);
 
-	
-
 	return (
 		<Container fluid className={appStyles.Content}>
-			
-			<HouseholdDetail {...household.results[0]} setHousehold={setHousehold} householdPage />
-			
+			<HouseholdDetail
+				{...household.results[0]}
+				setHousehold={setHousehold}
+				householdPage
+			/>
 		</Container>
 	);
 }
