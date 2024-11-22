@@ -1,5 +1,5 @@
 .Task {
-    background: rgb(187, 145, 102) url(https://res.cloudinary.com/dom4xs5wq/image/upload/v1732237771/noticeboard_wkyoxi.jpg) no-repeat fixed center;
+    background: rgb(187, 145, 102) url('/src/assets/noticeboard.jpg') no-repeat fixed center;
     min-height:85vh ;
     padding: 20px;
 }

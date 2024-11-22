@@ -10,8 +10,9 @@ import { axiosReq } from "../../api/axiosDefault";
 import Task from "./Task";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import btnStyles from '../../styles/Button.module.css'
+import btnStyles from "../../styles/Button.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function TasksPage({ filter = "" }) {
 	const [tasks, setTasks] = useState({ results: [] });
@@ -21,6 +22,9 @@ function TasksPage({ filter = "" }) {
 	const [query, setQuery] = useState("");
 	const [selectedFilter, setSelectedFilter] = useState("");
 	const [selectedOrder, setSelectedOrder] = useState("");
+
+	const currentUserProfile = useCurrentUserProfile();
+	const no_slug = !currentUserProfile?.household_slug;
 
 	useEffect(() => {
 		const fetchTasks = async () => {
@@ -93,22 +97,25 @@ function TasksPage({ filter = "" }) {
 								<option value="assigned_to__member__username">Assignee</option>
 							</Form.Control>
 						</Form.Group>
-						<Form.Group  as={Col} xs={12} sm={12} md={12} className="mb-3">
-						<Link to={`/tasks/create`}>
-				<Button
-
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
-				>
-					Add a new Chore
-				</Button>
-				</Link>
-				</Form.Group>
+						{!no_slug ? (
+							<Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
+								<Link to={`/tasks/create`}>
+									<Button
+										className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+									>
+										Add a new Chore
+									</Button>
+								</Link>
+							</Form.Group>
+						) : (
+							<></>
+						)}
 					</Form.Row>
 				</Form>
-				
+
 				{hasLoaded ? (
-					<Row>
-						{tasks.results.length ? (
+					<Container fluid>
+						{tasks.results.length && !no_slug ? (
 							<InfiniteScroll
 								className="d-flex flex-wrap"
 								children={tasks.results.map((task) => (
@@ -138,11 +145,34 @@ function TasksPage({ filter = "" }) {
 								next={() => fetchMoreData(tasks, setTasks)}
 							/>
 						) : (
-							<Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
-								<h1>Looks like there is nothing to do!</h1>
-							</Container>
+							<>
+								{" "}
+								{!no_slug ? (
+									<Container
+										fluid
+										className={`${appStyles.Content}  ${taskStyles.Text}`}
+									>
+										<h1>Looks like there is nothing to do!</h1>
+									</Container>
+								) : (
+									<div className={`${appStyles.Content} ${taskStyles.Text}`}>
+										<h2>Sorry</h2>
+										<h3>
+											You need to be part of a household and be a parent to be
+											able to plan chores
+										</h3>
+										<Link to={`/profiles/${currentUserProfile?.id}/edit`}>
+											<Button
+												className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+											>
+												Update your profile
+											</Button>
+										</Link>
+									</div>
+								)}
+							</>
 						)}
-					</Row>
+					</Container>
 				) : (
 					<Container
 						fluid
