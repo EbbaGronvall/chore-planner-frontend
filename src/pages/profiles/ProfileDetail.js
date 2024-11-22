@@ -9,7 +9,7 @@ import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const ProfileDetail = (props) => {
-	const { id, member, household_name, role, image } = props;
+	const { id, member, household_name, role } = props;
 	const currentUserProfile = useCurrentUserProfile();
 	const currentUser = useCurrentUser();
 
