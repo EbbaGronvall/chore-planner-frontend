@@ -12,7 +12,7 @@ import TaskEditForm from "./pages/tasks/TaskEditForm";
 import HouseholdCreateForm from "./pages/households/HouseholdCreateForm";
 import HouseholdPage from "./pages/households/HouseholdPage";
 import HouseholdEditForm from "./pages/households/HouseholdEditForm";
-
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
 	return (
@@ -21,7 +21,7 @@ function App() {
 			<Container fluid className={styles.Main}>
 				<Switch>
 					<Route exact path="/" render={() => <h1>Home Page</h1>} />
-					{/* Routes to the Noticeboard and tasks */}
+	{/* Routes to the Noticeboard and taskpages */}
 					<Route
 						exact
 						path="/tasks"
@@ -32,18 +32,33 @@ function App() {
 					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
 					<Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
 					<Route exact path="/tasks/:id" render={() => <TaskPage />} />
-					{/* Routes to the household */}
+	{/* Routes to the householdpages */}
 					<Route
 						exact
 						path="/households/create"
 						render={() => <HouseholdCreateForm />}
-			 		/>
-			 <Route exact path="/households/:slug/edit" render={() => <HouseholdEditForm />} />
-			<Route exact path="/households/:slug" render={() => <HouseholdPage />} />
-					{/* Routes to signin and signup*/}
+					/>
+					<Route
+						exact
+						path="/households/:slug/edit"
+						render={() => <HouseholdEditForm />}
+					/>
+					<Route
+						exact
+						path="/households/:slug"
+						render={() => <HouseholdPage />}
+					/>
+{/* Routes to the profilepages */}
+					<Route
+						exact
+						path="/profiles/:id"
+						render={() => <ProfilePage />}
+					/>
+
+	{/* Routes to signin and signup*/}
 					<Route exact path="/signin" render={() => <SignInForm />} />
 					<Route exact path="/signup" render={() => <SignUpForm />} />
-					{/* Error pages */}
+			{/* Error pages */}
 					<Route render={() => <h1>Page not found!</h1>} />
 				</Switch>
 			</Container>
