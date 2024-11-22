@@ -37,6 +37,7 @@ function ProfileEditForm() {
 	const { member, household_name, role, image } = profileData;
 	const history = useHistory();
 	const { id } = useParams();
+	const no_slug = !currentUserProfile?.household_slug;
 
 	useEffect(() => {
 		const handleMount = async () => {
@@ -135,13 +136,25 @@ function ProfileEditForm() {
 					<Form.Label className={styles.Label}>
 						Household Name: {household_name}
 					</Form.Label>
+					{!no_slug ? (
 					<div>
+					
 						<Link to={`/households/${currentUserProfile?.household_slug}/edit`}>
 							<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
 								Edit Household
 							</Button>
 						</Link>
-					</div>
+						</div>
+					) : ( 
+					<div>
+						<Link to={'/households/create'}>
+							<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
+								Add Household
+							</Button>
+						</Link>
+						</div> 
+					
+					)}
 				</Form.Group>
 				{errors?.household_name?.map((message, idx) => (
 					<Alert variant="warning" key={idx}>

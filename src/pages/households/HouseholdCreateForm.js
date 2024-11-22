@@ -7,9 +7,12 @@ import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
+import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 function HouseholdCreateForm() {
 	const [errors, setErrors] = useState({});
+	const currentUserProfile = useCurrentUserProfile()
+	const setCurrentUserProfile = useSetCurrentUserProfile()
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
@@ -35,9 +38,15 @@ function HouseholdCreateForm() {
 
 		try {
 			const { data } = await axiosReq.post("/households/", formData);
-			history.push(`/households/${data.slug}`);
+			if (currentUserProfile) {
+				setCurrentUserProfile({
+					...currentUserProfile,
+					household_slug: data.slug,
+					household_name: data.name
+				})
+			}
+			history.push(`/`);
 		} catch (err) {
-			console.log(err);
 			if (err.response?.status !== 401) {
 				setErrors(err.response?.data);
 			}
