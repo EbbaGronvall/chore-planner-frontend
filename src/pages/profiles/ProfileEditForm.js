@@ -21,12 +21,15 @@ import {
 	useCurrentUserProfile,
 	useSetCurrentUserProfile,
 } from "../../contexts/CurrentUserProfileContext";
+import {  useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function ProfileEditForm() {
 	const [errors, setErrors] = useState({});
 	const currentUserProfile = useCurrentUserProfile();
 	const setCurrentUserProfile = useSetCurrentUserProfile();
 	const imageFile = useRef();
+	
+	const setCurrentUser = useSetCurrentUser();
 
 	const [profileData, setProfileData] = useState({
 		member: "",
@@ -75,6 +78,10 @@ function ProfileEditForm() {
 
 		try {
 			const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
+			setCurrentUser((currentUser) => ({
+				...currentUser,
+				profile_image: data.image,
+			}));
 			setCurrentUserProfile((currentUserProfile) => ({
 				...currentUserProfile,
 				profile_image: data.image,
@@ -131,6 +138,11 @@ function ProfileEditForm() {
 						}}
 					/>
 				</Form.Group>
+				{errors.image?.map((message, idx) => (
+											<Alert variant="warning" key={idx}>
+												{message}
+											</Alert>
+										))}
 
 				<Form.Group controlId="household_name">
 					<Form.Label className={styles.Label}>
@@ -183,7 +195,7 @@ function ProfileEditForm() {
 						))}
 					</Form.Control>
 				</Form.Group>
-				{errors?.household_name?.map((message, idx) => (
+				{errors?.role?.map((message, idx) => (
 					<Alert variant="warning" key={idx}>
 						{message}
 					</Alert>
