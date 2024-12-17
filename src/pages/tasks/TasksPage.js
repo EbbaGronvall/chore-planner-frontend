@@ -99,7 +99,7 @@ function TasksPage({ filter = "" }) {
 						</Form.Group>
 						{!no_slug ? (
 							<Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
-								<Link to={`/tasks/create`}>
+								<Link to={`/chores/create`}>
 									<Button
 										className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
 									>

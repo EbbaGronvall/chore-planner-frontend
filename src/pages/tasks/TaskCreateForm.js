@@ -192,7 +192,7 @@ function TaskCreateForm() {
 					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
 					type="submit"
 				>
-					Set Task
+					Set Chore
 				</Button>
 				{errors.non_field_errors?.map((message, idx) => (
 					<Alert variant="warning" key={idx} className="mt-3">

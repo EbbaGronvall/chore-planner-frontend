@@ -58,7 +58,7 @@ const TaskDetail = (props) => {
 								<Card.Title>Status:</Card.Title>
 								<Card.Text>{status}</Card.Text>
 								<Card.Subtitle className="mb-2">
-									The task was set by:
+									The chore was set by:
 								</Card.Subtitle>
 								{taskPage && (
 									<Card.Text>
@@ -72,11 +72,11 @@ const TaskDetail = (props) => {
 
 								<div className="d-flex align-items-center">
 									{is_task_giver && taskPage && (
-										<Link to={`/tasks/${id}/edit`}>
+										<Link to={`/chores/${id}/edit`}>
 											<Button
 												className={`${btnStyles.Button}  ${btnStyles.Pink}`}
 											>
-												Edit the task
+												Edit the chore
 											</Button>
 										</Link>
 									)}
@@ -86,7 +86,7 @@ const TaskDetail = (props) => {
 					) : (
 						<Container className={`${appStyles.Content}  ${styles.Text}`}>
 							<h1>
-								Sorry, only the people involved in a task can see its details!
+								Sorry, only the people involved in a chore can see its details!
 							</h1>
 						</Container>
 					)}

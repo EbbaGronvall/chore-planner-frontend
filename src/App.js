@@ -24,17 +24,17 @@ function App() {
 			<Container fluid className={styles.Main}>
 				<Switch>
 					<Route exact path="/" render={() => <HomePage />} />
-					{/* Routes to the Noticeboard and taskpages */}
+					{/* Routes to the chorepages */}
 					<Route
 						exact
-						path="/tasks"
+						path="/chores"
 						render={() => (
 							<TasksPage message="No results found. Adjust your search" />
 						)}
 					/>
-					<Route exact path="/tasks/create" render={() => <TaskCreateForm />} />
-					<Route exact path="/tasks/:id/edit" render={() => <TaskEditForm />} />
-					<Route exact path="/tasks/:id" render={() => <TaskPage />} />
+					<Route exact path="/chores/create" render={() => <TaskCreateForm />} />
+					<Route exact path="/chores/:id/edit" render={() => <TaskEditForm />} />
+					<Route exact path="/chores/:id" render={() => <TaskPage />} />
 					{/* Routes to the householdpages */}
 					<Route
 						exact

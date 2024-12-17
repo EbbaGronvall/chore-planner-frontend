@@ -26,7 +26,7 @@ const Task = (props) => {
 
 				<div className="d-flex align-items-center">
 					{(is_task_giver || is_assigned_to) && (
-						<Link to={`/tasks/${id}/`}>
+						<Link to={`/chores/${id}/`}>
 							<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
 								See Details
 							</Button>

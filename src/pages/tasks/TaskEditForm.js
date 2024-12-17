@@ -60,7 +60,7 @@ function TaskEditForm() {
 
 				is_task_giver
 					? setTaskData({ title, description, due_date, status, assigned_to })
-					: history.push("/");
+					: history.push("/chores");
 			} catch (err) {
 				console.log(err);
 			}
@@ -85,7 +85,7 @@ function TaskEditForm() {
 	const handleDelete = async () => {
 		try {
 			await axiosRes.delete(`/tasks/${id}/`);
-			history.push("/tasks/");
+			history.push("/chores/");
 		} catch (err) {
 			console.log(err);
 		}
@@ -105,7 +105,7 @@ function TaskEditForm() {
 
 		try {
 			await axiosReq.put(`/tasks/${id}/`, formData);
-			history.push(`/tasks/${id}`);
+			history.push(`/chores/${id}`);
 		} catch (err) {
 			console.log(err);
 			if (err.response?.status !== 401) {

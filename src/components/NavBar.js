@@ -31,9 +31,9 @@ const NavBar = () => {
 			<NavLink
 				className={styles.NavLink}
 				activeClassName={styles.Active}
-				to="/tasks"
+				to="/chores"
 			>
-				Noticeboard <i class="fa-solid fa-check"></i>
+				Chores <i class="fa-solid fa-check"></i>
 			</NavLink>
 			<NavLink
 				className={styles.NavLink}
