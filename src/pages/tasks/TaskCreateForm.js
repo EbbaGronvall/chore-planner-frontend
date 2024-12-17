@@ -71,11 +71,20 @@ function TaskCreateForm() {
 
 		try {
 			const { data } = await axiosReq.post("/tasks/", formData);
-			history.push(`/tasks/${data.id}`);
+			history.push(`/chores/${data.id}`);
 		} catch (err) {
-			console.log(err);
+			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
-				setErrors(err.response?.data);
+				setErrors(err.response?.data?.error || {});
+				if (err.response?.data?.details?.due_date) {
+					setErrors((prevErrors) => ({
+						...prevErrors,
+						details: {
+							...prevErrors.details,
+							due_date: err.response?.data?.details?.due_date,
+						},
+					}));
+				}
 			}
 		}
 	};
@@ -156,11 +165,12 @@ function TaskCreateForm() {
 						/>
 					</div>
 				</Form.Group>
-				{errors?.due_date?.map((message, idx) => (
-					<Alert variant="warning" key={idx}>
-						{message}
-					</Alert>
-				))}
+				{errors?.details?.due_date && errors.details.due_date.length > 0 && (
+					<Alert variant="warning">{errors.details.due_date[0]}</Alert>
+				)}
+				{errors?.due_date && errors.due_date.length > 0 && (
+					<Alert variant="warning">{errors.due_date[0]}</Alert>
+				)}
 				<Form.Group controlId="assigned_to">
 					<Form.Label className={styles.Label}>Who is gonna do it?</Form.Label>
 
