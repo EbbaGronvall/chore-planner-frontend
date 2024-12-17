@@ -9,14 +9,14 @@ import {
 import { useCurrentUserProfile } from "../contexts/CurrentUserProfileContext";
 import Avatar from "./Avatar";
 import axios from "axios";
-import UseClickOutsideToggle from "../hooks/UseClickOutsideToggle";
+import useClickOutsideToggle from "../hooks/UseClickOutsideToggle";
 
 const NavBar = () => {
 	const currentUser = useCurrentUser();
 	const setCurrentUser = useSetCurrentUser();
 	const currentUserProfile = useCurrentUserProfile();
 
-	const { expanded, setExpanded, ref } = UseClickOutsideToggle();
+	const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
 	const handleSignOut = async () => {
 		try {
