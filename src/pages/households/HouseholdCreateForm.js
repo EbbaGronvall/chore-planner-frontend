@@ -8,6 +8,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function HouseholdCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -21,7 +22,7 @@ function HouseholdCreateForm() {
 	const { name, slug } = householdData;
 
 	const history = useHistory();
-
+	const { id } = useParams()
 	const handleChange = (event) => {
 		setHouseholdData({
 			...householdData,
@@ -45,10 +46,25 @@ function HouseholdCreateForm() {
 					household_name: data.name
 				})
 			}
-			history.push(`/`);
+			history.push(`/profiles/${id}/edit`);
 		} catch (err) {
+			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
-				setErrors(err.response?.data);
+				setErrors(err.response?.data?.error || {});
+				
+				if (err.response?.data?.details?.name) {
+					setErrors((prevErrors) => ({
+						...prevErrors,
+						name: err.response?.data?.details?.name,
+					}));
+				}
+		
+				if (err.response?.data?.details?.slug) {
+					setErrors((prevErrors) => ({
+						...prevErrors,
+						slug: err.response?.data?.details?.slug,
+					}));
+				}
 			}
 		}
 	};

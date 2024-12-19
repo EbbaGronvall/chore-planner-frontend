@@ -58,9 +58,23 @@ function HouseholdEditForm() {
 			await axiosReq.put(`/households/${urlSlug}/`, formData);
 			history.push(`/households/${urlSlug}`);
 		} catch (err) {
-			console.log(err);
+			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
-				setErrors(err.response?.data);
+				setErrors(err.response?.data?.error || {});
+				
+				if (err.response?.data?.details?.name) {
+					setErrors((prevErrors) => ({
+						...prevErrors,
+						name: err.response?.data?.details?.name,
+					}));
+				}
+		
+				if (err.response?.data?.details?.slug) {
+					setErrors((prevErrors) => ({
+						...prevErrors,
+						slug: err.response?.data?.details?.slug,
+					}));
+				}
 			}
 		}
 	};
