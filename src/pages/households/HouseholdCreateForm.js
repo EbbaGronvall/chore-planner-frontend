@@ -46,7 +46,7 @@ function HouseholdCreateForm() {
 					household_name: data.name
 				})
 			}
-			history.push(`/profiles/${id}/edit`);
+			history.push(`/households/${data.slug}/`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {

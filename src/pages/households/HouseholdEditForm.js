@@ -10,11 +10,14 @@ import { axiosReq } from "../../api/axiosDefault";
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
-import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
 	const currentUserProfile = useCurrentUserProfile();
+	const setCurrentUserProfile = useSetCurrentUserProfile();
+	const setCurrentUser = useSetCurrentUser()
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
@@ -55,8 +58,13 @@ function HouseholdEditForm() {
 		formData.append("slug", slug);
 
 		try {
-			await axiosReq.put(`/households/${urlSlug}/`, formData);
-			history.push(`/households/${urlSlug}`);
+			const {data} = await axiosReq.put(`/households/${urlSlug}/`, formData);
+			setCurrentUserProfile((currentUserProfile) => ({
+				...currentUserProfile,
+				household_name: data.name,
+				household_slug: data.slug,
+			}))
+			history.push(`/households/${data.slug}/`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
