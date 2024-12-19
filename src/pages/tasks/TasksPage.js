@@ -55,64 +55,67 @@ function TasksPage({ filter = "" }) {
 	return (
 		<Container fluid className={taskStyles.Task}>
 			<Row className="mb-3">
-				<Form
-					className={`w-100 ${styles.SearchBar}`}
-					onSubmit={(event) => event.preventDefault()}
-				>
-					<Form.Row className="w-100">
-						<Form.Group as={Col} xs={12} sm={12} md={7} className="mb-3">
-							<i className={`fas fa-search ${styles.SearchIcon}`} />
-							<Form.Control
-								value={query}
-								onChange={(event) => setQuery(event.target.value)}
-								type="text"
-								className="mr-sm-2"
-								placeholder="Search Name or Task"
-							/>
-						</Form.Group>
-						<Form.Group as={Col} xs={12} sm={8} md={3} className="mb-3">
-							<Form.Control
-								as="select"
-								className={`${formStyles.Input} ${formStyles.FormControl}`}
-								value={selectedFilter}
-								onChange={(event) => setSelectedFilter(event.target.value)}
-							>
-								<option value="">All tasks</option>
-								<option value="pending">Pending</option>
-								<option value="in_progress">In Progress</option>
-								<option value="completed">Completed</option>
-							</Form.Control>
-						</Form.Group>
-						<Form.Group as={Col} xs={12} sm={4} md={2} className="mb-3">
-							<Form.Control
-								as="select"
-								className={formStyles.Input}
-								value={selectedOrder}
-								onChange={(event) => setSelectedOrder(event.target.value)}
-							>
-								<option value="">Sort By</option>
-								<option value="title">Title</option>
-								<option value="due_date">Due Date</option>
-								<option value="status">Status</option>
-								<option value="assigned_to__member__username">Assignee</option>
-							</Form.Control>
-						</Form.Group>
-						{!no_slug ? (
-							<Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
-								<Link to={`/chores/create`}>
-									<Button
-										className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
-									>
-										Add a new Chore
-									</Button>
-								</Link>
+				{!no_slug ? (
+					<Form
+						className={`w-100 ${styles.SearchBar}`}
+						onSubmit={(event) => event.preventDefault()}
+					>
+						<Form.Row className="w-100">
+							<Form.Group as={Col} xs={12} sm={12} md={7} className="mb-3">
+								<i className={`fas fa-search ${styles.SearchIcon}`} />
+								<Form.Control
+									value={query}
+									onChange={(event) => setQuery(event.target.value)}
+									type="text"
+									className="mr-sm-2"
+									placeholder="Search Name or Task"
+								/>
 							</Form.Group>
-						) : (
-							<></>
-						)}
-					</Form.Row>
-				</Form>
-
+							<Form.Group as={Col} xs={12} sm={8} md={3} className="mb-3">
+								<Form.Control
+									as="select"
+									className={`${formStyles.Input} ${formStyles.FormControl}`}
+									value={selectedFilter}
+									onChange={(event) => setSelectedFilter(event.target.value)}
+								>
+									<option value="">All tasks</option>
+									<option value="pending">Pending</option>
+									<option value="in_progress">In Progress</option>
+									<option value="completed">Completed</option>
+								</Form.Control>
+							</Form.Group>
+							<Form.Group as={Col} xs={12} sm={4} md={2} className="mb-3">
+								<Form.Control
+									as="select"
+									className={formStyles.Input}
+									value={selectedOrder}
+									onChange={(event) => setSelectedOrder(event.target.value)}
+								>
+									<option value="">Sort By</option>
+									<option value="title">Title</option>
+									<option value="due_date">Due Date</option>
+									<option value="status">Status</option>
+									<option value="assigned_to__member__username">
+										Assignee
+									</option>
+								</Form.Control>
+							</Form.Group>
+							{currentUserProfile?.role === "Parent" && (
+								<Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
+									<Link to={`/chores/create`}>
+										<Button
+											className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+										>
+											Add a new Chore
+										</Button>
+									</Link>
+								</Form.Group>
+							)}
+						</Form.Row>
+					</Form>
+				) : (
+					<></>
+				)}
 				{hasLoaded ? (
 					<Container fluid>
 						{tasks.results.length && !no_slug ? (
