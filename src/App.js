@@ -16,11 +16,26 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import HomePage from "./pages/homepage/HomePage";
 import NotFound from "./components/NotFound";
+import { ToastContainer, Bounce } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
 	return (
 		<div className={styles.App}>
 			<NavBar />
+			<ToastContainer
+				position="top-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick={false}
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+				transition={Bounce}
+			/>
 			<Container fluid className={styles.Main}>
 				<Switch>
 					<Route exact path="/" render={() => <HomePage />} />

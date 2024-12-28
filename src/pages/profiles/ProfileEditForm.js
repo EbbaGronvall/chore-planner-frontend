@@ -23,6 +23,8 @@ import {
 	useSetCurrentUserProfile,
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function ProfileEditForm() {
 	const [errors, setErrors] = useState({});
@@ -105,6 +107,9 @@ function ProfileEditForm() {
 				household_name: data.household_name,
 				household_slug: data.household_slug,
 			}));
+
+			toast.success("Profile updated successfully!");
+			
 			history.push(`/profiles/${id}`);
 		} catch (err) {
 			console.log(err);
@@ -240,6 +245,7 @@ function ProfileEditForm() {
 					<h3>You can only edit your own profile</h3>
 				</Container>
 			)}
+			
 		</>
 	) : (
 		<Container
