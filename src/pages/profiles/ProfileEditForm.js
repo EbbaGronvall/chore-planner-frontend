@@ -24,7 +24,6 @@ import {
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
 
 function ProfileEditForm() {
 	const [errors, setErrors] = useState({});
@@ -109,7 +108,7 @@ function ProfileEditForm() {
 			}));
 
 			toast.success("Profile updated successfully!");
-			
+
 			history.push(`/profiles/${id}`);
 		} catch (err) {
 			console.log(err);

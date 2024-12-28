@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import { toast } from "react-toastify";
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -71,6 +72,7 @@ function TaskCreateForm() {
 
 		try {
 			const { data } = await axiosReq.post("/tasks/", formData);
+			toast.success("Chore added successfully!");
 			history.push(`/chores/${data.id}`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);

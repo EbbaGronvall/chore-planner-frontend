@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import { toast } from "react-toastify";
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
@@ -85,6 +86,7 @@ function TaskEditForm() {
 	const handleDelete = async () => {
 		try {
 			await axiosRes.delete(`/tasks/${id}/`);
+			toast.success("Chore deleted successfully!");
 			history.push("/chores/");
 		} catch (err) {
 			console.log(err);
@@ -105,6 +107,7 @@ function TaskEditForm() {
 
 		try {
 			await axiosReq.put(`/tasks/${id}/`, formData);
+			toast.success("Chore updated successfully!");
 			history.push(`/chores/${id}`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);
