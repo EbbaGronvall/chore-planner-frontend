@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { toast } from "react-toastify";
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
@@ -64,6 +65,7 @@ function HouseholdEditForm() {
 				household_name: data.name,
 				household_slug: data.slug,
 			}))
+			toast.success("Household updated successfully!");
 			history.push(`/households/${data.slug}/`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);

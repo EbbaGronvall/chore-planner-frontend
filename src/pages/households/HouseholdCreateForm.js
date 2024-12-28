@@ -9,6 +9,7 @@ import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
 
 function HouseholdCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -46,6 +47,7 @@ function HouseholdCreateForm() {
 					household_name: data.name
 				})
 			}
+			toast.success("Household added successfully!");
 			history.push(`/households/${data.slug}/`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);
