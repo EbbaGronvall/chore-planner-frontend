@@ -65,6 +65,11 @@ function HouseholdEditForm() {
 				household_name: data.name,
 				household_slug: data.slug,
 			}))
+			setCurrentUser((currentUser) => ({
+				...currentUser,
+				household_name: data.name,
+				household_slug: data.slug,
+			}))
 			toast.success("Household updated successfully!");
 			history.push(`/households/${data.slug}/`);
 		} catch (err) {
