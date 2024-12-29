@@ -12,3 +12,10 @@
 .Active i {
 	color: rgb(31, 31, 31);
 }
+
+/* Media query for screens smaller than 403px */
+@media screen and (max-width: 403px) {
+	.Brand {
+		font-size: 40px;
+	}
+}
