@@ -161,8 +161,8 @@ function TasksPage({ filter = "" }) {
 									<div className={`${appStyles.Content} ${taskStyles.Text}`}>
 										<h2>Sorry</h2>
 										<h3>
-											You need to be part of a household and be a parent to be
-											able to plan chores
+											You need to be part of a household to be
+											able to plan chores!
 										</h3>
 										<Link to={`/profiles/${currentUserProfile?.id}/edit`}>
 											<Button
