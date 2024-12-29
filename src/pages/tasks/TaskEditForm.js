@@ -35,11 +35,9 @@ function TaskEditForm() {
 		const fetchProfiles = async () => {
 			try {
 				const { data } = await axiosReq.get("/profiles/");
-				console.log("Fetched profiles data:", data);
-
 				setProfiles(data.results);
 			} catch (err) {
-				console.error("Error fetching profiles:", err);
+				console.error(err);
 			}
 		};
 
@@ -110,7 +108,6 @@ function TaskEditForm() {
 			toast.success("Chore updated successfully!");
 			history.push(`/chores/${id}`);
 		} catch (err) {
-			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
 				setErrors(err.response?.data?.error || {});
 				if (err.response?.data?.details?.due_date) {

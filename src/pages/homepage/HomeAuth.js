@@ -9,7 +9,6 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const HomeAuth = () => {
 	const currentUser = useCurrentUser();
-	console.log("Current User:", currentUser);
 	return (
 		<>
 			<Row>

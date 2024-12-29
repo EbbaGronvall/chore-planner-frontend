@@ -76,7 +76,6 @@ function HouseholdEditForm() {
 			toast.success("Household updated successfully!");
 			history.push(`/households/${data.slug}/`);
 		} catch (err) {
-			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
 				setErrors(err.response?.data?.error || {});
 
