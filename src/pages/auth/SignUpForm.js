@@ -7,6 +7,7 @@ import appStyles from "../../App.module.css";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const SignUpForm = () => {
 	const [signUpData, setSignUpData] = useState({
@@ -31,6 +32,7 @@ const SignUpForm = () => {
 		event.preventDefault();
 		try {
 			await axios.post("/dj-rest-auth/registration/", signUpData);
+			toast.success("New profile added successfully!");
 			history.push("/signin");
 		} catch (err) {
 			setErrors(err.response?.data);

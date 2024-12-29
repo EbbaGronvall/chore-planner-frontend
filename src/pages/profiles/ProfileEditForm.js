@@ -244,7 +244,6 @@ function ProfileEditForm() {
 					<h3>You can only edit your own profile</h3>
 				</Container>
 			)}
-			
 		</>
 	) : (
 		<Container

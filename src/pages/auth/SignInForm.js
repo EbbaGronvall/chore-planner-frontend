@@ -8,6 +8,7 @@ import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { toast } from "react-toastify";
 
 function SignInForm() {
 	const setCurrentUser = useSetCurrentUser();
@@ -34,6 +35,7 @@ function SignInForm() {
 		try {
 			const { data } = await axios.post("/dj-rest-auth/login/", signInData);
 			setCurrentUser(data.user);
+			toast.success("You logged in succesfully!");
 			history.push("/");
 		} catch (err) {
 			setErrors(err.response?.data);
