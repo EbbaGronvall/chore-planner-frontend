@@ -13,7 +13,6 @@
 	text-align: center;
 	padding: 10px;
 }
-
 .Header {
 	font-weight: 600;
 	font-size: 20px;
@@ -23,26 +22,21 @@
 	text-transform: capitalize;
 	padding: 10px;
 }
-
 .Link {
 	text-decoration: none;
 	text-align: center;
 	display: block;
 	margin: auto;
 }
-
 .Link span {
 	color: rgb(234, 139, 159);
 }
-
 .Container {
 	padding: 30px 10px;
 }
-
 .SignInCol {
 	height: 320px;
 }
-
 .SignUpCol {
 	height: 375px;
 }

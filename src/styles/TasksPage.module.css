@@ -6,7 +6,6 @@
 	margin-bottom: 16px;
 	border: 1px solid #f0f1f9;
 }
-
 .SearchIcon {
 	position: absolute;
 	font-size: 1.2rem;
@@ -24,7 +23,6 @@
 	max-height: 200px;
 	overflow-y: auto;
 }
-
 .Spinner {
 	color: rgb(245, 211, 216);
 }

@@ -7,13 +7,16 @@ import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
-import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import {
+	useCurrentUserProfile,
+	useSetCurrentUserProfile,
+} from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
 
 function HouseholdCreateForm() {
 	const [errors, setErrors] = useState({});
-	const currentUserProfile = useCurrentUserProfile()
-	const setCurrentUserProfile = useSetCurrentUserProfile()
+	const currentUserProfile = useCurrentUserProfile();
+	const setCurrentUserProfile = useSetCurrentUserProfile();
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
@@ -42,8 +45,8 @@ function HouseholdCreateForm() {
 				setCurrentUserProfile({
 					...currentUserProfile,
 					household_slug: data.slug,
-					household_name: data.name
-				})
+					household_name: data.name,
+				});
 			}
 			toast.success("Household added successfully!");
 			history.push(`/households/${data.slug}/`);
@@ -51,14 +54,14 @@ function HouseholdCreateForm() {
 			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
 				setErrors(err.response?.data?.error || {});
-				
+
 				if (err.response?.data?.details?.name) {
 					setErrors((prevErrors) => ({
 						...prevErrors,
 						name: err.response?.data?.details?.name,
 					}));
 				}
-		
+
 				if (err.response?.data?.details?.slug) {
 					setErrors((prevErrors) => ({
 						...prevErrors,

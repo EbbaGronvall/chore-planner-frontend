@@ -17,7 +17,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import HomePage from "./pages/homepage/HomePage";
 import NotFound from "./components/NotFound";
 import { ToastContainer, Bounce } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	return (
@@ -47,8 +47,16 @@ function App() {
 							<TasksPage message="No results found. Adjust your search" />
 						)}
 					/>
-					<Route exact path="/chores/create" render={() => <TaskCreateForm />} />
-					<Route exact path="/chores/:id/edit" render={() => <TaskEditForm />} />
+					<Route
+						exact
+						path="/chores/create"
+						render={() => <TaskCreateForm />}
+					/>
+					<Route
+						exact
+						path="/chores/:id/edit"
+						render={() => <TaskEditForm />}
+					/>
 					<Route exact path="/chores/:id" render={() => <TaskPage />} />
 					{/* Routes to the householdpages */}
 					<Route

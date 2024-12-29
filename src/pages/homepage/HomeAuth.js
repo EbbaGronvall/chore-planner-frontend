@@ -8,7 +8,7 @@ import styles from "../../styles/Home.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const HomeAuth = () => {
-	const currentUser = useCurrentUser()
+	const currentUser = useCurrentUser();
 	console.log("Current User:", currentUser);
 	return (
 		<>
@@ -18,23 +18,23 @@ const HomeAuth = () => {
 					<h2 className="mb-4">What do you want to do today?</h2>
 				</Col>
 			</Row>
-			
+
 			<Row>
 				<Col>
 					<Card className={`${styles.Purple} ${styles.Card} mb-4`}>
 						<Card.Body>
-							
-							<Card.Title><Link className={styles.Link} to={`/chores/create`} >
-									
-							Plan some chores?	
-				   </Link></Card.Title>
+							<Card.Title>
+								<Link className={styles.Link} to={`/chores/create`}>
+									Plan some chores?
+								</Link>
+							</Card.Title>
 							<Card.Text>
-								<p>Or just look at your {"\n"}<Link className={styles.Link} to={`/chores`}>
-										
-										current ones? 		
-						</Link>
-						</p>
-							
+								<p>
+									Or just look at your {"\n"}
+									<Link className={styles.Link} to={`/chores`}>
+										current ones?
+									</Link>
+								</p>
 							</Card.Text>
 						</Card.Body>
 					</Card>
@@ -42,19 +42,25 @@ const HomeAuth = () => {
 				<Col>
 					<Card className={`${styles.Yellow} ${styles.Card} mb-4`}>
 						<Card.Body>
-							<Card.Title>Maybe you need to {"\n"}  <Link className={styles.Link} to={`/profiles/${currentUser.profile_id}/edit`}>
-										
-							update your profile?		
-						</Link></Card.Title>
+							<Card.Title>
+								Maybe you need to {"\n"}{" "}
+								<Link
+									className={styles.Link}
+									to={`/profiles/${currentUser.profile_id}/edit`}
+								>
+									update your profile?
+								</Link>
+							</Card.Title>
 							<Card.Text>
-							<p>Or maybe you just want to {"\n"}
-								<Link className={styles.Link} to={`/profiles/${currentUser.profile_id}`}>
-										
-										admire it..		
-						</Link>
-						
-						</p>
-							
+								<p>
+									Or maybe you just want to {"\n"}
+									<Link
+										className={styles.Link}
+										to={`/profiles/${currentUser.profile_id}`}
+									>
+										admire it..
+									</Link>
+								</p>
 							</Card.Text>
 						</Card.Body>
 					</Card>

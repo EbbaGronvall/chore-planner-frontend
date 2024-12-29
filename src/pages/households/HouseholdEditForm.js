@@ -10,7 +10,10 @@ import { axiosReq } from "../../api/axiosDefault";
 import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
-import { useCurrentUserProfile, useSetCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import {
+	useCurrentUserProfile,
+	useSetCurrentUserProfile,
+} from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
 
@@ -18,7 +21,7 @@ function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
 	const currentUserProfile = useCurrentUserProfile();
 	const setCurrentUserProfile = useSetCurrentUserProfile();
-	const setCurrentUser = useSetCurrentUser()
+	const setCurrentUser = useSetCurrentUser();
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
@@ -59,31 +62,31 @@ function HouseholdEditForm() {
 		formData.append("slug", slug);
 
 		try {
-			const {data} = await axiosReq.put(`/households/${urlSlug}/`, formData);
+			const { data } = await axiosReq.put(`/households/${urlSlug}/`, formData);
 			setCurrentUserProfile((currentUserProfile) => ({
 				...currentUserProfile,
 				household_name: data.name,
 				household_slug: data.slug,
-			}))
+			}));
 			setCurrentUser((currentUser) => ({
 				...currentUser,
 				household_name: data.name,
 				household_slug: data.slug,
-			}))
+			}));
 			toast.success("Household updated successfully!");
 			history.push(`/households/${data.slug}/`);
 		} catch (err) {
 			console.log("Error response data:", err.response?.data);
 			if (err.response?.status !== 401) {
 				setErrors(err.response?.data?.error || {});
-				
+
 				if (err.response?.data?.details?.name) {
 					setErrors((prevErrors) => ({
 						...prevErrors,
 						name: err.response?.data?.details?.name,
 					}));
 				}
-		
+
 				if (err.response?.data?.details?.slug) {
 					setErrors((prevErrors) => ({
 						...prevErrors,

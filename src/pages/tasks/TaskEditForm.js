@@ -204,11 +204,11 @@ function TaskEditForm() {
 					</div>
 				</Form.Group>
 				{errors?.details?.due_date && errors.details.due_date.length > 0 && (
-									<Alert variant="warning">{errors.details.due_date[0]}</Alert>
-								)}
-								{errors?.due_date && errors.due_date.length > 0 && (
-									<Alert variant="warning">{errors.due_date[0]}</Alert>
-								)}
+					<Alert variant="warning">{errors.details.due_date[0]}</Alert>
+				)}
+				{errors?.due_date && errors.due_date.length > 0 && (
+					<Alert variant="warning">{errors.due_date[0]}</Alert>
+				)}
 				<Form.Group>
 					<Form.Label className={styles.Label}>
 						How is the chore going?

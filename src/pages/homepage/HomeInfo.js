@@ -14,8 +14,8 @@ const HomeInfo = () => {
 								We are here to help you plan your everyday life. Guests coming
 								over next weekend? Easily deligate the chores to your
 								familymembers with our tools. It is also super easy to keep
-								track of the households chores with
-								our noticeboard where all the chores are gathered in one place!
+								track of the households chores with our noticeboard where all
+								the chores are gathered in one place!
 							</Card.Text>
 						</Card.Body>
 					</Card>
