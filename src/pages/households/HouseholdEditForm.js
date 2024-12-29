@@ -16,6 +16,7 @@ import {
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
+import tasksPageStyles from "../../styles/TasksPage.module.css"
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
@@ -100,7 +101,7 @@ function HouseholdEditForm() {
 		return (
 			<Container
 				fluid
-				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+				className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
 			>
 				<Spinner animation="border" role="status">
 					<span className="sr-only">Loading...</span>
