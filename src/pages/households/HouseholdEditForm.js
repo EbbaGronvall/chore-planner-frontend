@@ -39,7 +39,7 @@ function HouseholdEditForm() {
 
 				currentUserProfile
 					? setHouseholdData({ name, slug })
-					: history.push("/");
+					: toast.error("You can only edit your own household"), history.push("/");
 			} catch (err) {
 				console.log(err);
 			}
