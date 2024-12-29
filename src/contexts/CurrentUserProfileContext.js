@@ -23,7 +23,6 @@ export const CurrentUserProfileProvider = ({ children }) => {
 				);
 				setCurrentUserProfile(data);
 			} catch (err) {
-				console.log(err);
 				setCurrentUserProfile(null);
 			}
 		};
