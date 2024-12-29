@@ -16,13 +16,14 @@ import {
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
-import tasksPageStyles from "../../styles/TasksPage.module.css"
+import tasksPageStyles from "../../styles/TasksPage.module.css";
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
 	const currentUserProfile = useCurrentUserProfile();
 	const setCurrentUserProfile = useSetCurrentUserProfile();
 	const setCurrentUser = useSetCurrentUser();
+	const [hasLoaded, setHasLoaded] = useState(false);
 
 	const [householdData, setHouseholdData] = useState({
 		name: "",
@@ -38,14 +39,25 @@ function HouseholdEditForm() {
 				const { data } = await axiosReq.get(`/households/${urlSlug}/`);
 				const { name, slug } = data;
 
-				currentUserProfile
-					? setHouseholdData({ name, slug })
-					: toast.error("You can only edit your own household"), history.push("/");
+				if (currentUserProfile.household_name === name) {
+					setHouseholdData({ name, slug });
+					setHasLoaded(true);
+				} else {
+					toast.error("You can only edit your own household.");
+					history.push("/");
+					setHasLoaded(true);
+				}
 			} catch (err) {
 				console.log(err);
 			}
 		};
-		handleMount();
+		setHasLoaded(false);
+		const timer = setTimeout(() => {
+			handleMount();
+		}, 1000);
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [history, urlSlug, currentUserProfile]);
 
 	const handleChange = (event) => {
@@ -97,20 +109,7 @@ function HouseholdEditForm() {
 		}
 	};
 
-	if (!currentUserProfile) {
-		return (
-			<Container
-				fluid
-				className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
-			>
-				<Spinner animation="border" role="status">
-					<span className="sr-only">Loading...</span>
-				</Spinner>
-			</Container>
-		);
-	}
-
-	return (
+	return hasLoaded ? (
 		<Container className={appStyles.Content}>
 			<h1>You're now editing your household</h1>
 			<Form onSubmit={handleSubmit}>
@@ -160,6 +159,15 @@ function HouseholdEditForm() {
 					</Alert>
 				))}
 			</Form>
+		</Container>
+	) : (
+		<Container
+			fluid
+			className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
+		>
+			<Spinner animation="border" role="status">
+				<span className="sr-only">Loading...</span>
+			</Spinner>
 		</Container>
 	);
 }
