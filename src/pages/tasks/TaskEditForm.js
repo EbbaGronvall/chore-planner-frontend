@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
+import tasksPageStyles from "../../styles/TasksPage.module.css"
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
@@ -30,6 +31,7 @@ function TaskEditForm() {
 	const [profiles, setProfiles] = useState([]);
 	const history = useHistory();
 	const { id } = useParams();
+	const [hasLoaded, setHasLoaded] = useState(false)
 
 	useEffect(() => {
 		const fetchProfiles = async () => {
@@ -46,6 +48,7 @@ function TaskEditForm() {
 
 	useEffect(() => {
 		const handleMount = async () => {
+			console.log(currentUserProfile, taskData)
 			try {
 				const { data } = await axiosReq.get(`/tasks/${id}/`);
 				const {
@@ -54,17 +57,27 @@ function TaskEditForm() {
 					due_date,
 					status,
 					assigned_to,
-					is_task_giver,
+					task_giver,
 				} = data;
 
-				is_task_giver
-					? setTaskData({ title, description, due_date, status, assigned_to })
-					: history.push("/chores");
+				if (currentUserProfile.username === task_giver) {
+					setTaskData({ title, description, due_date, status, assigned_to });
+					setHasLoaded(true);
+				}
 			} catch (err) {
 				console.log(err);
+				toast.error("You are not authorized to edit this task.")
+				history.push("/chores")
+				setHasLoaded(true);
 			}
 		};
-		handleMount();
+		setHasLoaded(false);
+		const timer = setTimeout(() => {
+			handleMount();
+		}, 1000);
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [history, id]);
 
 	const handleChange = (event) => {
@@ -128,27 +141,10 @@ function TaskEditForm() {
 		  )
 		: [];
 
-	if (!currentUserProfile) {
-		return (
-			<Container
-				fluid
-				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
-			>
-				<Spinner animation="border" role="status">
-					<span className="sr-only">Loading...</span>
-				</Spinner>
-			</Container>
-		);
-	}
-	if (currentUserProfile?.role !== "Parent") {
-		return (
-			<Container fluid className={`${appStyles.Content} ${taskStyles.Text}`}>
-				<h1>Sorry! Only a parent can edit a chore!</h1>
-			</Container>
-		);
-	}
+	
+	
 
-	return (
+	return hasLoaded ? (
 		<Container className={appStyles.Content}>
 			<h1>You're now editing a chore</h1>
 			<Form onSubmit={handleSubmit}>
@@ -274,7 +270,16 @@ function TaskEditForm() {
 				))}
 			</Form>
 		</Container>
-	);
+	):(
+		<Container
+				fluid
+				className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
+			>
+				<Spinner animation="border" role="status">
+					<span className="sr-only">Loading...</span>
+				</Spinner>
+			</Container>
+	)
 }
 
 export default TaskEditForm;
