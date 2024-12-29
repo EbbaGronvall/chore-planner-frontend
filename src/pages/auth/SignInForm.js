@@ -38,7 +38,7 @@ function SignInForm() {
 			toast.success("You logged in succesfully!");
 			history.push("/");
 		} catch (err) {
-			setErrors(err.response?.data);
+			setErrors(err.response?.data?.error);
 		}
 	};
 	return (
