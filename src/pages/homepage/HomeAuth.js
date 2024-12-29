@@ -2,51 +2,65 @@ import React from "react";
 import taskStyles from "../../styles/Task.module.css";
 import { Row, Col, Card } from "react-bootstrap";
 import appStyles from "../../App.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import HomeInfo from "./HomeInfo";
 import styles from "../../styles/Home.module.css";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 const HomeAuth = () => {
+	const currentUser = useCurrentUser()
+	console.log("Current User:", currentUser);
 	return (
 		<>
 			<Row>
 				<Col className={`${taskStyles.Text} ${appStyles.Content} mb-2`}>
-					<h1 className="mb-4">Welcome Back Chore Planner</h1>
-
-					<h2>What do You want to do today?</h2>
-					<p>
-						Follow the icons in the navigationbar at the top to start planning
-						your chores
-					</p>
+					<h1 className="mb-4">Welcome Back {currentUser.username}</h1>
+					<h2 className="mb-4">What do you want to do today?</h2>
 				</Col>
 			</Row>
-
+			
 			<Row>
 				<Col>
-					<Card className={`${styles.Blue} mb-4`}>
+					<Card className={`${styles.Purple} ${styles.Card} mb-4`}>
 						<Card.Body>
-							<Card.Title>Our Concept</Card.Title>
+							
+							<Card.Title><Link className={styles.Link} to={`/chores/create`} >
+									
+							Plan some chores?	
+				   </Link></Card.Title>
 							<Card.Text>
-								We are here to help you plan your everyday life. Guests coming
-								over next weekend? Easily deligate the chores to your
-								familymembers with our tools. It is also super easy to keep
-								track of both your and the rest of the households chores with
-								our noticeboard where all the chores are gathered in one place!
+								<p>Or just look at your {"\n"}<Link className={styles.Link} to={`/chores`}>
+										
+										current ones? 		
+						</Link>
+						</p>
+							
 							</Card.Text>
 						</Card.Body>
 					</Card>
 				</Col>
 				<Col>
-					<Card className={`${styles.Green} mb-4`}>
+					<Card className={`${styles.Yellow} ${styles.Card} mb-4`}>
 						<Card.Body>
-							<Card.Title>Why did I create Chore Planner?</Card.Title>
+							<Card.Title>Maybe you need to {"\n"}  <Link className={styles.Link} to={`/profiles/${currentUser.profile_id}/edit`}>
+										
+							update your profile?		
+						</Link></Card.Title>
 							<Card.Text>
-								Growing up I often got into trouble for forgetting to do what my
-								parents told me. Now that I am all grown up I wanted to help
-								other kids to remember what chores where assigned to them!
+							<p>Or maybe you just want to {"\n"}
+								<Link className={styles.Link} to={`/profiles/${currentUser.profile_id}`}>
+										
+										admire it..		
+						</Link>
+						
+						</p>
+							
 							</Card.Text>
 						</Card.Body>
 					</Card>
 				</Col>
 			</Row>
+			<HomeInfo />
 		</>
 	);
 };
