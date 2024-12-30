@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
-import tasksPageStyles from "../../styles/TasksPage.module.css"
+import tasksPageStyles from "../../styles/TasksPage.module.css";
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
@@ -31,7 +31,7 @@ function TaskEditForm() {
 	const [profiles, setProfiles] = useState([]);
 	const history = useHistory();
 	const { id } = useParams();
-	const [hasLoaded, setHasLoaded] = useState(false)
+	const [hasLoaded, setHasLoaded] = useState(false);
 
 	useEffect(() => {
 		const fetchProfiles = async () => {
@@ -48,7 +48,7 @@ function TaskEditForm() {
 
 	useEffect(() => {
 		const handleMount = async () => {
-			console.log(currentUserProfile, taskData)
+			console.log(currentUserProfile, taskData);
 			try {
 				const { data } = await axiosReq.get(`/tasks/${id}/`);
 				const {
@@ -66,8 +66,8 @@ function TaskEditForm() {
 				}
 			} catch (err) {
 				console.log(err);
-				toast.error("You are not authorized to edit this task.")
-				history.push("/chores")
+				toast.error("You are not authorized to edit this task.");
+				history.push("/chores");
 				setHasLoaded(true);
 			}
 		};
@@ -140,9 +140,6 @@ function TaskEditForm() {
 				(profile) => profile.household === currentUserProfile.household
 		  )
 		: [];
-
-	
-	
 
 	return hasLoaded ? (
 		<Container className={appStyles.Content}>
@@ -270,15 +267,15 @@ function TaskEditForm() {
 				))}
 			</Form>
 		</Container>
-	):(
+	) : (
 		<Container
-				className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
-			>
-				<Spinner animation="border" role="status">
-					<span className="sr-only">Loading...</span>
-				</Spinner>
-			</Container>
-	)
+			className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
+		>
+			<Spinner animation="border" role="status">
+				<span className="sr-only">Loading...</span>
+			</Spinner>
+		</Container>
+	);
 }
 
 export default TaskEditForm;

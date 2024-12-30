@@ -18,12 +18,10 @@ const Task = (props) => {
 				<Card.Text>{title}</Card.Text>
 				<Card.Title>Who's gonna do it:</Card.Title>
 				<Card.Text>{assigned_to_username}</Card.Text>
-
 				<Card.Title>It needs to be done by:</Card.Title>
 				<Card.Text>{due_date}</Card.Text>
 				<Card.Title>Status:</Card.Title>
 				<Card.Text>{status}</Card.Text>
-
 				<div className="d-flex align-items-center">
 					{(is_task_giver || is_assigned_to) && (
 						<Link to={`/chores/${id}/`}>

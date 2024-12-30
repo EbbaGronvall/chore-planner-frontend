@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import tasksPageStyles from "../../styles/TasksPage.module.css";
-import householdStyles from "../../styles/HouseholdStyles.module.css"
+import householdStyles from "../../styles/HouseholdStyles.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 
 const HouseholdDetail = (props) => {
@@ -31,28 +31,24 @@ const HouseholdDetail = (props) => {
 					{isAuthorized ? (
 						<Container className={appStyles.Content}>
 							<h1 className="mb-4">{name}</h1>
-							
-								
 
-								<h3 className="mb-4">Who lives here?</h3>
-								
-									{household_members.length > 0 ? (
-										<ul className={`${householdStyles.NoBullet} mb-4`}>
-											{household_members.map((member, index) => (
-												<li key={index}>{member}</li>
-											))}
-										</ul>
-									) : (
-										<p>No members in this household.</p>
-									)}
-								
+							<h3 className="mb-4">Who lives here?</h3>
 
-								<Link to={`/households/${slug}/edit`}>
-									<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
-										Edit the household
-									</Button>
-								</Link>
-							
+							{household_members.length > 0 ? (
+								<ul className={`${householdStyles.NoBullet} mb-4`}>
+									{household_members.map((member, index) => (
+										<li key={index}>{member}</li>
+									))}
+								</ul>
+							) : (
+								<p>No members in this household.</p>
+							)}
+
+							<Link to={`/households/${slug}/edit`}>
+								<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
+									Edit the household
+								</Button>
+							</Link>
 						</Container>
 					) : (
 						<Container className={`${appStyles.Content}  ${taskStyles.Text}`}>

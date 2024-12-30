@@ -13,7 +13,7 @@ import { format } from "date-fns";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
-import taskPageStyles from "../../styles/TasksPage.module.css" 
+import taskPageStyles from "../../styles/TasksPage.module.css";
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -35,7 +35,7 @@ function TaskCreateForm() {
 		const fetchProfiles = async () => {
 			try {
 				const { data } = await axiosReq.get("/profiles/");
-				
+
 				setProfiles(data.results);
 			} catch (err) {
 				console.error(err);
