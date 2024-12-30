@@ -34,16 +34,15 @@ function HouseholdPage() {
 	}, [slug]);
 
 	return hasLoaded ? (
-		<Container fluid className={appStyles.Content}>
+		<>
 			<HouseholdDetail
 				{...household.results[0]}
 				setHousehold={setHousehold}
 				householdPage
 			/>
-		</Container>
+		</>
 	) : (
 		<Container
-			fluid
 			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
