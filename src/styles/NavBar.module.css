@@ -12,7 +12,15 @@
 .Active i {
 	color: rgb(31, 31, 31);
 }
-
+/* Media query for screens smaller than 863px */
+@media (max-width: 863px) and (min-width: 766px){
+	.Brand{
+		font-size: 40px;
+	}
+	.NavLink {
+		padding: 5px 0;
+	}
+}
 /* Media query for screens smaller than 403px */
 @media screen and (max-width: 403px) {
 	.Brand {

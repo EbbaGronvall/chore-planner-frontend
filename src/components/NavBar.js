@@ -42,7 +42,7 @@ const NavBar = () => {
 				activeClassName={styles.Active}
 				to={`/households/${currentUserProfile?.household_slug}`}
 			>
-				Your Home <i class="fa-solid fa-house"></i>
+				My Home <i class="fa-solid fa-house"></i>
 			</NavLink>
 
 			<NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
@@ -52,7 +52,7 @@ const NavBar = () => {
 				className={styles.NavLink}
 				to={`/profiles/${currentUser?.profile_id}`}
 			>
-				<Avatar src={currentUser?.profile_image} text="Your Page" height={40} />
+				<Avatar src={currentUser?.profile_image} text="Your Page" height={35} />
 			</NavLink>
 		</>
 	);
