@@ -246,7 +246,6 @@ function ProfileEditForm() {
 		</>
 	) : (
 		<Container
-			fluid
 			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">

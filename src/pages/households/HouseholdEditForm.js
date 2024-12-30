@@ -162,7 +162,6 @@ function HouseholdEditForm() {
 		</Container>
 	) : (
 		<Container
-			fluid
 			className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">

@@ -272,7 +272,6 @@ function TaskEditForm() {
 		</Container>
 	):(
 		<Container
-				fluid
 				className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
 			>
 				<Spinner animation="border" role="status">

@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
+import taskPageStyles from "../../styles/TasksPage.module.css" 
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -97,8 +98,7 @@ function TaskCreateForm() {
 	if (!currentUserProfile) {
 		return (
 			<Container
-				fluid
-				className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+				className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
 			>
 				<Spinner animation="border" role="status">
 					<span className="sr-only">Loading...</span>
