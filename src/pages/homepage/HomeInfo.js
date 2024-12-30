@@ -6,7 +6,7 @@ const HomeInfo = () => {
 	return (
 		<>
 			<Row>
-				<Col>
+				<Col sm={6}>
 					<Card className={`${styles.Blue} ${styles.Card} mb-4`}>
 						<Card.Body>
 							<Card.Title>Our Concept</Card.Title>
@@ -20,7 +20,7 @@ const HomeInfo = () => {
 						</Card.Body>
 					</Card>
 				</Col>
-				<Col>
+				<Col sm={6}>
 					<Card className={`${styles.Green} ${styles.Card} mb-4`}>
 						<Card.Body>
 							<Card.Title>Why did I create Chore Planner?</Card.Title>

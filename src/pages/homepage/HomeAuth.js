@@ -19,7 +19,11 @@ const HomeAuth = () => {
 			</Row>
 
 			<Row>
-				<Col>
+				<Col 
+										sm={6}
+										
+										
+										>
 					<Card className={`${styles.Purple} ${styles.Card} mb-4`}>
 						<Card.Body>
 							<Card.Title>
@@ -38,7 +42,7 @@ const HomeAuth = () => {
 						</Card.Body>
 					</Card>
 				</Col>
-				<Col>
+				<Col sm={6}>
 					<Card className={`${styles.Yellow} ${styles.Card} mb-4`}>
 						<Card.Body>
 							<Card.Title>
