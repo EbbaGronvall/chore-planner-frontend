@@ -34,16 +34,15 @@ function ProfilePage() {
 	}, [id]);
 
 	return hasLoaded ? (
-		<Container fluid className={appStyles.Content}>
+		<>
 			<ProfileDetail
 				{...profile.results[0]}
 				setProfile={setProfile}
 				profilePage
 			/>
-		</Container>
+		</>
 	) : (
 		<Container
-			fluid
 			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
