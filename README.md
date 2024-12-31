@@ -238,6 +238,11 @@ For the toast messages on this website I have used the React Toastify library. W
 The pop-up closes automaticly after five seconds but the user can click the x to close it manually if they want to. The pop-up has a progress bar where the user can see how long before the pop-up closes. When hovering over the pop-up the countdown stops and you can see how the progress bar stays in place. The same thing happends if the user switch tabs. This is to make sure that the user does not miss a pop-up message. 
 ![Toastify messages](documentation/ToastifyMessages.gif)
 
+### Page Not Found
+I have created a custom 404 page that the user sees if they were to try to access a page that does not exist.
+![Page not found page](documentation/PageNotFound.PNG)
+
+
 ## Backend
 ### Custom API
 The API is created using the Django REST Framework. There are three different apps with their own seperate models, serializers and views.
