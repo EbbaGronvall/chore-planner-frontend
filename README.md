@@ -8,6 +8,15 @@ Seeing my nephews grow up now I think about how much easier my life as a kid wou
 
 All of this gave me the idea of creating a platform for families to plan their lives.
 
+## Frontend
+
+### User Interface
+#### Design Planning
+My vision for this webapplication was to make it as a noticeboard that you put up notes on with the different chores that are set. The original plan was to give the users the ability to choose between different colours for their “notes” so that the noticeboard would be colour coded and it would be easy to quickly see who the chores are set for without reading the name. This is a feature I will implement in the future but it was outside of the scope for this project. I also have the plan to make the application “child friendly”. With this I mean that the parents will be able to choose an icon to describe the chore instead of writing the description so that children with limited reading skills will be able to use the app too.
+
+![Wireframe chore](documentation/WireframeTask.PNG)
+![Wireframe noticeboard](documentation/WireframeNoticeboard.PNG)
+
 
 
 ## Deployment
