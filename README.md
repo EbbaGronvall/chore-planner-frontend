@@ -40,6 +40,17 @@ The original colour palette was five “post-it” pastell colours but when star
 The Landing Page and the Chores noticeboard has a background that looks like an oldschool noticeboard made out of cork to match the vision I had for the webpage. 
 ![Cork background](src/assets/noticeboard.jpg)
 
+### User Experience
+#### User Stories
+After the idea for the website had sprouted in my mind I started writing the user stories. I created a custom template in github and added the issues to the project I created in my front-end repostitry. This to have a good view of what I need to do and how I am progressing in my work.  
+
+I ended up with ten different user stories. Six must-haves, two should-haves and two could-haves. The only issues left in the "Todo" column are the two could-haves the other ones are done.
+![User stories project board](documentation/UserStoriesBoard.PNG)
+
+##### Custom Template
+The custom template speeds up the process for adding a new issue to the project and helps make sure that the format is consistant.  
+![Custom template](documentation/CustomTemplate.PNG)
+
 
 
 
