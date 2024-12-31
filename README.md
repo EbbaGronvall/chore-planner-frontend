@@ -131,6 +131,16 @@ If the user has the role of Parent and is a member of  a household the page look
 ![Noticeboard searchbar and dropdowns big screen](documentation/NoticeboardSearchbarBig.gif)
 ![Noticeboard searchbar and dropdowns small screen](documentation/NoticeboardSearchbarSmall.gif)
 
+If the user has a household but has the role of Child the Noticeboard page will look like the image bellow. The searchbar and filter and order dropdowns are still there but not the button that takes the user to the create form for the chores. 
+![Noticeboard if child](documentation/NoticeboardChild.PNG)
+
+If the user has a household but there are no chores set for anyone in the household they will see a message that there is nothing for them to do right now. 
+![Noticeboard if child](documentation/NoticeboardNoChores.PNG)
+
+If the user does not have a household connected to their profile they will not see the form at the top containing the searchbar etc and they will be met with a message that they need to be a part of a household to be able see this page and a button containing a link that takes them to the form to edit their profile.
+
+![Noticeboard no household](documentation/NoticeboardNoHousehold.PNG)
+
 ## Deployment
 
 ### Deploying the API
