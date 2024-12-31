@@ -113,6 +113,24 @@ The Landing Page contains a welcome message that changes depending on authorizat
 ![Landing page if unauthorized](documentation/LandingPageUnAuth.PNG)
 ![Landing page if unauthorized](documentation/LandingPageUnAuthSmall.gif)
 
+### Noticeboard
+![Noticeboard on different screens](documentation/NoticeboardDifferentscreens.PNG)
+``USER STORY: As a user I can access the noticeboard so that I can see what cores that are set for me and my household members and I can follow a link to the form to add new chores.``
+
+The Noticeboard page is a page where the user can see all the chores that are set for their household. The content of this page differs depending on role, household and the existence of chores. 
+
+The cards with the chores on them on this page is just a preview of the chore and if the user wants to see more details they need to click the button that says “see details”. The user is then taken to the chore detail page. This button only appears if the current user is the one who created the chore or the one that the chore is assigned to.
+
+![Chore preview with button](documentation/ChorePreviewButton.PNG)
+![Chore preview without button](documentation/ChorePreviewNoButton.PNG)
+
+If the user has the role of Parent and is a member of  a household the page looks like the images bellow. At the top there is a form containing a searchbar, a filter dropdown menu, a “order by” dropdown menu and button that only appears if the current user has the role of Parent. In the searchbar the user can search for a specific chore or chores assigned to a specific household member. The user can use the filter dropdown to filter the chores depending on their status. The button is a link to the page containing the form to create a new chore. 
+
+![Noticeboard big screen](documentation/NoticeboardChoresBig.PNG)
+![Noticeboard small screen](documentation/NoticeboardChoresSmall.gif)
+![Noticeboard searchbar and dropdowns big screen](documentation/NoticeboardSearchbarBig.gif)
+![Noticeboard searchbar and dropdowns small screen](documentation/NoticeboardSearchbarSmall.gif)
+
 ## Deployment
 
 ### Deploying the API
