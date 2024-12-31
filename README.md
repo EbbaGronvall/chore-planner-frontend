@@ -1,6 +1,12 @@
 # ChorePlanner
 
-When I was a kid living at home with my parents I often got into trouble for not doing the chores I was asked to do. I simply forgot to do them due to my ADHD. But whenever my parents left me a note with what they needed me to do I did it without any problems. Me knowing how hard it is to remember things and how hard it is on parents to constantly nag their kids about simple chores I got the inspiration for the ChorePlanner. On my website the parents can give their kids chores and the kids can see them and when they need to be done and everything. 
+ ## Introduction
+
+Growing up with undiagnosed ADHD I often got in to trouble for forgetting to do the chores mum and dad asked me to do. They called me lazy and thougt I was inconciderate but it was never out of laziness or anything like that. I simply forgot. 
+
+Seeing my nephews grow up now I think about how much easier my life as a kid would had been if I had a platform where my parents could assign me the chores they wanted me to do! And image being able to see what tasks they set for my sisters? It would have given everything the transperency I needed as a kid. 
+
+All of this gave me the idea of creating a platform for families to plan their lives.
 
 
 
