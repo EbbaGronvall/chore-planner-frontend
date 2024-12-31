@@ -176,6 +176,18 @@ Each household page can only be accessed by the users that have that household a
 #### If the user is not a member of the household
 ![My home page](documentation/MyHomePageUnAuth.PNG)
 
+### Household Create Form
+The user can access this form from the Profile Edit Form. In this form the user creates a new household by writing a name and a slug. There is a description about what a slug is so that users who are not IT people understand what it is. The name and the slug is checked in the API to make sure that the name and slug are unique. The household name is required to be longer than three characters and this is also checked in the API. 
+
+![Household create form](documentation/HouseholdCreateForm.PNG)
+
+### Household Edit Form
+This form can be accessed from both the My Home page and the Profile Edit Form. This form is identical to the Household Create Form besides the fact that the fields are preoccupied with the current household name and slug. 
+
+If a user tries to access the edit page for a household they are not a part of they will get a pop-up that they are not allowed to do that and they are redirected to the landing page.
+![Household edit form](documentation//HouseholdEditForm.PNG)
+
+
 
 
 ## Deployment
