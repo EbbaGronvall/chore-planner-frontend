@@ -99,7 +99,19 @@ On screens smaller than 768 px the links in the navbar are replaced with a “bu
 ![Navigation bar small screen](documentation/NavbarUnAuthSmall.gif)
 
 When hovering over the icons in the navigation bar the opasity of the text and icon increases to indicate to the user that they can click the link. The link to the page that is active has a static increased opasity to show what page the user is currently on. 
-![Navigation bar small screen](documentation/NavbarHoverActive.gif)
+![Navigation bar on hover and active](documentation/NavbarHoverActive.gif)
+
+
+### Landing Page
+``USER STORY: As a user I can see a landing page when opening the website so that I can learn more about the sites purpose and origin. ``
+
+The Landing Page contains a welcome message that changes depending on authorization, a short text about the concept of the website and a short text about why I created the page. The page also contains a message for users who are not authorized encouriging them to sign up and a link to the sign up form.
+#### Authorized
+![Landing page if authorized](documentation/LandingPageAuth.PNG)
+![Landing page if authorized](documentation/LandingPageAuthSmall.gif)
+#### Unauthorized
+![Landing page if unauthorized](documentation/LandingPageUnAuth.PNG)
+![Landing page if unauthorized](documentation/LandingPageUnAuthSmall.gif)
 
 ## Deployment
 
