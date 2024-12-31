@@ -282,6 +282,7 @@ I have tested all the pages using the DevTools Lighthouse tool.
 ![Landing page unauthenticated mobile](documentation/testresults/TestLandingPageUnAuthMobile.PNG)
 ##### Unauthenticated Desktop
 ![Landing page unauthenticated desktop](documentation/testresults/TestLandingPageUnAuthDesktop.PNG)
+---
 
 #### Noticeboard Results
 ##### Chores to do Mobile
@@ -296,14 +297,56 @@ I have tested all the pages using the DevTools Lighthouse tool.
 ![Noticeboard No household mobile](documentation/testresults/TestNoticeboardNoHouseholdMobile.PNG)
 ##### No household Desktop
 ![Noticeboard No household desktop](documentation/testresults/TestNoticeboardNoHouseholdDesktop.PNG)
-
+---
 #### Chore Detail Results
 ##### Mobile
 ![Chore detail mobile](documentation/testresults/TestChoreDetailMobile.PNG)
 ##### Desktop
 ![Chore detail desktop](documentation/testresults/TestChoreDetailDesktop.PNG)
-
-
+---
+#### Create Chore Results
+##### Mobile
+![Create chore mobile](documentation/testresults/TestCreateChoreMobile.PNG)
+##### Desktop
+![Create chore desktop](documentation/testresults/TestCreateChoreDesktop.PNG)
+---
+#### Edit Chore Results
+##### Mobile
+![Edit chore mobile](documentation/testresults/TestChoreEditMobile.PNG)
+##### Desktop
+![Edit chore desktop](documentation/testresults/TestChoreEditDesktop.PNG)
+---
+#### My Home Page Results
+##### Authorized Mobile
+![My home page authorized mobile](documentation/testresults/TestMyHomePageMobile.PNG)
+##### Authorized Desktop
+![My home page authorized desktop](documentation/testresults/TestMyHomePageDesktop.PNG)
+##### Unauthorized Mobile
+![My home page unauthorized mobile](documentation/testresults/TestMyHomePageUnAuthMobile.PNG)
+##### Unauthorized Desktop
+![My home page unauthorized desktop](documentation/testresults/TestMyHomePageUnAuthDesktop.PNG)
+---
+#### Create Household Form Results
+##### Mobile
+![Create household mobile](documentation/testresults/TestHouseholdCreateMobile.PNG)
+##### Desktop
+![Create household desktop](documentation/testresults/TestHouseholdCreateDesktop.PNG)
+---
+#### Edit Household Form Results
+##### Mobile
+![Edit household mobile](documentation/testresults/TestHouseholdEditMobile.PNG)
+##### Desktop
+![Edit household desktop](documentation/testresults/TestHouseholdEditDesktop.PNG)
+---
+#### Profile Page Results
+##### Authorized Mobile
+![Profile page authorized mobile](documentation/testresults/TestProfilePageMobile.PNG)
+##### Authorized Desktop
+![Profile page authorized desktop](documentation/testresults/TestProfilePageDesktop.PNG)
+##### Unauthorized Mobile
+![Profile page unauthorized mobile](documentation/testresults/TestProfilePageUnAuthMobile.PNG)
+##### Unauthorized Desktop
+![Profile page unauthorized desktop](documentation/testresults/TestProfilePageUnAuthDesktop.PNG)
 
 
 ## Deployment
