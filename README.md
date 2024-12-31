@@ -141,6 +141,28 @@ If the user does not have a household connected to their profile they will not s
 
 ![Noticeboard no household](documentation/NoticeboardNoHousehold.PNG)
 
+### Chore Create Form
+``USER STORY: As a user I can add chores so that other members of the household can see them.``
+
+When the user clicks the button that says “Add a new chore” they are taken to a form where they can create a new chore. The user needs to input a chore title, description, due date and they also need to choose who is gonna do the chore. All the fields are required to create a chore. When a chore is created the task_giver is automatically set to be the current user and the status is by default “Pending”. 
+
+The due date field is a DatePicker from the library react-datepicker. It is checked in the API to make sure that it is not set in the past. 
+ 
+
+The dropdown where the user chooses who is gonna do the chore only the names of the users with the same household name appears. 
+ 
+
+When the user then clicks the button to add the chore they are redirected to the newly created chores details page. 
+![Chore create form](documentation/ChoreCreate.gif)
+
+### Chore Detail Page
+On this page the user sees details about the chore in question. They can see the title, the description, who it was assigned to, the due date, the status and who created the chore. If the current user is the one who created the chore the button to the edit chore form appears. 
+
+![Chore detail with button](documentation/ChoreDetailButton.PNG)
+![Chore detail without button](documentation/ChoreDetailNoButton.PNG)
+
+
+
 ## Deployment
 
 ### Deploying the API
