@@ -189,8 +189,6 @@ If a user tries to access the edit page for a household they are not a part of t
 
 ### Profile Page
 
-
-
 The profile page contains information about the current user. The page can only be accessed if the id in the url matches the current users id. If a user tries to access another users profile by changing the url manually they will be met with a message that they can only view their own profile. 
 
 On the page the user can see a small profile picture like the one in the navbar, their name, their household name and their role in the household. Underneeth the information there is a button that, when clicked, takes the user to the Prolife Edit Form.  
@@ -240,6 +238,16 @@ For the toast messages on this website I have used the React Toastify library. W
 The pop-up closes automaticly after five seconds but the user can click the x to close it manually if they want to. The pop-up has a progress bar where the user can see how long before the pop-up closes. When hovering over the pop-up the countdown stops and you can see how the progress bar stays in place. The same thing happends if the user switch tabs. This is to make sure that the user does not miss a pop-up message. 
 ![Toastify messages](documentation/ToastifyMessages.gif)
 
+## Backend
+### Custom API
+The API is created using the Django REST Framework. There are three different apps with their own seperate models, serializers and views.
+#### The Different Apps
+- The Profile app handles the creation of a new user profile, the editing of the profile and it is connected to the Household app through the ForeignKey field. 
+- The Household app is used for the creation of new households and editing of already exsisting ones.
+- The Task app is used when creating, viewing and editing chores. The app is named Task but it is connected with the Chores. The app was named before I changed the projects name to Chore Planner that is why it is not consitent.
+
+#### Custom Permissions
+I have created custom persmissions handling to make certain content only available to authorized users. For example the IsHouseholdMemberOrReadOnly that only allows users that are a member of the current household to make changes to it.
 
 
 ## Deployment
