@@ -347,8 +347,29 @@ I have tested all the pages using the DevTools Lighthouse tool.
 ![Profile page unauthorized mobile](documentation/testresults/TestProfilePageUnAuthMobile.PNG)
 ##### Unauthorized Desktop
 ![Profile page unauthorized desktop](documentation/testresults/TestProfilePageUnAuthDesktop.PNG)
-
-
+---
+#### Edit Profile Page Results
+##### Authorized Mobile
+![Profile edit page authorized mobile](documentation/testresults/TestProfileEditMobile.PNG)
+##### Authorized Desktop
+![Profile edit page authorized desktop](documentation/testresults/TestProfileEditDesktop.PNG)
+##### Unauthorized Mobile
+![Profile edit page unauthorized mobile](documentation/testresults/TestProfileEditUnAuthMobile.PNG)
+##### Unauthorized Desktop
+![Profile edit page unauthorized desktop](documentation/testresults/TestProfileEditUnAuthDesktop.PNG)
+---
+#### Sign Up Page Results
+##### Mobile
+![Sign up page mobile](documentation/testresults/TestSignUpPageMobile.PNG)
+##### Desktop
+![Sign up page desktop](documentation/testresults/TestSignUpPageDesktop.PNG)
+---
+#### Sign In Page Results
+##### Mobile
+![Sign in page mobile](documentation/testresults/TestSignInPageMobile.PNG)
+##### Desktop
+![Sign in page desktop](documentation/testresults/TestSignInPageDesktop.PNG)
+---
 ## Deployment
 
 ### Deploying the API
