@@ -82,6 +82,22 @@ The two could-haves for Chore Planner was: Points and Child Friendly.
 ![Child Friendly user story](documentation/UserStoryChildFriendly.PNG)
 
 
+## Features
+
+### Navigation Bar
+``USER STORY: As a user I can see a navigation bar at the top of the page so that I can easily find my way to the other pages of the website. ``
+
+At the top of the website there is a navigation bar that contains links to all the pages of the website. The content of the navigation bar differs if the user is authorized or not.  
+
+On screens smaller than 768 px the links in the navbar are replaced with a “burger”-icon that toggles a dropdown menu containing the links.
+#### Navigation Bar if user is authorized
+![Navigation bar big screen](documentation/NavBarAuthBig.PNG)
+![Navigation bar small screen](documentation/NavbarAuthSmall.gif)
+
+#### Navigation Bar if user is unauthorized
+![Navigation bar big screen](documentation/NavBarUnAuthBig.PNG)
+![Navigation bar small screen](documentation/NavbarUnAuthSmall.gif)
+
 ## Deployment
 
 ### Deploying the API
