@@ -370,21 +370,53 @@ I have tested all the pages using the DevTools Lighthouse tool.
 ##### Desktop
 ![Sign in page desktop](documentation/testresults/TestSignInPageDesktop.PNG)
 ---
+### Validator Testing
+- I checked that the website is readable and easy to understand by running it through the Wave validator. 
+
+- I checked the html using th W3C validator. 
+
+- I checked the css files using the Jigsaw validator. 
+
+- I used the CI Python Linter to check the API code for long lines etc. 
+
+## Bugs 
+There are no known bugs on this website.
 ## Deployment
 
-### Deploying the API
+### Backend
 
 #### Preperations
-- Connected the project to the PostgreSQL and added the config var for the database to Heroku 
+
+Before being able to deploy the API to Heroku there are some things that needs to be done. These are the steps I took before deploying: 
+
 - Installed corsheaders and gunicorn
-- Ran ``` pip freeze --local > requirements.txt ``` in the teminal to update the dependencies
-- I added the Procfile
-- Updated the ALLOWED_HOSTS to contain '.herokuapp.com'
-- Added the corsheaders middleware to MIDDLEWARE in settings.py
-- Set the ALLOWED_ORIGINS
-- Set my SECRET_KEY in the env.py 
+- Creating the env.py file and reference to it using environ in the settings.py file to keep my secrets from being pushed to Github. In this file I have the SECRET_KEY, the DATABASE_URL and the CLOUDINARY_URL. To connect the API with the frontend React app I add the CLIENT_ORIGIN and the CLIENT_ORIGIN_DEV urls here too. 
+
+- Create the requirements.txt file so that Heroku will know all the packages and libraries needed to run the app.  
+
+- Create the Procfile file. The Procfile specifies the commands that are executed by the app on startup.  
 #### Deploying to Heroku
-- Added the config vars for the secret key and cloudinary
-- Connect the Herokuapp to the correct github repository
-- Deployed main branch 
-- Made sure the app works as intended
+Now that I have done the preparations I am ready to deploy to Heroku.  
+
+These are the steps I take: 
+
+- I create a new app and name it “chore-planner-api". I choose Europe for the location as I am located in Sweden.  
+
+- In the Deploy tab I connect the Heroku app with my Github repository named “chore-planner-api". 
+
+- In the settings for the app I input my secrets from my env.py file as Config Vars. 
+
+- I then go back to the Deploy tab of the page and scroll down and deploy the main branch. 
+
+- I check to make sure that the app is running as expected. 
+
+### Frontend
+#### Preperations
+These are the steps I take before deploying the React app to Heroku: 
+
+- I make sure that the package.json has all the necessary information for deployment. 
+
+- I add a Procfile so that Heroku knows what commands are executed by the app on startup.
+
+#### Deploying to Heroku
+The steps I take to deploy the frontend app to Heroku are almost identical to the steps I took when deploying the API. The only difference is of course the name of the app as it has to be unique, I name the app “chore-planner-frontend", the Github repository I connect the app with and there is no need to put my secrets in as Config Vars as there are no secrets kept in this app.
