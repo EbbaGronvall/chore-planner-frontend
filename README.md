@@ -20,6 +20,7 @@ Since I have been using React Bootstrap 4 components like fluid Containers and R
 
 ### Font
 For this app I chose the Google Font Itim beacuse it has the playfull handwriting look I wanted for this website. 
+
 ![Font preview](documentation/FontPreview.PNG) 
 ### Icons 
 In the navbar there are Font Awesome icons next to the name of each page to make it more interesting than just text. It also makes it easier for users with limited reading skills to understand how to navigate to the different pages.
@@ -90,31 +91,35 @@ The two could-haves for Chore Planner was: Points and Child Friendly.
 At the top of the website there is a navigation bar that contains links to all the pages of the website. The content of the navigation bar differs if the user is authorized or not.  
 
 On screens smaller than 768 px the links in the navbar are replaced with a “burger”-icon that toggles a dropdown menu containing the links.
-#### Navigation Bar if user is authorized
+#### Navigation Bar if user is authenticated
 ![Navigation bar big screen](documentation/NavBarAuthBig.PNG)
+
 ![Navigation bar small screen](documentation/NavbarAuthSmall.gif)
 
-#### Navigation Bar if user is unauthorized
+#### Navigation Bar if user is unauthenticated
 ![Navigation bar big screen](documentation/NavBarUnAuthBig.PNG)
+
 ![Navigation bar small screen](documentation/NavbarUnAuthSmall.gif)
 
 When hovering over the icons in the navigation bar the opasity of the text and icon increases to indicate to the user that they can click the link. The link to the page that is active has a static increased opasity to show what page the user is currently on. 
+
 ![Navigation bar on hover and active](documentation/NavbarHoverActive.gif)
 
-
+---
 ### Landing Page
 ``USER STORY: As a user I can see a landing page when opening the website so that I can learn more about the sites purpose and origin. ``
 
 The Landing Page contains a welcome message that changes depending on authorization, a short text about the concept of the website and a short text about why I created the page. The page also contains a message for users who are not authorized encouriging them to sign up and a link to the sign up form.
-#### Authorized
-![Landing page if authorized](documentation/LandingPageAuth.PNG)
-![Landing page if authorized](documentation/LandingPageAuthSmall.gif)
-#### Unauthorized
-![Landing page if unauthorized](documentation/LandingPageUnAuth.PNG)
-![Landing page if unauthorized](documentation/LandingPageUnAuthSmall.gif)
-
+#### Authenticated
+![Landing page if authenticated](documentation/LandingPageAuth.PNG)
+![Landing page if authenticated](documentation/LandingPageAuthSmall.gif)
+#### Unauthenticated
+![Landing page if unauthenticated](documentation/LandingPageUnAuth.PNG)
+![Landing page if unauthenticated](documentation/LandingPageUnAuthSmall.gif)
+---
 ### Noticeboard
 ![Noticeboard on different screens](documentation/NoticeboardDifferentscreens.PNG)
+
 ``USER STORY: As a user I can access the noticeboard so that I can see what cores that are set for me and my household members and I can follow a link to the form to add new chores.``
 
 The Noticeboard page is a page where the user can see all the chores that are set for their household. The content of this page differs depending on role, household and the existence of chores. 
@@ -140,7 +145,7 @@ If the user has a household but there are no chores set for anyone in the househ
 If the user does not have a household connected to their profile they will not see the form at the top containing the searchbar etc and they will be met with a message that they need to be a part of a household to be able see this page and a button containing a link that takes them to the form to edit their profile.
 
 ![Noticeboard no household](documentation/NoticeboardNoHousehold.PNG)
-
+---
 ### Chore Create Form
 ``USER STORY: As a user I can add chores so that other members of the household can see them.``
 
@@ -154,39 +159,40 @@ The dropdown where the user chooses who is gonna do the chore only the names of 
 
 When the user then clicks the button to add the chore they are redirected to the newly created chores details page. 
 ![Chore create form](documentation/ChoreCreate.gif)
-
+---
 ### Chore Detail Page
 On this page the user sees details about the chore in question. They can see the title, the description, who it was assigned to, the due date, the status and who created the chore. If the current user is the one who created the chore the button to the edit chore form appears. 
 
 ![Chore detail with button](documentation/ChoreDetailButton.PNG)
 ![Chore detail without button](documentation/ChoreDetailNoButton.PNG)
-
+---
 ### Chore Edit Form
 This form can only be accessed by the user who created the chore. If the user manually change the url and try to access a chore they did not create they will be redirected to the noticeboard and get a pop-up message. The form looks  almost identical to the Create Chore Form but it has the data from the chore in question in its fields and the user can change the stauts of the chore. The user can choose to either update the chore or if they want to delete it.
 
 ![Chore edit form](documentation/ChoreEdit.PNG)
 ![Chore edit progress](documentation/ChoreEditProgress.gif)
-
+---
 ### My Home Page
 ![My home page](documentation/MyHomePage.PNG)
+
 ``USER STORY: As a user I can access a “My Home”-page so that I can see the members of my household ``
 
 Each household page can only be accessed by the users that have that household as theirs. The page lists all the members of the specific household and there is a button that takes the user to the Household Edit Form. 
 
 #### If the user is not a member of the household
 ![My home page](documentation/MyHomePageUnAuth.PNG)
-
+---
 ### Household Create Form
 The user can access this form from the Profile Edit Form. In this form the user creates a new household by writing a name and a slug. There is a description about what a slug is so that users who are not IT people understand what it is. The name and the slug is checked in the API to make sure that the name and slug are unique. The household name is required to be longer than three characters and this is also checked in the API. 
 
 ![Household create form](documentation/HouseholdCreateForm.PNG)
-
+---
 ### Household Edit Form
 This form can be accessed from both the My Home page and the Profile Edit Form. This form is identical to the Household Create Form besides the fact that the fields are preoccupied with the current household name and slug. 
 
 If a user tries to access the edit page for a household they are not a part of they will get a pop-up that they are not allowed to do that and they are redirected to the landing page.
 ![Household edit form](documentation/HouseholdEditForm.PNG)
-
+---
 ### Profile Page
 
 The profile page contains information about the current user. The page can only be accessed if the id in the url matches the current users id. If a user tries to access another users profile by changing the url manually they will be met with a message that they can only view their own profile. 
@@ -194,7 +200,7 @@ The profile page contains information about the current user. The page can only 
 On the page the user can see a small profile picture like the one in the navbar, their name, their household name and their role in the household. Underneeth the information there is a button that, when clicked, takes the user to the Prolife Edit Form.  
 ![Profile page](documentation/ProfilePageAuth.PNG)
 ![Profile page unauthenticated](documentation/ProfilePageUnAuth.PNG)
-
+---
 ### Profile Edit Form
 ``USER STORY: As a user I can edit my profile-information so that I can personilize my experience.``
 
@@ -208,13 +214,15 @@ When a user profile is created it is assigned a default profile image but on thi
 There is a dropdown menu present filled with the names of the households that are already in the database so that the user can join an already existing household if they want. Beneath  this dropdown there are two buttons. One takes the user to the Household Create Form and the other one takes the user to the Household Edit Form. The second button does only show up if there is a household connected with the user profile.
 
 ![Profile edit household dropdown](documentation/ProfileEditDropdownHousehold.gif)
+
 ![Profile edit with edit button](documentation/ProfileEditWithButton.PNG)
+
 ![Profile edit without edit button](documentation/ProfileEditNoButton.PNG)
 
 The users “role” is by default set to Parent uppon creating a profile but here the user can change it by picking the right role in the dropdown menu. 
 ![Profile edit role](documentation/ProfileEditDropdownRole.gif)
 
-
+---
 ### Authorization
 ``USER STORY: As a user I can create an account so that I can access the whole website.``
 
@@ -224,12 +232,13 @@ The signup and the signin forms looks pretty much identical but the signup form 
 
 ![Sign in form](documentation/SignInForm.PNG)
 ![Sign up form](documentation/SignUpForm.PNG)
-
+---
 ### Alerts and Notifications
 ``USER STORY: As a user I can see pop-up alerts so that I know when a change has been made successfully or not.``
 
 #### Alert Messages
 In all the forms across the website there is error handling that send alerts if something is wrong with the inputs in the forms. The alerts are the Alert component from React Bootstrap 4. There are both field error handlers and non field error handlers.
+
 ![Alert messages](documentation/AlertMessages.gif)
 
 #### Toastify Pop-ups
@@ -237,11 +246,10 @@ For the toast messages on this website I have used the React Toastify library. W
 
 The pop-up closes automaticly after five seconds but the user can click the x to close it manually if they want to. The pop-up has a progress bar where the user can see how long before the pop-up closes. When hovering over the pop-up the countdown stops and you can see how the progress bar stays in place. The same thing happends if the user switch tabs. This is to make sure that the user does not miss a pop-up message. 
 ![Toastify messages](documentation/ToastifyMessages.gif)
-
+---
 ### Page Not Found
 I have created a custom 404 page that the user sees if they were to try to access a page that does not exist.
 ![Page not found page](documentation/PageNotFound.PNG)
-
 
 ## Backend
 ### Custom API
