@@ -217,6 +217,31 @@ The users “role” is by default set to Parent uppon creating a profile but he
 ![Profile edit role](documentation/ProfileEditDropdownRole.gif)
 
 
+### Authorization
+``USER STORY: As a user I can create an account so that I can access the whole website.``
+
+Thanks to the Django REST framework authentication mechanism the user is able to create an account to access the whole website. The user use the signup form to choose a username and a password and the API creates a user profile thanks to the post_save.connect functionality in the Profile model. After creating a profile the user can log in using the signin form. 
+
+The signup and the signin forms looks pretty much identical but the signup form has two fields where the user needs to write the password to confirm it as the fields are checked so that they are identical to eachother. Beneath the signup form there is a paragraph with a link to the signin form if the user already has an account and vice versa on the signin form.
+
+![Sign in form](documentation/SignInForm.PNG)
+![Sign up form](documentation/SignUpForm.PNG)
+
+### Alerts and Notifications
+``USER STORY: As a user I can see pop-up alerts so that I know when a change has been made successfully or not.``
+
+#### Alert Messages
+In all the forms across the website there is error handling that send alerts if something is wrong with the inputs in the forms. The alerts are the Alert component from React Bootstrap 4. There are both field error handlers and non field error handlers.
+![Alert messages](documentation/AlertMessages.gif)
+
+#### Toastify Pop-ups
+For the toast messages on this website I have used the React Toastify library. When the user successfully make changes across the website they see a pop-up message in the top right corner of the page. If the user tries to access a page they are not authorized for they will be redirected and get an error pop-up message.  
+
+The pop-up closes automaticly after five seconds but the user can click the x to close it manually if they want to. The pop-up has a progress bar where the user can see how long before the pop-up closes. When hovering over the pop-up the countdown stops and you can see how the progress bar stays in place. The same thing happends if the user switch tabs. This is to make sure that the user does not miss a pop-up message. 
+![Toastify messages](documentation/ToastifyMessages.gif)
+
+
+
 ## Deployment
 
 ### Deploying the API
