@@ -1,6 +1,7 @@
 import React from "react";
 import taskStyles from "../../styles/Task.module.css";
-import { Row, Col } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Home.module.css";
 import HomeInfo from "./HomeInfo";

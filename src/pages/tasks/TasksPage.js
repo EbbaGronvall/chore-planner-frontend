@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-import { Form, Col, Row, Container, Spinner, Button } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import formStyles from "../../styles/Forms.module.css";
 import taskStyles from "../../styles/Task.module.css";
 import appStyles from "../../App.module.css";

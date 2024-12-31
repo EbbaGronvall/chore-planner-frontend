@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import HomeAuth from "./HomeAuth";
 import HomeUnAuth from "./HomeUnAuth";

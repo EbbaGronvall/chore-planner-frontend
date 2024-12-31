@@ -1,6 +1,8 @@
 import React from "react";
 import taskStyles from "../../styles/Task.module.css";
-import { Row, Col, Card } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import HomeInfo from "./HomeInfo";
@@ -19,11 +21,7 @@ const HomeAuth = () => {
 			</Row>
 
 			<Row>
-				<Col 
-										sm={6}
-										
-										
-										>
+				<Col sm={6}>
 					<Card className={`${styles.Purple} ${styles.Card} mb-4`}>
 						<Card.Body>
 							<Card.Title>

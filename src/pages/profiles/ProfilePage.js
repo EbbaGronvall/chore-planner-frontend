@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";

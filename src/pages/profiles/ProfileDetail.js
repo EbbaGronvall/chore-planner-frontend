@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import taskStyles from "../../styles/Task.module.css";
-import { Card, Button, Container, Spinner } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import tasksPageStyles from "../../styles/TasksPage.module.css";
