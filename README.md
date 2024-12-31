@@ -161,6 +161,13 @@ On this page the user sees details about the chore in question. They can see the
 ![Chore detail with button](documentation/ChoreDetailButton.PNG)
 ![Chore detail without button](documentation/ChoreDetailNoButton.PNG)
 
+### Chore Edit Form
+This form can only be accessed by the user who created the chore. If the user manually change the url and try to access a chore they did not create they will be redirected to the noticeboard and get a pop-up message. The form looks  almost identical to the Create Chore Form but it has the data from the chore in question in its fields and the user can change the stauts of the chore. The user can choose to either update the chore or if they want to delete it.
+
+![Chore edit form](documentation/ChoreEdit.PNG)
+![Chore edit progress](documentation/ChoreEditProgress.gif)
+
+
 
 
 ## Deployment
