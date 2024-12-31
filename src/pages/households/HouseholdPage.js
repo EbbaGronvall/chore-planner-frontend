@@ -6,11 +6,16 @@ import { axiosReq } from "../../api/axiosDefault";
 import HouseholdDetail from "./HouseholdDetail";
 import taskStyles from "../../styles/Task.module.css";
 import taskPageStyles from "../../styles/TasksPage.module.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { toast } from "react-toastify";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function HouseholdPage() {
 	const { slug } = useParams();
 	const [household, setHousehold] = useState({ results: [] });
 	const [hasLoaded, setHasLoaded] = useState(false);
+	const history = useHistory();
+	const currentUser = useCurrentUser();
 
 	useEffect(() => {
 		const handleMount = async () => {
@@ -21,7 +26,8 @@ function HouseholdPage() {
 				setHousehold({ results: [household] });
 				setHasLoaded(true);
 			} catch (err) {
-				console.log(err);
+				toast.error("You have to add a household to your profile first!");
+				history.push(`/profiles/${currentUser.profile_id}/edit`);
 			}
 		};
 		setHasLoaded(false);
@@ -31,7 +37,7 @@ function HouseholdPage() {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [slug]);
+	}, [slug, history, currentUser]);
 
 	return hasLoaded ? (
 		<>
