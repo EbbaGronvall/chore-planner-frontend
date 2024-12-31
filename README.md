@@ -249,6 +249,57 @@ The API is created using the Django REST Framework. There are three different ap
 #### Custom Permissions
 I have created custom persmissions handling to make certain content only available to authorized users. For example the IsHouseholdMemberOrReadOnly that only allows users that are a member of the current household to make changes to it.
 
+## Testing
+### Testing During Developing
+During the whole development process I have been testing constantly. After each addition or change to the code I have tested. This is to always make sure that the site works as intended.
+
+### Manual Testing
+- I have checked to see that the website works on the browsers: Chrome, Microsoft Edge and Safari. 
+
+- With the use of devtools I have confirmed that the pages of the website are responsive and look good on different screen sizes. 
+
+- I have confirmed the functionality of the forms by adding faulty values and after putting in valid values I checked the API to make sure it changed as expected. 
+
+- When testing the forms I also made sure that the alerts and pop-ups appear as expected. 
+
+- I have tested all the links across the page and all the redirection that occurs. 
+
+- I have manually changed the url to make sure that the user can not access pages they are not authorized to access.
+
+### Lighthouse Testing
+I have tested all the pages using the DevTools Lighthouse tool.
+#### Landing Page Results
+##### Authenticated Mobile
+![Landing page authenticated mobile](documentation/testresults/TestLandingPageAuthMobile.PNG)
+##### Authenticated Desktop
+![Landing page authenticated desktop](documentation/testresults/TestLandingPageAuthDesktop.PNG)
+##### Unauthenticated Mobile
+![Landing page unauthenticated mobile](documentation/testresults/TestLandingPageUnAuthMobile.PNG)
+##### Unauthenticated Desktop
+![Landing page unauthenticated desktop](documentation/testresults/TestLandingPageUnAuthDesktop.PNG)
+
+#### Noticeboard Results
+##### Chores to do Mobile
+![Noticeboard chores to do mobile](documentation/testresults/TestNoticeboardChoresMobile.PNG)
+##### Chores to do Desktop
+![Noticeboard chores to do desktop](documentation/testresults/TestNoticeboardChoresDesktop.PNG)
+##### No Chores to do Mobile
+![Noticeboard No Chores to do mobile](documentation/testresults/TestNoticeboardNoChoresMobile.PNG)
+##### No Chores to do Desktop
+![Noticeboard No Chores to do desktop](documentation/testresults/TestNoticeboardNoChoresDesktop.PNG)
+##### No household Mobile
+![Noticeboard No household mobile](documentation/testresults/TestNoticeboardNoHouseholdMobile.PNG)
+##### No household Desktop
+![Noticeboard No household desktop](documentation/testresults/TestNoticeboardNoHouseholdDesktop.PNG)
+
+#### Chore Detail Results
+##### Mobile
+![Chore detail mobile](documentation/testresults/TestChoreDetailMobile.PNG)
+##### Desktop
+![Chore detail desktop](documentation/testresults/TestChoreDetailDesktop.PNG)
+
+
+
 
 ## Deployment
 
