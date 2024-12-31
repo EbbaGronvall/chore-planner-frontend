@@ -42,7 +42,7 @@ function TaskCreateForm() {
 
 				setProfiles(data.results);
 			} catch (err) {
-				console.error(err);
+				//console.error(err);
 			}
 		};
 

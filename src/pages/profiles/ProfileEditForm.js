@@ -60,7 +60,7 @@ function ProfileEditForm() {
 				setHouseholds(householdsData.results);
 				setHasLoaded(true);
 			} catch (err) {
-				console.log(err);
+				//console.log(err);
 			}
 		};
 		setHasLoaded(false);

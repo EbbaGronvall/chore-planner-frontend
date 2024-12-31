@@ -43,7 +43,7 @@ function TaskEditForm() {
 				const { data } = await axiosReq.get("/profiles/");
 				setProfiles(data.results);
 			} catch (err) {
-				console.error(err);
+				//console.error(err);
 			}
 		};
 
@@ -52,7 +52,6 @@ function TaskEditForm() {
 
 	useEffect(() => {
 		const handleMount = async () => {
-			console.log(currentUserProfile, taskData);
 			try {
 				const { data } = await axiosReq.get(`/tasks/${id}/`);
 				const {
@@ -69,7 +68,7 @@ function TaskEditForm() {
 					setHasLoaded(true);
 				}
 			} catch (err) {
-				console.log(err);
+				//console.log(err);
 				toast.error("You are not authorized to edit this task.");
 				history.push("/chores");
 				setHasLoaded(true);
@@ -104,7 +103,7 @@ function TaskEditForm() {
 			toast.success("Chore deleted successfully!");
 			history.push("/chores/");
 		} catch (err) {
-			console.log(err);
+			//console.log(err);
 		}
 	};
 

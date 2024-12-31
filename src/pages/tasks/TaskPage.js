@@ -17,7 +17,7 @@ function TaskPage() {
 				]);
 				setTask({ results: [task] });
 			} catch (err) {
-				console.log(err);
+				//console.log(err);
 			}
 		};
 		handleMount();

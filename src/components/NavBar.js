@@ -27,7 +27,7 @@ const NavBar = () => {
 			setCurrentUser(null);
 			toast.success("You've logged out");
 		} catch (err) {
-			console.log(err);
+			//console.log(err);
 		}
 	};
 	const loggedInIcons = (
