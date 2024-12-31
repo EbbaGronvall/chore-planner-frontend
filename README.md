@@ -245,6 +245,7 @@ In all the forms across the website there is error handling that send alerts if 
 For the toast messages on this website I have used the React Toastify library. When the user successfully make changes across the website they see a pop-up message in the top right corner of the page. If the user tries to access a page they are not authorized for they will be redirected and get an error pop-up message.  
 
 The pop-up closes automaticly after five seconds but the user can click the x to close it manually if they want to. The pop-up has a progress bar where the user can see how long before the pop-up closes. When hovering over the pop-up the countdown stops and you can see how the progress bar stays in place. The same thing happends if the user switch tabs. This is to make sure that the user does not miss a pop-up message. 
+
 ![Toastify messages](documentation/ToastifyMessages.gif)
 ---
 ### Page Not Found
