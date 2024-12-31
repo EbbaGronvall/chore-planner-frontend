@@ -81,7 +81,7 @@ function TaskEditForm() {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [history, id, currentUserProfile, taskData]);
+	}, [history, id, currentUserProfile]);
 
 	const handleChange = (event) => {
 		setTaskData({
