@@ -67,6 +67,20 @@ The must-haves for Chore Planner was: Authorization, Noticeboard, Chores, Profil
 ##### Navigation Bar
 ![Navigation Bar user story](documentation/UserStoryNavigationbar.PNG)
 
+#### Should-have 
+The should-haves for Chore Planner was: Landing Page and Alert Messages. 
+##### Landing Page
+![Landing Page user story](documentation/UserStoryLandingPage.PNG)
+##### Alert Messages
+![Alert Messages user story](documentation/UserStoryAlert.PNG)
+
+#### Could-have
+The two could-haves for Chore Planner was: Points and Child Friendly.
+##### Points
+![Points user story](documentation/UserStoryPoints.PNG)
+##### Child Friendly
+![Child Friendly user story](documentation/UserStoryChildFriendly.PNG)
+
 
 ## Deployment
 
