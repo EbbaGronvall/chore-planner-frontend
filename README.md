@@ -167,6 +167,14 @@ This form can only be accessed by the user who created the chore. If the user ma
 ![Chore edit form](documentation/ChoreEdit.PNG)
 ![Chore edit progress](documentation/ChoreEditProgress.gif)
 
+### My Home Page
+![My home page](documentation/MyHomePage.PNG)
+``USER STORY: As a user I can access a “My Home”-page so that I can see the members of my household ``
+
+Each household page can only be accessed by the users that have that household as theirs. The page lists all the members of the specific household and there is a button that takes the user to the Household Edit Form. 
+
+#### If the user is not a member of the household
+![My home page](documentation/MyHomePageUnAuth.PNG)
 
 
 
