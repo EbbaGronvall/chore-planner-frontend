@@ -420,3 +420,20 @@ These are the steps I take before deploying the React app to Heroku:
 
 #### Deploying to Heroku
 The steps I take to deploy the frontend app to Heroku are almost identical to the steps I took when deploying the API. The only difference is of course the name of the app as it has to be unique, I name the app “chore-planner-frontend", the Github repository I connect the app with and there is no need to put my secrets in as Config Vars as there are no secrets kept in this app.
+
+## Credits
+### Code
+- The layout for the navbar with the profile image is heavily inspired by the navbar in the Code Institute walkthrough project “Moments”.
+
+### Media
+- The images used are from Pexels.
+
+- The favicon is created using favicon.io. 
+
+- The icons used are from fontawesome.
+
+- The font is a Google Font. 
+
+- The toastmessages are created using the React Toastify library. 
+
+- The datepicker in the Chore Form is created using the React Datepicker library. 
