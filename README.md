@@ -185,9 +185,36 @@ The user can access this form from the Profile Edit Form. In this form the user 
 This form can be accessed from both the My Home page and the Profile Edit Form. This form is identical to the Household Create Form besides the fact that the fields are preoccupied with the current household name and slug. 
 
 If a user tries to access the edit page for a household they are not a part of they will get a pop-up that they are not allowed to do that and they are redirected to the landing page.
-![Household edit form](documentation//HouseholdEditForm.PNG)
+![Household edit form](documentation/HouseholdEditForm.PNG)
+
+### Profile Page
 
 
+
+The profile page contains information about the current user. The page can only be accessed if the id in the url matches the current users id. If a user tries to access another users profile by changing the url manually they will be met with a message that they can only view their own profile. 
+
+On the page the user can see a small profile picture like the one in the navbar, their name, their household name and their role in the household. Underneeth the information there is a button that, when clicked, takes the user to the Prolife Edit Form.  
+![Profile page](documentation/ProfilePageAuth.PNG)
+![Profile page unauthenticated](documentation/ProfilePageUnAuth.PNG)
+
+### Profile Edit Form
+``USER STORY: As a user I can edit my profile-information so that I can personilize my experience.``
+
+On this page the user can change their profile image, set their household and their role in the household.  
+![Profile edit page](documentation/ProfileEdit.PNG)
+
+When a user profile is created it is assigned a default profile image but on this page the user can browse their devices images to pick one for their profile image. A preview shows up once an image is chosen. The images are stored using Cloudinary. 
+
+![Profile image change](documentation/ProfileImagePreview.gif)
+
+There is a dropdown menu present filled with the names of the households that are already in the database so that the user can join an already existing household if they want. Beneath  this dropdown there are two buttons. One takes the user to the Household Create Form and the other one takes the user to the Household Edit Form. The second button does only show up if there is a household connected with the user profile.
+
+![Profile edit household dropdown](documentation/ProfileEditDropdownHousehold.gif)
+![Profile edit with edit button](documentation/ProfileEditWithButton.PNG)
+![Profile edit without edit button](documentation/ProfileEditNoButton.PNG)
+
+The users “role” is by default set to Parent uppon creating a profile but here the user can change it by picking the right role in the dropdown menu. 
+![Profile edit role](documentation/ProfileEditDropdownRole.gif)
 
 
 ## Deployment
