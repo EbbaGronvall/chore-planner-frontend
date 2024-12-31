@@ -17,6 +17,17 @@ My vision for this webapplication was to make it as a noticeboard that you put u
 ![Wireframe chore](documentation/WireframeTask.PNG)
 ![Wireframe noticeboard](documentation/WireframeNoticeboard.PNG)
 
+#### The app on different screensizes
+Since I have been using React Bootstrap 4 components like fluid Containers and Rows and Columns when creating this React App the website is fully responsive across different screen sizes and devices. 
+![Landingpage on different screens](documentation/LandingPageDifferentSizes.PNG)
+
+#### Font
+For this app I chose the Google Font Itim beacuse it has the playfull handwriting look I wanted for this website. 
+![Font preview](documentation/FontPreview.PNG) 
+#### Icons 
+In the navbar there are Font Awesome icons next to the name of each page to make it more interesting than just text. It also makes it easier for users with limited reading skills to understand how to navigate to the different pages.
+![Icons in the navbar](documentation/IconsUnAuth.PNG)
+![Icons in the navbar](documentation/IconsAuth.PNG)
 
 
 ## Deployment
