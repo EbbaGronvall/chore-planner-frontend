@@ -98,6 +98,9 @@ On screens smaller than 768 px the links in the navbar are replaced with a “bu
 ![Navigation bar big screen](documentation/NavBarUnAuthBig.PNG)
 ![Navigation bar small screen](documentation/NavbarUnAuthSmall.gif)
 
+When hovering over the icons in the navigation bar the opasity of the text and icon increases to indicate to the user that they can click the link. The link to the page that is active has a static increased opasity to show what page the user is currently on. 
+![Navigation bar small screen](documentation/NavbarHoverActive.gif)
+
 ## Deployment
 
 ### Deploying the API
