@@ -1,5 +1,8 @@
 # ChorePlanner
+## Active webpages
+Frontend: https://chore-planner-frontend-ce06c4825181.herokuapp.com/
 
+Backend: https://chore-planner-api-6d4feabd1d60.herokuapp.com/
  ## Introduction
 
 Growing up with undiagnosed ADHD I often got in to trouble for forgetting to do the chores mum and dad asked me to do. They called me lazy and thougt I was inconciderate but it was never out of laziness or anything like that. I simply forgot. 
