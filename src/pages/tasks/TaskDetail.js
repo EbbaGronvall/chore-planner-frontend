@@ -76,18 +76,21 @@ const TaskDetail = (props) => {
                 )}
 
                 <div className="d-flex justify-content-end">
-                  {is_task_giver && is_assigned_to && (
-    <Button
-      onClick={handleOpenEdit}
-      className={`${btnStyles.Button} ${btnStyles.Green}`}
-    >
-      Edit the Chore
-    </Button>
-  )}
-										
-										<Button onClick={handleClose} className={`${btnStyles.Button}  ${btnStyles.Green}`}>
-											Close
-										</Button>
+                  {(is_task_giver || is_assigned_to) && (
+                    <Button
+                      onClick={handleOpenEdit}
+                      className={`${btnStyles.Button} ${btnStyles.Green}`}
+                    >
+                      Edit the Chore
+                    </Button>
+                  )}
+
+                  <Button
+                    onClick={handleClose}
+                    className={`${btnStyles.Button}  ${btnStyles.Green}`}
+                  >
+                    Close
+                  </Button>
                 </div>
               </Card.Body>
             </Card>
@@ -112,7 +115,6 @@ const TaskDetail = (props) => {
           </Spinner>
         </Container>
       )}
-    
     </>
   );
 };

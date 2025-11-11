@@ -39,20 +39,20 @@ const NavBar = () => {
 			>
 				Noticeboard <i class="fa-solid fa-check"></i>
 			</NavLink>
-			<NavLink
+			{/*<NavLink
 				className={styles.NavLink}
 				activeClassName={styles.Active}
 				to={`/households/${currentUserProfile?.household_slug}`}
 			>
 				My Home <i class="fa-solid fa-house"></i>
 			</NavLink>
-
+*/}
 			<NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
 				Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
 			</NavLink>
 			<NavLink
 				className={styles.NavLink}
-				to={`/profiles/${currentUser?.profile_id}`}
+				to={`/profiles`}
 			>
 				<Avatar src={currentUser?.profile_image} text="Your Page" height={35} />
 			</NavLink>

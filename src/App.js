@@ -47,7 +47,7 @@ function App() {
               <TasksPage message="No results found. Adjust your search" />
             )}
           />
-          <Route
+          {/*<Route
             exact
             path="/chores/create"
             render={() => <TaskCreateForm />}
@@ -57,9 +57,9 @@ function App() {
             path="/chores/:id/edit"
             render={() => <TaskEditForm />}
           />
-          <Route exact path="/chores/:id" render={() => <TaskPage />} />
+          <Route exact path="/chores/:id" render={() => <TaskPage />} />*/}
           {/* Routes to the householdpages */}
-          <Route
+          {/*<Route
             exact
             path="/households/create"
             render={() => <HouseholdCreateForm />}
@@ -73,14 +73,14 @@ function App() {
             exact
             path="/households/:slug"
             render={() => <HouseholdPage />}
-          />
+          />*/}
           {/* Routes to the profilepages */}
-          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-          <Route
+          <Route exact path="/profiles" render={() => <ProfilePage />} />
+          {/*<Route
             exact
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
-          />
+          />*/}
           {/* Routes to signin and signup*/}
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />

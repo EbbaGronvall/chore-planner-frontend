@@ -1,8 +1,8 @@
 import { Modal } from "react-bootstrap";
-import TaskCreateForm from "./TaskCreateForm";
+import HouseholdCreateForm from "./HouseholdCreateForm";
 import styles from "../../styles/Task.module.css";
 
-const TaskCreateModal = ({ show, handleClose }) => {
+const HouseholdCreateModal = ({ show, handleClose, householdProps }) => {
   return (
     <Modal
       show={show}
@@ -14,10 +14,10 @@ const TaskCreateModal = ({ show, handleClose }) => {
       contentClassName={styles.ModalContent}
     >
       <Modal.Body>
-        <TaskCreateForm handleClose={handleClose} />
+        <HouseholdCreateForm handleClose={handleClose} {...householdProps} />
       </Modal.Body>
     </Modal>
   );
 };
 
-export default TaskCreateModal;
+export default HouseholdCreateModal;

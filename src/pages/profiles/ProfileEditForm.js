@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Image from "react-bootstrap/Image";
@@ -13,7 +13,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 import "react-datepicker/dist/react-datepicker.css";
-import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import {
   useCurrentUserProfile,
@@ -21,13 +21,19 @@ import {
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
+import HouseholdCreateModal from "../households/HouseholdCreateModal";
 
-function ProfileEditForm() {
+const ProfileEditForm = (props) => {
   const [errors, setErrors] = useState({});
   const currentUserProfile = useCurrentUserProfile();
   const setCurrentUserProfile = useSetCurrentUserProfile();
   const imageFile = useRef();
   const [hasLoaded, setHasLoaded] = useState(false);
+  const { handleClose } = props;
+  const [showCreate, setShowCreate] = useState(false);
+
+  const handleOpenCreate = () => setShowCreate(true);
+  const handleCloseCreate = () => setShowCreate(false);
 
   const setCurrentUser = useSetCurrentUser();
 
@@ -104,7 +110,7 @@ function ProfileEditForm() {
 
       toast.success("Profile updated successfully!");
 
-      history.push(`/profiles/${id}`);
+      history.push(`/profiles`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data?.error);
@@ -114,6 +120,7 @@ function ProfileEditForm() {
 
   return hasLoaded ? (
     <>
+     <HouseholdCreateModal show={showCreate} handleClose={handleCloseCreate} />
       {currentUserProfile && parseInt(id) === currentUserProfile.id ? (
         <Card className={taskStyles.Card}>
           <h1>Edit</h1>
@@ -122,14 +129,6 @@ function ProfileEditForm() {
               <figure>
                 <Image src={image} fluid />
               </figure>
-              <div>
-                <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
-                  htmlFor="image-upload"
-                >
-                  Change the image
-                </Form.Label>
-              </div>
               <Form.File
                 id="image-upload"
                 ref={imageFile}
@@ -171,21 +170,9 @@ function ProfileEditForm() {
                     ))}
                   </Form.Control>
                 )}
-                <Link to="/households/create">
-                  <Button className={`${btnStyles.Button} ${btnStyles.Green}`}>
-                    Create New Household
-                  </Button>
-                </Link>
-
-                {household_slug && (
-                  <Link to={`/households/${household_slug}/edit`}>
-                    <Button
-                      className={`${btnStyles.Button} ${btnStyles.Green}`}
-                    >
-                      Edit Household
-                    </Button>
-                  </Link>
-                )}
+                <Button onClick={handleOpenCreate} className={`${btnStyles.Button} ${btnStyles.Green}`}>
+                Create New Household
+              </Button>
               </div>
             </Form.Group>
             {errors?.household_name?.map((message, idx) => (
@@ -220,13 +207,20 @@ function ProfileEditForm() {
                 {message}
               </Alert>
             ))}
+            <div className="d-flex justify-content-end">
             <Button
               className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
               type="submit"
             >
-              Update Profile
+              Save Changes
             </Button>
-
+            <Button
+          onClick={handleClose}
+          className={`${btnStyles.Button} ${btnStyles.Green}`}
+        >
+          Cancel
+        </Button>
+        </div>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert variant="warning" key={idx} className="mt-3">
                 {message}

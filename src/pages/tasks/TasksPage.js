@@ -32,9 +32,8 @@ function TasksPage({ filter = "" }) {
 
   const [showCreate, setShowCreate] = useState(false);
 
-  	const handleOpenCreate = () => setShowCreate(true);
-  	const handleCloseCreate = () => setShowCreate(false);
-
+  const handleOpenCreate = () => setShowCreate(true);
+  const handleCloseCreate = () => setShowCreate(false);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -64,66 +63,69 @@ function TasksPage({ filter = "" }) {
 
   return (
     <>
-    <TaskCreateModal show={showCreate} handleClose={handleCloseCreate} />
-    <Row className="mb-3">
-      {!no_slug ? (
-        <Form
-          className={`w-100 ${formStyles.SearchBar} ${formStyles.Form}`}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Row className="w-100">
-            <Form.Group as={Col} xs={12} sm={12} md={7} className="mb-3">
-              <i className={`fas fa-search ${formStyles.SearchIcon}`} />
-              <Form.Control
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                type="text"
-                className="mr-sm-2"
-                placeholder="Search Name or Task"
-              />
-            </Form.Group>
-            <Form.Group as={Col} xs={12} sm={8} md={3} className="mb-3">
-              <Form.Control
-                as="select"
-                className={`${formStyles.Input} ${formStyles.FormControl}`}
-                value={selectedFilter}
-                onChange={(event) => setSelectedFilter(event.target.value)}
-              >
-                <option value="">All tasks</option>
-                <option value="pending">Pending</option>
-                <option value="in_progress">In Progress</option>
-                <option value="completed">Completed</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group as={Col} xs={12} sm={4} md={2} className="mb-3">
-              <Form.Control
-                as="select"
-                className={formStyles.Input}
-                value={selectedOrder}
-                onChange={(event) => setSelectedOrder(event.target.value)}
-              >
-                <option value="">Sort By</option>
-                <option value="title">Title</option>
-                <option value="due_date">Due Date</option>
-                <option value="status">Status</option>
-                <option value="assigned_to__member__username">Assignee</option>
-              </Form.Control>
-            </Form.Group>
-            {currentUserProfile?.role === "Parent" && (
-              <Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
-                <Button
-											onClick={handleOpenCreate}
-											className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
-										>
-											Add a new Chore
-									</Button>
+      <TaskCreateModal show={showCreate} handleClose={handleCloseCreate} />
+      <Row className="mb-3">
+        {!no_slug ? (
+          <Form
+            className={`w-100 ${formStyles.SearchBar} ${formStyles.Form}`}
+            onSubmit={(event) => event.preventDefault()}
+          >
+            <Form.Row className="w-100">
+              <Form.Group as={Col} xs={12} sm={12} md={7} className="mb-3">
+                <i className={`fas fa-search ${formStyles.SearchIcon}`} />
+                <Form.Control
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  type="text"
+                  className="mr-sm-2"
+                  placeholder="Search Name or Task"
+                />
               </Form.Group>
-            )}
-          </Form.Row>
-        </Form>
-      ) : (
-        <></>
-      )}
+              <Form.Group as={Col} xs={12} sm={8} md={3} className="mb-3">
+                <Form.Control
+                  as="select"
+                  className={`${formStyles.Input} ${formStyles.FormControl}`}
+                  value={selectedFilter}
+                  onChange={(event) => setSelectedFilter(event.target.value)}
+                >
+                  <option value="">All tasks</option>
+                  <option value="pending">Pending</option>
+                  <option value="in_progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col} xs={12} sm={4} md={2} className="mb-3">
+                <Form.Control
+                  as="select"
+                  className={formStyles.Input}
+                  value={selectedOrder}
+                  onChange={(event) => setSelectedOrder(event.target.value)}
+                >
+                  <option value="">Sort By</option>
+                  <option value="title">Title</option>
+                  <option value="due_date">Due Date</option>
+                  <option value="status">Status</option>
+                  <option value="assigned_to__member__username">
+                    Assignee
+                  </option>
+                </Form.Control>
+              </Form.Group>
+              {currentUserProfile?.role === "Parent" && (
+                <Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
+                  <Button
+                    onClick={handleOpenCreate}
+                    className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
+                  >
+                    Add a new Chore
+                  </Button>
+                </Form.Group>
+              )}
+            </Form.Row>
+          </Form>
+        ) : (
+          <></>
+        )}
+      </Row>
       {hasLoaded ? (
         <Row className={taskStyles.Task}>
           {tasks.results.length && !no_slug ? (
@@ -200,7 +202,6 @@ function TasksPage({ filter = "" }) {
           </Spinner>
         </Container>
       )}
-    </Row>
     </>
   );
 }
