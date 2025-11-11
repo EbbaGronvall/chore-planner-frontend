@@ -25,10 +25,16 @@ function ProfilePage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: profile }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-        ]);
+        const { data: profile } = await axiosReq.get(`/profiles/${id}/`);
         setProfile({ results: [profile] });
+        if (profile.household) {
+          const { data: household } = await axiosReq.get(
+            `/households/${profile.household}/`
+          );
+          setShowHouseholdEditModal({ results: [household] });
+        } else {
+        console.log("no household");
+      }
         setHasLoaded(true);
       } catch (err) {
         console.log(err);

@@ -138,7 +138,7 @@ function TasksPage({ filter = "" }) {
                   sm={6}
                   md={4}
                   lg={3}
-                  className={` mb-4`}
+                  className={`mt-4 mb-4`}
                 >
                   <Task {...task} setTasks={setTasks} />
                 </Col>
