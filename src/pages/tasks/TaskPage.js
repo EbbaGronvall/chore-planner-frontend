@@ -6,28 +6,28 @@ import TaskDetail from "./TaskDetail";
 import { Row } from "react-bootstrap";
 
 function TaskPage() {
-	const { id } = useParams();
-	const [task, setTask] = useState({ results: [] });
+  const { id } = useParams();
+  const [task, setTask] = useState({ results: [] });
 
-	useEffect(() => {
-		const handleMount = async () => {
-			try {
-				const [{ data: task }] = await Promise.all([
-					axiosReq.get(`/tasks/${id}`),
-				]);
-				setTask({ results: [task] });
-			} catch (err) {
-				//console.log(err);
-			}
-		};
-		handleMount();
-	}, [id]);
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const [{ data: task }] = await Promise.all([
+          axiosReq.get(`/tasks/${id}`),
+        ]);
+        setTask({ results: [task] });
+      } catch (err) {
+        //console.log(err);
+      }
+    };
+    handleMount();
+  }, [id]);
 
-	return (
-		<Row className={styles.Task}>
-			<TaskDetail {...task.results[0]} setTask={setTask} taskPage />
-		</Row>
-	);
+  return (
+    <Row className={styles.Task}>
+      <TaskDetail {...task.results[0]} setTask={setTask} taskPage />
+    </Row>
+  );
 }
 
 export default TaskPage;

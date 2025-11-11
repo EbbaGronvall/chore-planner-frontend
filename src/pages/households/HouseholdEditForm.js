@@ -16,163 +16,163 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import {
-	useCurrentUserProfile,
-	useSetCurrentUserProfile,
+  useCurrentUserProfile,
+  useSetCurrentUserProfile,
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
 
 function HouseholdEditForm() {
-	const [errors, setErrors] = useState({});
-	const currentUserProfile = useCurrentUserProfile();
-	const setCurrentUserProfile = useSetCurrentUserProfile();
-	const setCurrentUser = useSetCurrentUser();
-	const [hasLoaded, setHasLoaded] = useState(false);
+  const [errors, setErrors] = useState({});
+  const currentUserProfile = useCurrentUserProfile();
+  const setCurrentUserProfile = useSetCurrentUserProfile();
+  const setCurrentUser = useSetCurrentUser();
+  const [hasLoaded, setHasLoaded] = useState(false);
 
-	const [householdData, setHouseholdData] = useState({
-		name: "",
-		slug: "",
-	});
-	const { name, slug } = householdData;
-	const history = useHistory();
-	const { slug: urlSlug } = useParams();
+  const [householdData, setHouseholdData] = useState({
+    name: "",
+    slug: "",
+  });
+  const { name, slug } = householdData;
+  const history = useHistory();
+  const { slug: urlSlug } = useParams();
 
-	useEffect(() => {
-		const handleMount = async () => {
-			try {
-				const { data } = await axiosReq.get(`/households/${urlSlug}/`);
-				const { name, slug } = data;
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/households/${urlSlug}/`);
+        const { name, slug } = data;
 
-				if (currentUserProfile.household_name === name) {
-					setHouseholdData({ name, slug });
-					setHasLoaded(true);
-				} else {
-					toast.error("You can only edit your own household.");
-					history.push("/");
-					setHasLoaded(true);
-				}
-			} catch (err) {
-				//console.log(err);
-			}
-		};
-		setHasLoaded(false);
-		const timer = setTimeout(() => {
-			handleMount();
-		}, 1000);
-		return () => {
-			clearTimeout(timer);
-		};
-	}, [history, urlSlug, currentUserProfile]);
+        if (currentUserProfile.household_name === name) {
+          setHouseholdData({ name, slug });
+          setHasLoaded(true);
+        } else {
+          toast.error("You can only edit your own household.");
+          history.push("/");
+          setHasLoaded(true);
+        }
+      } catch (err) {
+        //console.log(err);
+      }
+    };
+    setHasLoaded(false);
+    const timer = setTimeout(() => {
+      handleMount();
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [history, urlSlug, currentUserProfile]);
 
-	const handleChange = (event) => {
-		setHouseholdData({
-			...householdData,
-			[event.target.name]: event.target.value,
-		});
-	};
+  const handleChange = (event) => {
+    setHouseholdData({
+      ...householdData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const formData = new FormData();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
 
-		formData.append("name", name);
-		formData.append("slug", slug);
+    formData.append("name", name);
+    formData.append("slug", slug);
 
-		try {
-			const { data } = await axiosReq.put(`/households/${urlSlug}/`, formData);
-			setCurrentUserProfile((currentUserProfile) => ({
-				...currentUserProfile,
-				household_name: data.name,
-				household_slug: data.slug,
-			}));
-			setCurrentUser((currentUser) => ({
-				...currentUser,
-				household_name: data.name,
-				household_slug: data.slug,
-			}));
-			toast.success("Household updated successfully!");
-			history.push(`/households/${data.slug}/`);
-		} catch (err) {
-			if (err.response?.status !== 401) {
-				setErrors(err.response?.data?.error || {});
+    try {
+      const { data } = await axiosReq.put(`/households/${urlSlug}/`, formData);
+      setCurrentUserProfile((currentUserProfile) => ({
+        ...currentUserProfile,
+        household_name: data.name,
+        household_slug: data.slug,
+      }));
+      setCurrentUser((currentUser) => ({
+        ...currentUser,
+        household_name: data.name,
+        household_slug: data.slug,
+      }));
+      toast.success("Household updated successfully!");
+      history.push(`/households/${data.slug}/`);
+    } catch (err) {
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data?.error || {});
 
-				if (err.response?.data?.details?.name) {
-					setErrors((prevErrors) => ({
-						...prevErrors,
-						name: err.response?.data?.details?.name,
-					}));
-				}
+        if (err.response?.data?.details?.name) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            name: err.response?.data?.details?.name,
+          }));
+        }
 
-				if (err.response?.data?.details?.slug) {
-					setErrors((prevErrors) => ({
-						...prevErrors,
-						slug: err.response?.data?.details?.slug,
-					}));
-				}
-			}
-		}
-	};
+        if (err.response?.data?.details?.slug) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            slug: err.response?.data?.details?.slug,
+          }));
+        }
+      }
+    }
+  };
 
-	return hasLoaded ? (
-		<Card className={taskStyles.Card}>
-			<h1>You're now editing your household</h1>
-			<Form onSubmit={handleSubmit}>
-				<Form.Group controlId="name">
-					<Form.Label className={styles.Label}>Household Name</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="ex. Home Sweet Home"
-						className={styles.Input}
-						name="name"
-						value={name}
-						onChange={handleChange}
-					/>
-				</Form.Group>
-				{errors?.name?.map((message, idx) => (
-					<Alert variant="warning" key={idx}>
-						{message}
-					</Alert>
-				))}
-				<Form.Group controlId="slug">
-					<Form.Label className={styles.Label}>Slug*</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="ex. home-sweet-home"
-						className={styles.Input}
-						name="slug"
-						value={slug}
-						onChange={handleChange}
-					/>
-				</Form.Group>
-				{errors?.slug?.map((message, idx) => (
-					<Alert variant="warning" key={idx}>
-						{message}
-					</Alert>
-				))}
+  return hasLoaded ? (
+    <Card className={taskStyles.Card}>
+      <h1>You're now editing your household</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="name">
+          <Form.Label className={styles.Label}>Household Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="ex. Home Sweet Home"
+            className={styles.Input}
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        {errors?.name?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="slug">
+          <Form.Label className={styles.Label}>Slug*</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="ex. home-sweet-home"
+            className={styles.Input}
+            name="slug"
+            value={slug}
+            onChange={handleChange}
+          />
+        </Form.Group>
+        {errors?.slug?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
 
-				<Button
-					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
-					type="submit"
-				>
-					Update Household
-				</Button>
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
+          type="submit"
+        >
+          Update Household
+        </Button>
 
-				{errors.non_field_errors?.map((message, idx) => (
-					<Alert variant="warning" key={idx} className="mt-3">
-						{message}
-					</Alert>
-				))}
-			</Form>
-		</Card>
-	) : (
-		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
-		>
-			<Spinner animation="border" role="status">
-				<span className="sr-only">Loading...</span>
-			</Spinner>
-		</Container>
-	);
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert variant="warning" key={idx} className="mt-3">
+            {message}
+          </Alert>
+        ))}
+      </Form>
+    </Card>
+  ) : (
+    <Container
+      className={`${appStyles.Content} p-4 d-flex justify-content-center align-items-center`}
+    >
+      <Spinner className={appStyles.Spinner} animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    </Container>
+  );
 }
 
 export default HouseholdEditForm;

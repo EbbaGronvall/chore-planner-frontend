@@ -1,49 +1,49 @@
 .Row {
-    background-color: rgb(214 , 214, 203);
+  background-color: rgb(214, 214, 203);
 }
 .Image {
-    width: 100%;
+  width: 100%;
 }
 .ImageRound {
-    border-radius: 50%;
-    padding: 20px;
+  border-radius: 50%;
+  padding: 20px;
 }
 .ImageCol {
-    display: flex;
-    justify-content: end;
-    padding-right: 0;
-    padding-left: 0;
+  display: flex;
+  justify-content: end;
+  padding-right: 0;
+  padding-left: 0;
 }
 .HeadingCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .Subheading {
-    font-size: 30px;
-    padding: 10px 20px 20px 20px;
-    text-align: center;
-    line-height: 1.5;
+  font-size: 30px;
+  padding: 10px 20px 20px 20px;
+  text-align: center;
+  line-height: 1.5;
 }
 h1 {
-    font-size: 50px;
-    text-align: center;
-    padding-top: 20px;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 20px;
 }
 h1 strong {
-    font-size: 90px;
-    font-family: "Tangerine", cursive;
-  	font-weight: 700;
-  	font-style: normal;
+  font-size: 90px;
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 h2 {
-    font-size: 40px;
-    text-align: center;
-    padding-top: 20px;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 20px;
 }
 p {
-    font-size: 20px;
-    padding: 10px 50px 20px 50px;
-    text-align: center;
-    line-height: 1.5;
+  font-size: 20px;
+  padding: 10px 50px 20px 50px;
+  text-align: center;
+  line-height: 1.5;
 }

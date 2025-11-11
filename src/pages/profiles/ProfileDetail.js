@@ -12,54 +12,56 @@ import appStyles from "../../App.module.css";
 import { Card } from "react-bootstrap";
 
 const ProfileDetail = (props) => {
-	const { id, member, household_name, role } = props;
-	const currentUserProfile = useCurrentUserProfile();
-	const currentUser = useCurrentUser();
+  const { id, member, household_name, role } = props;
+  const currentUserProfile = useCurrentUserProfile();
+  const currentUser = useCurrentUser();
 
-	const [hasLoaded, setHasLoaded] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
-	useEffect(() => {
-		if (currentUserProfile) {
-			setHasLoaded(true);
-		}
-	}, [currentUserProfile]);
-	const is_member = currentUser?.username === member;
+  useEffect(() => {
+    if (currentUserProfile) {
+      setHasLoaded(true);
+    }
+  }, [currentUserProfile]);
+  const is_member = currentUser?.username === member;
 
-	return hasLoaded ? (
-		<>
-			{is_member ? (
-				<Card className={taskStyles.Card}>
-					<h1 className="mb-4">
-						<Avatar src={currentUserProfile?.image} text={member} height={40} />
-					</h1>
+  return hasLoaded ? (
+    <>
+      {is_member ? (
+        <Card className={taskStyles.Card}>
+          <h1 className="mb-4">
+            <Avatar src={currentUserProfile?.image} text={member} height={40} />
+          </h1>
 
-					<p className="mb-4">
-						Household Name: {household_name}
-						<br />
-						Your role: {role}
-					</p>
+          <p className="mb-4">
+            Household Name: {household_name}
+            <br />
+            Your role: {role}
+          </p>
 
-					<Link to={`/profiles/${id}/edit`}>
-						<Button className={`${btnStyles.Button}  ${btnStyles.Green}`}>
-							Edit your profile
-						</Button>
-					</Link>
-				</Card>
-			) : (
-				<Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
-					<h1 className={taskStyles.Text}>
-						Sorry, you can only see your own profile!
-					</h1>
-				</Container>
-			)}
-		</>
-	) : (
-		<Container className={`  ${taskStyles.Text} ${appStyles.Spinner}`}>
-			<Spinner animation="border" role="status">
-				<span className="sr-only">Loading...</span>
-			</Spinner>
-		</Container>
-	);
+          <Link to={`/profiles/${id}/edit`}>
+            <Button className={`${btnStyles.Button}  ${btnStyles.Green}`}>
+              Edit your profile
+            </Button>
+          </Link>
+        </Card>
+      ) : (
+        <Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
+          <h1 className={taskStyles.Text}>
+            Sorry, you can only see your own profile!
+          </h1>
+        </Container>
+      )}
+    </>
+  ) : (
+    <Container
+      className={`${appStyles.Content} p-4 d-flex justify-content-center align-items-center`}
+    >
+      <Spinner className={appStyles.Spinner} animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    </Container>
+  );
 };
 
 export default ProfileDetail;

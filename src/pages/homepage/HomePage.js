@@ -1,4 +1,3 @@
-
 import styles from "../../styles/HomePage.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Image from "react-bootstrap/Image";
@@ -10,9 +9,8 @@ import laundry from "../../assets/laundry.jpg";
 import sweep from "../../assets/sweep.jpg";
 
 function HomePage() {
-
-	return (
-		<>
+  return (
+    <>
       <Row className={`${styles.Row}`}>
         <Col className={styles.ImageCol} md={3} sm={12}>
           <Image
@@ -71,7 +69,7 @@ function HomePage() {
         </Col>
       </Row>
     </>
-	);
+  );
 }
 
 export default HomePage;

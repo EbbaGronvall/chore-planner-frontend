@@ -1,31 +1,31 @@
 .NavBar {
-	background-color: rgb(107, 112, 92);
-	box-shadow: 0px -9px 20px 5px rgb(31, 31, 31);
+  background-color: rgb(107, 112, 92);
+  box-shadow: 0px -9px 20px 5px rgb(31, 31, 31);
 }
 .Brand {
-	font-size: 50px;
-	font-family: "Tangerine", cursive;
-  	font-weight: 700;
-  	font-style: normal;
+  font-size: 50px;
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 .NavLink {
-	padding: 5px;
+  padding: 5px;
 }
 .Active i {
-	color: rgb(31, 31, 31);
+  color: rgb(31, 31, 31);
 }
 /* Media query for screens smaller than 863px */
 @media (max-width: 863px) and (min-width: 766px) {
-	.Brand {
-		font-size: 40px;
-	}
-	.NavLink {
-		padding: 5px 0;
-	}
+  .Brand {
+    font-size: 40px;
+  }
+  .NavLink {
+    padding: 5px 0;
+  }
 }
 /* Media query for screens smaller than 403px */
 @media screen and (max-width: 403px) {
-	.Brand {
-		font-size: 40px;
-	}
+  .Brand {
+    font-size: 40px;
+  }
 }
