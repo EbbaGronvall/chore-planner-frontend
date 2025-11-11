@@ -4,10 +4,9 @@ import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import Container from "react-bootstrap/Container";
-
+import { Card } from "react-bootstrap";
+import taskStyles from "../../styles/Task.module.css";
 import styles from "../../styles/Forms.module.css";
-import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefault";
 import {
@@ -75,8 +74,8 @@ function HouseholdCreateForm() {
 	};
 
 	return (
-		<Container className={appStyles.Content}>
-			<h1>Add a Household</h1>
+		<Card className={taskStyles.Card}>
+			<h1>Create a New Household</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="name">
 					<Form.Label className={styles.Label}>Household Name</Form.Label>
@@ -115,7 +114,7 @@ function HouseholdCreateForm() {
 				</p>
 
 				<Button
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
 					type="submit"
 				>
 					Add Household
@@ -126,7 +125,7 @@ function HouseholdCreateForm() {
 					</Alert>
 				))}
 			</Form>
-		</Container>
+		</Card>
 	);
 }
 

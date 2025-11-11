@@ -5,11 +5,11 @@ import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
-import tasksPageStyles from "../../styles/TasksPage.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import appStyles from "../../App.module.css";
+import { Card } from "react-bootstrap";
 
 const ProfileDetail = (props) => {
 	const { id, member, household_name, role } = props;
@@ -28,7 +28,7 @@ const ProfileDetail = (props) => {
 	return hasLoaded ? (
 		<>
 			{is_member ? (
-				<Container className={`${appStyles.Content}`}>
+				<Card className={taskStyles.Card}>
 					<h1 className="mb-4">
 						<Avatar src={currentUserProfile?.image} text={member} height={40} />
 					</h1>
@@ -40,11 +40,11 @@ const ProfileDetail = (props) => {
 					</p>
 
 					<Link to={`/profiles/${id}/edit`}>
-						<Button className={`${btnStyles.Button}  ${btnStyles.Pink}`}>
+						<Button className={`${btnStyles.Button}  ${btnStyles.Green}`}>
 							Edit your profile
 						</Button>
 					</Link>
-				</Container>
+				</Card>
 			) : (
 				<Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
 					<h1 className={taskStyles.Text}>
@@ -54,7 +54,7 @@ const ProfileDetail = (props) => {
 			)}
 		</>
 	) : (
-		<Container className={`  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}>
+		<Container className={`  ${taskStyles.Text} ${appStyles.Spinner}`}>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>
 			</Spinner>

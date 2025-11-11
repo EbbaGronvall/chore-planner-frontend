@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-
+import { Card } from "react-bootstrap";
 import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -15,7 +15,6 @@ import { axiosReq } from "../../api/axiosDefault";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
-import taskPageStyles from "../../styles/TasksPage.module.css";
 import {
 	useCurrentUserProfile,
 	useSetCurrentUserProfile,
@@ -33,14 +32,13 @@ function ProfileEditForm() {
 	const setCurrentUser = useSetCurrentUser();
 
 	const [profileData, setProfileData] = useState({
-		member: "",
 		household_name: "",
 		role: "",
 		image: "",
 		household_slug: "",
 	});
 	const [households, setHouseholds] = useState([]);
-	const { member, household_name, role, image, household_slug } = profileData;
+	const { household_name, role, image, household_slug } = profileData;
 	const history = useHistory();
 	const { id } = useParams();
 
@@ -53,10 +51,10 @@ function ProfileEditForm() {
 						axiosReq.get("/households/"),
 					]);
 
-				const { member, household_name, role, image, household_slug } =
+				const { household_name, role, image, household_slug } =
 					userProfile;
 
-				setProfileData({ member, household_name, role, image, household_slug });
+				setProfileData({ household_name, role, image, household_slug });
 				setHouseholds(householdsData.results);
 				setHasLoaded(true);
 			} catch (err) {
@@ -118,8 +116,8 @@ function ProfileEditForm() {
 	return hasLoaded ? (
 		<>
 			{currentUserProfile && parseInt(id) === currentUserProfile.id ? (
-				<Container className={appStyles.Content}>
-					<h1>{member}, You are now editing your Profile</h1>
+				<Card className={taskStyles.Card}>
+					<h1>Edit</h1>
 					<Form onSubmit={handleSubmit}>
 						<Form.Group>
 							<figure>
@@ -175,14 +173,14 @@ function ProfileEditForm() {
 									</Form.Control>
 								)}
 								<Link to="/households/create">
-									<Button className={`${btnStyles.Button} ${btnStyles.Pink}`}>
+									<Button className={`${btnStyles.Button} ${btnStyles.Green}`}>
 										Create New Household
 									</Button>
 								</Link>
 
 								{household_slug && (
 									<Link to={`/households/${household_slug}/edit`}>
-										<Button className={`${btnStyles.Button} ${btnStyles.Pink}`}>
+										<Button className={`${btnStyles.Button} ${btnStyles.Green}`}>
 											Edit Household
 										</Button>
 									</Link>
@@ -222,7 +220,7 @@ function ProfileEditForm() {
 							</Alert>
 						))}
 						<Button
-							className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
+							className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
 							type="submit"
 						>
 							Update Profile
@@ -234,7 +232,7 @@ function ProfileEditForm() {
 							</Alert>
 						))}
 					</Form>
-				</Container>
+				</Card>
 			) : (
 				<Container fluid className={`${appStyles.Content}  ${taskStyles.Text}`}>
 					<h2>Sorry</h2>
@@ -244,7 +242,7 @@ function ProfileEditForm() {
 		</>
 	) : (
 		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
+			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>

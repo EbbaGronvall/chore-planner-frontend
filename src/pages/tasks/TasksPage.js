@@ -8,7 +8,6 @@ import Form from "react-bootstrap/Form";
 import formStyles from "../../styles/Forms.module.css";
 import taskStyles from "../../styles/Task.module.css";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/TasksPage.module.css";
 import { useLocation } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import Task from "./Task";
@@ -57,16 +56,15 @@ function TasksPage({ filter = "" }) {
 	}, [filter, query, selectedFilter, selectedOrder, pathname]);
 
 	return (
-		<Container fluid className={taskStyles.Task}>
 			<Row className="mb-3">
 				{!no_slug ? (
 					<Form
-						className={`w-100 ${styles.SearchBar}`}
+						className={`w-100 ${formStyles.SearchBar} ${formStyles.Form}`}
 						onSubmit={(event) => event.preventDefault()}
 					>
 						<Form.Row className="w-100">
 							<Form.Group as={Col} xs={12} sm={12} md={7} className="mb-3">
-								<i className={`fas fa-search ${styles.SearchIcon}`} />
+								<i className={`fas fa-search ${formStyles.SearchIcon}`} />
 								<Form.Control
 									value={query}
 									onChange={(event) => setQuery(event.target.value)}
@@ -108,7 +106,7 @@ function TasksPage({ filter = "" }) {
 								<Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
 									<Link to={`/chores/create`}>
 										<Button
-											className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+											className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
 										>
 											Add a new Chore
 										</Button>
@@ -121,7 +119,7 @@ function TasksPage({ filter = "" }) {
 					<></>
 				)}
 				{hasLoaded ? (
-					<Container fluid>
+					<Row className={taskStyles.Task}>
 						{tasks.results.length && !no_slug ? (
 							<InfiniteScroll
 								className="d-flex flex-wrap"
@@ -141,7 +139,7 @@ function TasksPage({ filter = "" }) {
 								loader={
 									<Container
 										fluid
-										className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+										className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 									>
 										<Spinner animation="border" role="status">
 											<span className="sr-only">Loading...</span>
@@ -170,7 +168,7 @@ function TasksPage({ filter = "" }) {
 										</h3>
 										<Link to={`/profiles/${currentUserProfile?.id}/edit`}>
 											<Button
-												className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+												className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
 											>
 												Update your profile
 											</Button>
@@ -179,11 +177,11 @@ function TasksPage({ filter = "" }) {
 								)}
 							</>
 						)}
-					</Container>
+					</Row>
 				) : (
 					<Container
 						fluid
-						className={`${appStyles.Content}  ${taskStyles.Text} ${styles.Spinner}`}
+						className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 					>
 						<Spinner animation="border" role="status">
 							<span className="sr-only">Loading...</span>
@@ -191,7 +189,7 @@ function TasksPage({ filter = "" }) {
 					</Container>
 				)}
 			</Row>
-		</Container>
+		
 	);
 }
 

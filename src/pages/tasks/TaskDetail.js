@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import tasksPageStyles from "../../styles/TasksPage.module.css";
+import { Row } from "react-bootstrap";
 
 const TaskDetail = (props) => {
 	const {
@@ -36,7 +36,7 @@ const TaskDetail = (props) => {
 	}, [assigned_to_username, task_giver_username]);
 
 	return (
-		<Container>
+		<Row>
 			{hasLoaded ? (
 				<>
 					{isUserAuthorized ? (
@@ -77,7 +77,7 @@ const TaskDetail = (props) => {
 									{is_task_giver && taskPage && (
 										<Link to={`/chores/${id}/edit`}>
 											<Button
-												className={`${btnStyles.Button}  ${btnStyles.Pink}`}
+												className={`${btnStyles.Button}  ${btnStyles.Green}`}
 											>
 												Edit the chore
 											</Button>
@@ -96,14 +96,14 @@ const TaskDetail = (props) => {
 				</>
 			) : (
 				<Container
-					className={`${appStyles.Content}  ${styles.Text} ${tasksPageStyles.Spinner}`}
+					className={`${appStyles.Content}  ${styles.Text} ${appStyles.Spinner}`}
 				>
 					<Spinner animation="border" role="status">
 						<span className="sr-only">Loading...</span>
 					</Spinner>
 				</Container>
 			)}
-		</Container>
+		</Row>
 	);
 };
 

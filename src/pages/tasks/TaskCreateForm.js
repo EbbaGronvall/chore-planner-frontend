@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
+import { Card } from "react-bootstrap";
 
 import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
@@ -17,7 +18,6 @@ import { format } from "date-fns";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
 import { toast } from "react-toastify";
-import taskPageStyles from "../../styles/TasksPage.module.css";
 
 function TaskCreateForm() {
 	const [errors, setErrors] = useState({});
@@ -102,7 +102,7 @@ function TaskCreateForm() {
 	if (!currentUserProfile) {
 		return (
 			<Container
-				className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
+				className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 			>
 				<Spinner animation="border" role="status">
 					<span className="sr-only">Loading...</span>
@@ -118,7 +118,7 @@ function TaskCreateForm() {
 		);
 	}
 	return (
-		<Container className={appStyles.Content}>
+		<Card className={taskStyles.Card}>
 			<h1>Let's Plan Some Chores</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="title">
@@ -203,7 +203,7 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 				<Button
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide}`}
+					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
 					type="submit"
 				>
 					Set Chore
@@ -214,7 +214,7 @@ function TaskCreateForm() {
 					</Alert>
 				))}
 			</Form>
-		</Container>
+		</Card>
 	);
 }
 

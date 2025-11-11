@@ -1,15 +1,33 @@
 .Task {
-	background: rgb(187, 145, 102) url("/src/assets/noticeboard.jpg") no-repeat
-		fixed center;
 	min-height: 85vh;
 	padding: 20px;
+  	background-image: linear-gradient(to top, #A0A58A, #E0E3D4);
+
 }
 .Card {
-	background-color: rgb(255, 246, 155);
-	box-shadow: 0px 8px 10px 0px rgba(31, 31, 31, 0.75);
+	background-color: rgb(185, 190, 167);
 	border-radius: 0;
 	padding: 20px;
+  box-shadow: 0px 8px 10px 0px rgba(31, 31, 31, 0.5);
 }
-.Text {
-	text-align: center;
+.CardZoom {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.CardZoom:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 10px 0px rgba(31, 31, 31, 0.75)
+}
+
+.ModalContent {
+  background: none;
+  border: none;
+}
+
+.ModalHeader {
+  background-color: rgb(183, 183, 164);
+  border-bottom: none;
+}
+
+.modal-backdrop.show {
+  opacity: 0.85;
 }

@@ -1,3 +1,8 @@
+.Form {
+	padding: 10px;
+	background-image: linear-gradient(to bottom, #A0A58A, #E0E3D4);
+	margin-top: -10px;
+}
 .Input {
 	background: #ffffff;
 	border: 1px solid #f0f1f9;
@@ -8,4 +13,29 @@
 }
 .Label {
 	margin-left: 10px;
+}
+.SearchBar input {
+	border-radius: 20px;
+	background: #ffffff;
+	color: #7177a1;
+	padding-left: 40px;
+	margin-bottom: 16px;
+	border: 1px solid #f0f1f9;
+}
+.SearchIcon {
+	position: absolute;
+	font-size: 1.2rem;
+	padding: 9px;
+	padding-left: 15px;
+}
+
+.SearchIcon:hover {
+	cursor: default;
+	color: #cfced3;
+}
+.select-dropdown {
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	max-height: 200px;
+	overflow-y: auto;
 }

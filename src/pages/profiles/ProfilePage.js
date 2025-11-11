@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import ProfileDetail from "./ProfileDetail";
 import taskStyles from "../../styles/Task.module.css";
-import taskPageStyles from "../../styles/TasksPage.module.css";
 
 function ProfilePage() {
 	const { id } = useParams();
@@ -44,7 +43,7 @@ function ProfilePage() {
 		</>
 	) : (
 		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
+			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>

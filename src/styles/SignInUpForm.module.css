@@ -14,13 +14,14 @@
 	padding: 10px;
 }
 .Header {
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 30px;
+	font-size: 70px;
 	text-align: center;
 	letter-spacing: 0.2em;
 	text-transform: capitalize;
 	padding: 10px;
+	font-family: "Tangerine", cursive;
+  	font-weight: 700;
+  	font-style: normal;
 }
 .Link {
 	text-decoration: none;
@@ -29,7 +30,12 @@
 	margin: auto;
 }
 .Link span {
-	color: rgb(234, 139, 159);
+	color: rgb(107, 112, 92);
+	transition: all 500ms;
+	
+}
+.Link span:hover {
+	font-size: 20px;
 }
 .Container {
 	padding: 30px 10px;

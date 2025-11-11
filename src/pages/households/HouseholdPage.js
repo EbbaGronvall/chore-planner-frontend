@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import HouseholdDetail from "./HouseholdDetail";
 import taskStyles from "../../styles/Task.module.css";
-import taskPageStyles from "../../styles/TasksPage.module.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -50,7 +49,7 @@ function HouseholdPage() {
 		</>
 	) : (
 		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${taskPageStyles.Spinner}`}
+			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>

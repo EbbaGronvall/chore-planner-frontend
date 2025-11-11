@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
+import { Card } from "react-bootstrap";
 
 import styles from "../../styles/Forms.module.css";
 import appStyles from "../../App.module.css";
@@ -20,7 +21,6 @@ import {
 } from "../../contexts/CurrentUserProfileContext";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast } from "react-toastify";
-import tasksPageStyles from "../../styles/TasksPage.module.css";
 
 function HouseholdEditForm() {
 	const [errors, setErrors] = useState({});
@@ -114,7 +114,7 @@ function HouseholdEditForm() {
 	};
 
 	return hasLoaded ? (
-		<Container className={appStyles.Content}>
+		<Card className={taskStyles.Card}>
 			<h1>You're now editing your household</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="name">
@@ -151,7 +151,7 @@ function HouseholdEditForm() {
 				))}
 
 				<Button
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
+					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
 					type="submit"
 				>
 					Update Household
@@ -163,10 +163,10 @@ function HouseholdEditForm() {
 					</Alert>
 				))}
 			</Form>
-		</Container>
+		</Card>
 	) : (
 		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
+			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>

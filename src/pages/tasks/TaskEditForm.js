@@ -17,8 +17,8 @@ import { format } from "date-fns";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import taskStyles from "../../styles/Task.module.css";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
-import { toast } from "react-toastify";
-import tasksPageStyles from "../../styles/TasksPage.module.css";
+import { toast } from "react-toastify"; 
+import { Card } from "react-bootstrap";
 
 function TaskEditForm() {
 	const [errors, setErrors] = useState({});
@@ -145,8 +145,8 @@ function TaskEditForm() {
 		: [];
 
 	return hasLoaded ? (
-		<Container className={appStyles.Content}>
-			<h1>You're now editing a chore</h1>
+		<Card className={taskStyles.Card}>
+			<h1>Edit Chore</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId="title">
 					<Form.Label className={styles.Label}>Chore Title</Form.Label>
@@ -251,7 +251,7 @@ function TaskEditForm() {
 					</Alert>
 				))}
 				<Button
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
+					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
 					type="submit"
 				>
 					Update Chore
@@ -259,7 +259,7 @@ function TaskEditForm() {
 				<Button
 					onClick={handleDelete}
 					aria-label="delete"
-					className={`${btnStyles.Button} ${btnStyles.Pink} ${btnStyles.Wide} mb-4`}
+					className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide} mb-4`}
 				>
 					Delete Chore
 				</Button>
@@ -269,10 +269,10 @@ function TaskEditForm() {
 					</Alert>
 				))}
 			</Form>
-		</Container>
+		</Card>
 	) : (
 		<Container
-			className={`${appStyles.Content}  ${taskStyles.Text} ${tasksPageStyles.Spinner}`}
+			className={`${appStyles.Content}  ${taskStyles.Text} ${appStyles.Spinner}`}
 		>
 			<Spinner animation="border" role="status">
 				<span className="sr-only">Loading...</span>

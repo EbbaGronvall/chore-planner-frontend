@@ -63,7 +63,7 @@ function SignInForm() {
 								onChange={handleChange}
 							/>
 						</Form.Group>
-						{errors.username?.map((message, idx) => (
+						{errors?.username?.map((message, idx) => (
 							<Alert variant="warning" key={idx}>
 								{message}
 							</Alert>
@@ -80,29 +80,29 @@ function SignInForm() {
 								onChange={handleChange}
 							/>
 						</Form.Group>
-						{errors.password?.map((message, idx) => (
+						{errors?.password?.map((message, idx) => (
 							<Alert variant="warning" key={idx}>
 								{message}
 							</Alert>
 						))}
 
 						<Button
-							className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Pink}`}
+							className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Green}`}
 							type="submit"
 						>
 							Sign In
 						</Button>
-						{errors.non_field_errors?.map((message, idx) => (
+						{errors?.non_field_errors?.map((message, idx) => (
 							<Alert variant="warning" key={idx} className="mt-3">
 								{message}
 							</Alert>
 						))}
 					</Form>
-				</Container>
-				<Container className={`mt-3 ${appStyles.Content}`}>
+					<div className="mt-3">
 					<Link className={styles.Link} to="/signup">
 						Not a member yet? <span>Sign up here</span>
 					</Link>
+					</div>
 				</Container>
 			</Col>
 		</Row>
