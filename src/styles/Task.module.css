@@ -31,3 +31,12 @@
 .modal-backdrop.show {
   opacity: 0.85;
 }
+
+.infinite-scroll-component__outerdiv {
+  width: 100% !important;
+  padding-top: 10px;
+}
+.infinite-scroll-component {
+  width: 100% !important;
+  padding-top: 10px;
+}

@@ -26,12 +26,12 @@ function ProfilePage() {
     const handleMount = async () => {
       try {
         const [{ data: profile }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}`),
+          axiosReq.get(`/profiles/${id}/`),
         ]);
         setProfile({ results: [profile] });
         setHasLoaded(true);
       } catch (err) {
-        //console.log(err);
+        console.log(err);
       }
     };
     setHasLoaded(false);

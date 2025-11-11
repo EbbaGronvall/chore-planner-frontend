@@ -5,10 +5,8 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { Row } from "react-bootstrap";
 
 const TaskDetail = (props) => {
   const {

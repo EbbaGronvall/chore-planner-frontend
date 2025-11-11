@@ -75,7 +75,7 @@ function App() {
             render={() => <HouseholdPage />}
           />*/}
           {/* Routes to the profilepages */}
-          <Route exact path="/profiles" render={() => <ProfilePage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           {/*<Route
             exact
             path="/profiles/:id/edit"

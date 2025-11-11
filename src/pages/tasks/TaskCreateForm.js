@@ -38,7 +38,7 @@ function TaskCreateForm() {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const { data } = await axiosReq.get("/profiles/");
+        const { data } = await axiosReq.get("/profiles");
 
         setProfiles(data.results);
       } catch (err) {
