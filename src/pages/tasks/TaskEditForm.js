@@ -122,7 +122,7 @@ function TaskEditForm() {
     try {
       await axiosReq.put(`/tasks/${id}/`, formData);
       toast.success("Chore updated successfully!");
-      history.push(`/chores/${id}`);
+      history.push(`/chores/`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data?.error || {});

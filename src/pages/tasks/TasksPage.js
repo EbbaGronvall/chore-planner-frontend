@@ -125,10 +125,10 @@ function TasksPage({ filter = "" }) {
         <></>
       )}
       {hasLoaded ? (
-        <Row>
+        <Row className={taskStyles.Task}>
           {tasks.results.length && !no_slug ? (
             <InfiniteScroll
-              className="d-flex flex-wrap"
+              className="d-flex w-100 flex-wrap"
               children={tasks.results.map((task) => (
                 <Col
                   key={task.id}
@@ -136,7 +136,7 @@ function TasksPage({ filter = "" }) {
                   sm={6}
                   md={4}
                   lg={3}
-                  className={`${taskStyles.Task} mb-4`}
+                  className={` mb-4`}
                 >
                   <Task {...task} setTasks={setTasks} />
                 </Col>

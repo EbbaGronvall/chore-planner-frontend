@@ -77,7 +77,7 @@ function TaskCreateForm() {
     try {
       const { data } = await axiosReq.post("/tasks/", formData);
       toast.success("Chore added successfully!");
-      history.push(`/chores/${data.id}`);
+      history.push(`/chores/`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data?.error || {});
