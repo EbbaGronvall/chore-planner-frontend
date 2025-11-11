@@ -12,6 +12,7 @@ import HouseholdEditModal from "../households/HouseholdEditModal";
 function ProfilePage() {
   const { id } = useParams();
   const [profile, setProfile] = useState({ results: [] });
+  const [household, setHousehold] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
 
   const [showProfileEditModal, setShowProfileEditModal] = useState(false);
@@ -58,7 +59,9 @@ function ProfilePage() {
         onEditClick={handleOpenProfileEdit}
       />
       <br></br>
-      <HouseholdDetail onEditClick={handleOpenHouseholdEdit} />
+      <HouseholdDetail {...household.results[0]}
+        setHousehold={setHousehold}
+        profilePage onEditClick={handleOpenHouseholdEdit} />
       <ProfileEditModal
         show={showProfileEditModal}
         handleClose={handleCloseProfileEdit}
