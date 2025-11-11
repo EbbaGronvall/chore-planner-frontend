@@ -119,7 +119,7 @@ function TaskCreateForm() {
   }
   return (
     <Card className={taskStyles.Card}>
-      <h1>Let's Plan Some Chores</h1>
+      <h1>Plan a Chore</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="title">
           <Form.Label className={styles.Label}>Chore Title</Form.Label>

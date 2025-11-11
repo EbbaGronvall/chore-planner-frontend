@@ -16,6 +16,7 @@ import { fetchMoreData } from "../../utils/utils";
 import btnStyles from "../../styles/Button.module.css";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useCurrentUserProfile } from "../../contexts/CurrentUserProfileContext";
+import TaskCreateModal from "./TaskCreateModal";
 
 function TasksPage({ filter = "" }) {
   const [tasks, setTasks] = useState({ results: [] });
@@ -28,6 +29,12 @@ function TasksPage({ filter = "" }) {
 
   const currentUserProfile = useCurrentUserProfile();
   const no_slug = !currentUserProfile?.household_slug;
+
+  const [showCreate, setShowCreate] = useState(false);
+
+  	const handleOpenCreate = () => setShowCreate(true);
+  	const handleCloseCreate = () => setShowCreate(false);
+
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -56,6 +63,8 @@ function TasksPage({ filter = "" }) {
   }, [filter, query, selectedFilter, selectedOrder, pathname]);
 
   return (
+    <>
+    <TaskCreateModal show={showCreate} handleClose={handleCloseCreate} />
     <Row className="mb-3">
       {!no_slug ? (
         <Form
@@ -102,13 +111,12 @@ function TasksPage({ filter = "" }) {
             </Form.Group>
             {currentUserProfile?.role === "Parent" && (
               <Form.Group as={Col} xs={12} sm={12} md={12} className="mb-3">
-                <Link to={`/chores/create`}>
-                  <Button
-                    className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
-                  >
-                    Add a new Chore
-                  </Button>
-                </Link>
+                <Button
+											onClick={handleOpenCreate}
+											className={`${btnStyles.Button} ${btnStyles.Green} ${btnStyles.Wide}`}
+										>
+											Add a new Chore
+									</Button>
               </Form.Group>
             )}
           </Form.Row>
@@ -193,6 +201,7 @@ function TasksPage({ filter = "" }) {
         </Container>
       )}
     </Row>
+    </>
   );
 }
 

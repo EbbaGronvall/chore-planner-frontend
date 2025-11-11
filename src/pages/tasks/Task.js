@@ -1,19 +1,23 @@
 import React from "react";
 import styles from "../../styles/Task.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import btnStyles from "../../styles/Button.module.css";
+import TaskDetailModal from "./TaskDetailModal";
+import { useState } from "react";
 
 const Task = (props) => {
-  const { assigned_to_username, due_date, id, status, title, is_task_giver } =
+  const { assigned_to_username, due_date, status, title } =
     props;
-  const currentUser = useCurrentUser();
-  const is_assigned_to = currentUser?.username === assigned_to_username;
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpen = () => setShowModal(true);
+
+  	const handleClose = () => setShowModal(false);
 
   return (
-    <Card className={`${styles.Card} ${styles.CardZoom} ${styles.Text}`}>
+    <>
+    <Card className={`${styles.Card} ${styles.CardZoom}`} onClick={handleOpen}
+        	role="button"
+        	tabIndex={0}>
       <Card.Body>
         <Card.Title>To do: </Card.Title>
         <Card.Text>{title}</Card.Text>
@@ -23,17 +27,10 @@ const Task = (props) => {
         <Card.Text>{due_date}</Card.Text>
         <Card.Title>Status:</Card.Title>
         <Card.Text>{status}</Card.Text>
-        <div className="d-flex align-items-center">
-          {(is_task_giver || is_assigned_to) && (
-            <Link to={`/chores/${id}/`}>
-              <Button className={`${btnStyles.Button}  ${btnStyles.Green}`}>
-                See Details
-              </Button>
-            </Link>
-          )}
-        </div>
       </Card.Body>
     </Card>
+    <TaskDetailModal show={showModal} handleClose={handleClose} taskProps={props} />
+    </>
   );
 };
 

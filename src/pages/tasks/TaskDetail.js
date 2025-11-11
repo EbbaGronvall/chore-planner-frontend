@@ -21,6 +21,8 @@ const TaskDetail = (props) => {
     task_giver_username,
     title,
     taskPage,
+    handleClose,
+    handleOpenEdit,
   } = props;
   const currentUser = useCurrentUser();
   const is_assigned_to = currentUser?.username === assigned_to_username;
@@ -36,7 +38,7 @@ const TaskDetail = (props) => {
   }, [assigned_to_username, task_giver_username]);
 
   return (
-    <Row>
+    <>
       {hasLoaded ? (
         <>
           {isUserAuthorized ? (
@@ -73,16 +75,16 @@ const TaskDetail = (props) => {
                   </Card.Text>
                 )}
 
-                <div className="d-flex align-items-center">
-                  {is_task_giver && taskPage && (
-                    <Link to={`/chores/${id}/edit`}>
-                      <Button
-                        className={`${btnStyles.Button}  ${btnStyles.Green}`}
-                      >
-                        Edit the chore
-                      </Button>
-                    </Link>
-                  )}
+                <div className="d-flex justify-content-end">
+                  <Button
+												onClick={handleOpenEdit} className={`${btnStyles.Button}  ${btnStyles.Green}`}
+											>
+												Edit the Chore
+										</Button>
+										
+										<Button onClick={handleClose} className={`${btnStyles.Button}  ${btnStyles.Green}`}>
+											Close
+										</Button>
                 </div>
               </Card.Body>
             </Card>
@@ -107,7 +109,8 @@ const TaskDetail = (props) => {
           </Spinner>
         </Container>
       )}
-    </Row>
+    
+    </>
   );
 };
 
