@@ -68,12 +68,12 @@ function App() {
             exact
             path="/households/:slug/edit"
             render={() => <HouseholdEditForm />}
-          />
+          />*/}
           <Route
             exact
             path="/households/:slug"
             render={() => <HouseholdPage />}
-          />*/}
+          />
           {/* Routes to the profilepages */}
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           {/*<Route

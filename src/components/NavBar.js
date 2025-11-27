@@ -39,14 +39,14 @@ const NavBar = () => {
 			>
 				Noticeboard <i class="fa-solid fa-check"></i>
 			</NavLink>
-			{/*<NavLink
+			<NavLink
 				className={styles.NavLink}
 				activeClassName={styles.Active}
 				to={`/households/${currentUserProfile?.household_slug}`}
 			>
-				My Home <i class="fa-solid fa-house"></i>
+				Your Home <i class="fa-solid fa-house"></i>
 			</NavLink>
-*/}
+
 			<NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
 				Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i>
 			</NavLink>

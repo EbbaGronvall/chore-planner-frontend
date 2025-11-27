@@ -5,10 +5,10 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import HouseholdDetail from "./HouseholdDetail";
-import taskStyles from "../../styles/Task.module.css";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { toast } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import HouseholdEditModal from "./HouseholdEditModal";
 
 function HouseholdPage() {
   const { slug } = useParams();
@@ -16,6 +16,11 @@ function HouseholdPage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const history = useHistory();
   const currentUser = useCurrentUser();
+
+  const [showHouseholdEditModal, setShowHouseholdEditModal] = useState(false);
+
+  const handleOpenHouseholdEdit = () => setShowHouseholdEditModal(true);
+  const handleCloseHouseholdEdit = () => setShowHouseholdEditModal(false);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -45,7 +50,12 @@ function HouseholdPage() {
         {...household.results[0]}
         setHousehold={setHousehold}
         householdPage
+        onEditClick={handleOpenHouseholdEdit}
       />
+      <HouseholdEditModal
+              show={showHouseholdEditModal}
+              handleClose={handleCloseHouseholdEdit}
+            />
     </>
   ) : (
     <Container
