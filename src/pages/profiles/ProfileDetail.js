@@ -12,7 +12,7 @@ import appStyles from "../../App.module.css";
 import { Card } from "react-bootstrap";
 
 const ProfileDetail = (props) => {
-  const { id, member, household_name, role } = props;
+  const { id, member, household_name, role, handleOpenProfileEdit } = props;
   const currentUserProfile = useCurrentUserProfile();
   const currentUser = useCurrentUser();
 
@@ -38,12 +38,11 @@ const ProfileDetail = (props) => {
             <br />
             Your role: {role}
           </p>
-
-          <Link to={`/profiles/${id}/edit`}>
-            <Button className={`${btnStyles.Button}  ${btnStyles.Green}`}>
+          <div className="d-flex justify-content-end">
+            <Button onClick={handleOpenProfileEdit} className={`${btnStyles.Button}  ${btnStyles.Green}`}>
               Edit your profile
             </Button>
-          </Link>
+          </div>
         </Card>
       ) : (
         <Container className={`${appStyles.Content}  ${taskStyles.Text}`}>
