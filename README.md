@@ -1,4 +1,6 @@
 # ChorePlanner
+## THIS PAGE IS UNDERGOING A MAKE-OVER
+The content in this readme does not match the website any longer and there are still features that needs tending to. 
 ## Active webpages
 Frontend: https://chore-planner-frontend-ce06c4825181.herokuapp.com/
 
